@@ -1,0 +1,80 @@
+﻿@model ASI.Basecode.Services.ServiceModels.UserListViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using static ASI.Basecode.Resources.Views.Screen
+
+<div class="text-center">
+    <h1 class="display-4">TEST</h1>
+    <p>Test page 1</p>
+    @using(@Html.BeginForm("Search","Account"))
+    {
+    <div class="row">
+        <div class="col-sm-2">
+            @UserId
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.Filters.UserId)
+        </div>
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.Filters.Name)
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.Filters.Name)
+        </div>
+    </div>
+    <div class="row" style="margin-top: 35px; margin-bottom: 35px">
+        <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
+            <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px"/>
+            <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
+        </div>
+    </div>
+    }
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    UserID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.UserList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.UserId">Edit</a> |
+                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @Html.ActionLink("Return to main", "Index", "Home")
+</div>
+@section scripts {
+    <script>
+        var listItems = @Html.Raw(Json.Serialize(@Model.UserList));
+        console.log(listItems);
+
+        function clearFilters(){
+            console.log("CLEARED")
+            $('#Filters_UserId').val('');
+            $('#Filters_Name').val('');
+        }
+    </script>
+}
