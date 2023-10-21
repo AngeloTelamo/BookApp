@@ -1,0 +1,119 @@
+/*.gradient-custom-2 {*/
+    /* fallback for old browsers */
+    /*background: #ff0000;*/ /* Red */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /*background: -webkit-linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background: linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
+/*}
+
+.login-btn {
+    width: 180px;
+}
+
+.register-box {
+    width: 600px;
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    height: 100vh;
+}
+
+#form2Example11 {
+    width: 600px;
+    background-color: #EEC1AD;
+}
+
+#form2Example22 {
+    width: 600px;
+    background-color: #EEC1AD;
+}
+
+.form-check-label {
+    font-weight: bold;
+    color: #515151;
+}
+
+.forgot-password-container {
+    width: 400px;
+}
+
+.forgot-password {
+    color: #E35D6A;
+    font-weight: bold;
+}
+
+.forgot-password:hover {
+    color: #E35D6A;
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #DBAC98;
+    width: 600px;
+    border-radius: 20px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #DBAC98;
+    color: #ffffff;
+}
+
+.create-account-container {
+    margin-top: 30px;
+}
+
+.no-account {
+    color: #676767;
+    font-weight: bold;
+}
+
+.create-account {
+    color: #E35D6A;
+    font-weight: bold;
+}
+
+.create-account:hover {
+    color: #E35D6A;
+    text-decoration: none;
+}
+
+.rectangle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 1044px;
+    background-color: #c98276;
+}
+
+.text-book-review {
+    text-align: center;
+    padding: 500px 0 0 0;
+    font-size: 40px;
+    color: #515151;
+    position: relative;
+}
+
+
+
