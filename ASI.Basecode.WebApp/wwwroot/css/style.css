@@ -422,8 +422,12 @@ img {
 }
 .popular-books-link:hover {
     color: #000000;
-    text-decoration:none;
-    padding: 5px;
+    text-decoration:none
+}
+
+.popular-books-link:hover .popular-books-container {
+    transform: translate(0, -30px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .popular-books-container {
@@ -433,7 +437,7 @@ img {
     border-radius: 10px;
     text-align: left;
     align-items: center;
-    /*position: relative; */
+    position: relative;
 }
 
 .popular-books-info {
@@ -462,37 +466,36 @@ img {
 
 .place-badge {
     position: absolute;
-    top: 0;
-    left: 0;
-    /*background-color: #FFD700;*/
+    top: -20px;
+    left: -20px;
     color: #000;
-    /*padding: 5px 13px;*/
-    border-radius: 100px;
-    display: flex;
     align-items: center;
-    gap: 5px;
-/*    font-size: 14px;*/
-    font-weight: bold;
+    z-index: 2;
 }
 
-.place-badge h4 {
+.place-badge i {
+    font-size: 60px;
+    color: #E35D6A;
+}
+
+/*.place-badge h4 {
     font-size: 30px;
     color: #ffff;
     position: relative;
-    left: 13px;
-    top: -65px
-}
+    left: 0;
+    top: 0;
+}*/
 
 .fa-award {
     font-size: 60px;
     color: #87CEEB;
 }
-    /*Popular Books*/
-    /*Popular Books List*/
-    .popular-books-list-body {
-        display: flex;
-        flex-direction: column;
-    }
+/*Popular Books*/
+/*Popular Books List*/
+.popular-books-list-body {
+    display: flex;
+    flex-direction: column;
+}
 
 .popular-books-list-container {
     background-color: #ffffff;
