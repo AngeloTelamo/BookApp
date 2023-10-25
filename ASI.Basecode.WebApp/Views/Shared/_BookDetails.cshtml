@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<div class="book-details-container">
+    <div class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
+        <div class="book-details">
+            <div class="book-details-head">
+                <i class="fas fa-arrow-left"></i>
+                <h4>Book Details</h4>
+            </div> 
+            <div class="book-details-body">
+
+                <div class="book-details-img">
+                    <img src="~/img/book-test.png" alt="Book Image">
+                </div>
+                
+                <div class="book-details-title-author">
+                    <h4>Title of Book</h4>
+                    <p>Author</p>
+                </div>
+                
+                <div class="book-details-rating">
+                    <div class="book-details-star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <div class="num-rating">
+                        <h4>8.6</h4>
+                        <p>Ratings</p>
+                    </div>
+
+                    <i class="fas fa-pen-to-square"></i>
+                </div>
+                
+                <div class="book-details-description">
+                    <p>
+                        A Clockwork Orange" is a 1971 dystopian crime film by Stanley Kubrick, based on Anthony Burgess's novel. It uses disturbing imagery to address psychiatry, juvenile delinquency, and societal issues in a near-future Britain.
+                    </p>
+                </div>
+                
+
+                <button class="start-button">
+                    Start Reading
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
