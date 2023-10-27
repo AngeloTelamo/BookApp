@@ -112,8 +112,8 @@ label #cancel {
 
 .user-info {
     display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .username {
