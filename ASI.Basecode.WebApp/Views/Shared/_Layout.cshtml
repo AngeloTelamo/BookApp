@@ -14,7 +14,18 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <partial name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
+    <div class="sidebar-container">
+        <div class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
+            <input type="checkbox" id="check">
+            <label for="check">
+                <i class="fas fa-bars" id="btn"></i>
+                <i class="fas fa-times" id="cancel"></i>
+            </label>
+            <div class="sidebar">
+            <partial class="layout-sidebar" name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
+            </div>
+        </div>
+    </div>
     <div class="container">
         <main role="main">  
             @RenderBody()
@@ -43,6 +54,19 @@
             progressBar: true
         };
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                $('.sidebar').toggleClass('active');
+            });
+
+            $('#cancel').click(function () {
+                $('.sidebar').removeClass('active');
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -110,6 +110,14 @@ label #cancel {
     left: 250px;
 }
 
+/*#check:checked ~ .container {
+    margin-left: 250px;
+}
+
+.container {
+    transition: margin-right 2s .5s;
+}*/
+
 .user-info {
     display: flex;
     flex-direction: column;
