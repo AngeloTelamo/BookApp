@@ -63,6 +63,7 @@
 
     .book-details-img img {
         padding: 5px;
+        width: 200px;
         max-width: 100%;
         max-height: 100%;
         border-radius: 10px;
@@ -143,14 +144,15 @@
 }
 
 .start-button {
+    font-weight: bold;
     background-color: #FCE9DB;
     color: #E35D6A;
     border-radius: 10px;
     cursor: pointer;
-    padding: 5px 20px 5px 20px;
+    padding: 10px 30px 10px 30px;
     border: none;
     outline: none;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
     .start-button:active, .start-button:focus {
