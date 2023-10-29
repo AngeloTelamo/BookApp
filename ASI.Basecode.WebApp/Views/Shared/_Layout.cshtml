@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="sidebar-container">
+    
         <div class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
 
             <input type="checkbox" id="check">
@@ -25,17 +26,20 @@
         
             <div class="sidebar">
             <partial class="layout-sidebar" name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
+            </div>  
+      
+
+            <div class="container">
+                <main role="main">  
+                    @RenderBody()
+                </main>
             </div>
+            
 
         </div>
-
-        <div class="container">
-            <main role="main">  
-                @RenderBody()
-            </main>
-        </div>  
-
     </div>
+
+    
 
     @* <footer class="border-top footer text-muted">
         <div class="container">
