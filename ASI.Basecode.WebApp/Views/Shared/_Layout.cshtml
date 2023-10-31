@@ -14,19 +14,25 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar-container">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <input type="checkbox" id="check">
+            <label for="check">
+                <i class="fas fa-bars" id="btn"></i>
+                <i class="fas fa-times" id="cancel"></i>
+            </label>
+        }
+        
+        <div class="sidebar">
         <partial class="layout-sidebar" name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
-    </div>
+        </div>
 
-    <div class="book-details">
-        <partial class="layout-book-details" name="_BookDetails" /> @* @Html.Partial("_BookDetails") *@
-	</div>
-
-    <div class="container">
-        <main role="main">  
-            @RenderBody()
-        </main>
-    </div>
+        <div class="container">
+            <main role="main">  
+                @RenderBody()
+            </main>
     @* <footer class="border-top footer text-muted">
         <div class="container">
             @Copyright
@@ -50,6 +56,19 @@
             progressBar: true
         };
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                $('.sidebar').toggleClass('active');
+            });
+
+            $('#cancel').click(function () {
+                $('.sidebar').removeClass('active');
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

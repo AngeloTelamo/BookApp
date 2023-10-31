@@ -256,10 +256,28 @@ label #cancel {
     left: 250px;
 }
 
+/*Moving Index*/
+#check:checked ~ .container {
+    /*margin-left: 270px;
+    padding:0 30px 0 0;*/
+    width: calc(100% - 260px);
+    margin-left: 260px;
+}
+
+.container {    
+    /*overflow: hidden;*/
+    /*transition: all .5s ease;*/
+    transition: all .5s ease;
+    width: 100%;
+    /*margin-left: 0;*/
+    /*padding: 30px;*/
+}
+/*Moving Index*/
+
 .user-info {
     display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .username {
@@ -280,7 +298,7 @@ label #cancel {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10px 10px 10px;
+    padding: 15px 10px 10px 10px;
     color: #515151;
 }
 
@@ -570,7 +588,6 @@ img {
 .popular-books-containers {
     display: flex;
     flex-wrap: wrap;
-    /*gap: 40px;*/
     gap: 20px;
     margin: 20px;
 }
@@ -755,7 +772,7 @@ img {
 /*Popular Books List*/
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
-    width: 1em;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -824,7 +841,7 @@ header {
 }
 
 .logosec {
-    gap: 20px;
+    gap: 10px;
 }
 
 .hover-pointer {
