@@ -22,8 +22,7 @@
     position: fixed;
     right: 0;
     width: 270px;
-    /*height: 100%;*/
-    height: 600px;
+    height: 100%;
     background: #C98276;
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
 }
@@ -156,13 +155,13 @@
         outline: none;
     }
 /*book details*/
+
 /*sidebar navigation*/
 .sidebar {
     position: fixed;
     left: -270px;
     width: 270px;
-    /*height: 100%;*/
-    height: 600px;
+    height: 100%;
     background: #ffffff;
     transition: all .5s ease;
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
@@ -182,38 +181,40 @@
     margin: 20px 0 40px 0;
 }
 
-.sidebar ul{
-    margin: 0 0 0 30px;
+.sidebar ul {
+    margin: 30px 0 0 30px;
 }
 
-.sidebar ul a {
-    display: block;
-    height: 80%;
-    width: 80%;
-    border-radius: 10px;
-    line-height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #E35D6A;
-    padding-left: 40px;
-}
-
-    .sidebar ul a:hover {
-        text-decoration: none;
-        color: #000000;
-        background: #EEC1AD;
-        padding-left: 10px;
+    .sidebar ul a {
+        display: block;
+        height: 80%;
+        width: 80%;
+        border-radius: 10px;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #E35D6A;
+        padding-left: 40px;
+        text-align: left
     }
-        .sidebar ul a:hover i {
-            color: #E35D6A;
+
+        .sidebar ul a:hover {
+            text-decoration: none;
+            color: #000000;
+            background: #EEC1AD;
+            padding-left: 10px;
         }
 
-.sidebar ul a i {
-    margin-right: 16px;
-}
+            .sidebar ul a:hover i {
+                color: #E35D6A;
+            }
 
-#check  {
-    display: none;  
+        .sidebar ul a i {
+            margin-right: 16px;
+        }
+
+#check {
+    display: none;
 }
 
 label #btn, label #cancel {
@@ -242,7 +243,7 @@ label #cancel {
     transition: all .5s ease;
 }
 
-#check:checked ~ .sidebar{
+#check:checked ~ .sidebar {
     left: 0px;
 }
 
@@ -251,6 +252,7 @@ label #cancel {
     opacity: 0;
     pointer-events: none;
 }
+
 
 #check:checked ~ label #cancel {
     left: 250px;
@@ -264,7 +266,7 @@ label #cancel {
     margin-left: 260px;
 }
 
-.container {    
+.container {
     /*overflow: hidden;*/
     /*transition: all .5s ease;*/
     transition: all .5s ease;
@@ -669,6 +671,7 @@ img {
     color: #87CEEB;
 }
 /*Popular Books*/
+
 /*Popular Books List*/
 .popular-books-list-body {
     display: flex;
@@ -770,6 +773,7 @@ img {
     font-size: 30px;
 }
 /*Popular Books List*/
+
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
     width: 12px;
@@ -784,6 +788,7 @@ img {
     border-radius: 10px;
 }
 /*Custom Scrollbar*/
+
 /*dashboard*/
 :root {
     --background-color1: #fafaff;
