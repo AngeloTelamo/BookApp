@@ -24,16 +24,16 @@
                 <i class="fas fa-times" id="cancel"></i>
             </label>
         }
-        
+
         <div class="sidebar">
-        <partial class="layout-sidebar" name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
-        </div>
+            <partial class="layout-sidebar" name="_Sidebar" />
+        </div> @* @Html.Partial("_Sidebar") *@
 
         @if (User.Identity.IsAuthenticated)
         {
             <div class="book-details">
-                <partial class="layout-book-details" name="_BookDetails" /> @* @Html.Partial("_Sidebar") *@
-            </div>
+                <partial class="layout-book-details" name="_BookDetails" />
+            </div> @* @Html.Partial("_BookDetail") *@
         }
     
         <div class="container">
@@ -75,6 +75,24 @@
 
             $('#cancel').click(function () {
                 $('.sidebar').removeClass('active');
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.new-book-link, .popular-books-link').on('click', function (e) {
+                e.preventDefault();
+
+                // Add your code to populate book details here based on the link clicked
+               
+                $('.book-details').addClass('active');
+            });
+
+            $('.close-book-details').on('click', function (e) {
+                e.preventDefault();
+               
+                $('.book-details').removeClass('active');
             });
         });
     </script>

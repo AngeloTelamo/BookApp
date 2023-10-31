@@ -20,12 +20,30 @@
 .book-details {
     z-index: 2;
     position: fixed;
-    right: 0;
+    right: -270px;
     width: 270px;
     height: 100%;
     background: #C98276;
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
 }
+
+.book-details.active {
+    right: 0;
+}
+
+/* Initial hidden state */
+/*.book-details {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    transition: right 0.3s ease; 
+}*/
+
 .book-details-head {
     display: flex;
     flex-direction: row;
@@ -167,6 +185,10 @@
     background: #ffffff;
     transition: all .5s ease;
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.sidebar.active {
+    right: 0;
 }
 
 .sidebar-container {
