@@ -36,6 +36,7 @@
 
 .book-details-head i {
     font-size: 34px;
+    color: #ffffff;
 }
 
 .book-details-head h4 {
@@ -158,6 +159,7 @@
 
 /*sidebar navigation*/
 .sidebar {
+    z-index: 2;
     position: fixed;
     left: -270px;
     width: 270px;

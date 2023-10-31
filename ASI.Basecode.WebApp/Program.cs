@@ -35,6 +35,7 @@ app.MapControllerRoute(
     pattern: "{controller=Account}/{action=Login}");
 app.MapControllers();
 app.MapRazorPages();
+app.UseAuthentication();
 
 // Run application
 app.Run();
