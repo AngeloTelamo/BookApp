@@ -14,8 +14,14 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    @Html.Partial("_Sidebar")
-    @Html.Partial("_BookDetails")
+    <div class="sidebar">
+        <partial class="layout-sidebar" name="_Sidebar" /> @* @Html.Partial("_Sidebar") *@
+    </div>
+
+    <div class="book-details">
+        <partial class="layout-book-details" name="_BookDetails" /> @* @Html.Partial("_BookDetails") *@
+	</div>
+
     <div class="container">
         <main role="main">  
             @RenderBody()
