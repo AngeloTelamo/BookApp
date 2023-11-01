@@ -38,16 +38,8 @@
     left: 0;
     top: 0;
     width: 400px;
-    height: 1044px;
-    background-color: #c98276;
-}
-
-.text-book-review {
-    text-align: center;
-    padding: 500px 0 0 0;
-    font-size: 40px;
-    color: #515151;
-    position: relative;
+    height: 100%;
+    background-color: white;
 }
 
 .register-box {
