@@ -10,13 +10,8 @@
     list-style: none;
     text-decoration: none;
 }
-sidebar-container
-/*book details*/
-.book-details-container {
-    /*margin: -25px 0 0 0;
-    padding: -25px 0 0 0;*/
-}
 
+/*book details*/
 .book-details {
     z-index: 2;
     position: fixed;
@@ -25,6 +20,7 @@ sidebar-container
     height: 100%;
     background: #C98276;
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+    transition: right 0.3s ease;
 }
 
 .book-details.active {
@@ -793,19 +789,23 @@ img {
 
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
+    background-color: #F5F5F5;
+    margin-right: 50px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #ffffff;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #E35D6A;
     border-radius: 10px;
+    background-color: #E35D6A;
 }
 /*Custom Scrollbar*/
-
+container
 /*dashboard*/
 :root {
     --background-color1: #fafaff;
