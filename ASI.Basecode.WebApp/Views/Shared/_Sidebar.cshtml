@@ -1,30 +1,30 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 
-    <header class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
-        <div class="logosec">
-            <div class="dp">
-                <img src="~/img/profile-logo.png"
-                        class="dpicn hover-pointer"
-                        alt="dp"> 
+<header class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
+    <div class="logosec">
+        <div class="dp">
+            <img src="~/img/profile-logo.png"
+                    class="dpicn hover-pointer"
+                    alt="dp"> 
+        </div>
+        <div class="user-info">
+            <div class="username">
+                @HttpContextAccessor.HttpContext.Session.GetString("UserName")
             </div>
-            <div class="user-info">
-                <div class="username">
-                    @HttpContextAccessor.HttpContext.Session.GetString("UserName")
-                </div>
-                <div class="email">
-                    @HttpContextAccessor.HttpContext.Session.GetString("Email")
-                </div>
+            <div class="email">
+                @HttpContextAccessor.HttpContext.Session.GetString("Email")
             </div>
         </div>
-        <ul>
-            <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
-            <li><a asp-action="Test" asp-controller="Account"><i class="fas fa-stream"></i>Library</a></li>
-            <li><a href="#"><i class="fas fa-book"></i>My Books</a></li>
-            <li><a href="#"><i class="fas fa-magnifying-glass"></i>Discover</a></li>
-            <li><a asp-action="SignOutUser" asp-controller="Account"><i class="fas fa-right-from-bracket"></i>Sign Out</a></li>
-        </ul>
-    </header>
+    </div>
+    <ul>
+        <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+        <li><a asp-action="Test" asp-controller="Account"><i class="fas fa-stream"></i>Library</a></li>
+        <li><a href="#"><i class="fas fa-book"></i>My Books</a></li>
+        <li><a href="#"><i class="fas fa-magnifying-glass"></i>Discover</a></li>
+        <li><a asp-action="SignOutUser" asp-controller="Account"><i class="fas fa-right-from-bracket"></i>Sign Out</a></li>
+    </ul>
+</header>
     
 
 
