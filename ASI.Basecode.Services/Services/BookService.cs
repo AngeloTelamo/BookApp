@@ -26,7 +26,7 @@ namespace ASI.Basecode.Services.Services
 
         public void AddBooks(BookViewModel model)
         {
-            var book = _mapper.Map<Book>(model);
+            var book = new Book();
 
             if (!_repository.BookExists(book.BookId))
             {
