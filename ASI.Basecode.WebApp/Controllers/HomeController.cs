@@ -43,7 +43,10 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             return View();
         }
-
+        public IActionResult Review()
+        {
+            return View();
+        }
         public IActionResult Test2()
         {
             return View();

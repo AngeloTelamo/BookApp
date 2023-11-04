@@ -141,20 +141,21 @@
     padding: 0;
 }
 
-.start-button {
+a.start-button {
     font-weight: bold;
     background-color: #FCE9DB;
     color: #E35D6A;
     border-radius: 10px;
     cursor: pointer;
     padding: 10px 30px 10px 30px;
-    border: none;
-    outline: none;
     margin-top: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 
-    .start-button:active, .start-button:focus {
-        outline: none;
+    a.start-button:hover {
+        color: #E35D6A;
+        text-decoration: none;
     }
 /*book details*/
 
