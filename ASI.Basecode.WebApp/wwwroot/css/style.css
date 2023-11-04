@@ -27,19 +27,6 @@
     right: 0;
 }
 
-/* Initial hidden state */
-/*.book-details {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -100%; 
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    z-index: 9999;
-    transition: right 0.3s ease; 
-}*/
-
 .book-details-head {
     display: flex;
     flex-direction: row;
@@ -473,8 +460,6 @@ img {
 }
 
 .book-container img {
-    /*max-width: 100%;
-    height: auto;*/
     width: 180px;
     border-radius: 10px;
 }
@@ -805,7 +790,7 @@ img {
     background-color: #E35D6A;
 }
 /*Custom Scrollbar*/
-container
+
 /*dashboard*/
 :root {
     --background-color1: #fafaff;
