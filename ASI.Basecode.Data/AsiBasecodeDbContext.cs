@@ -18,8 +18,6 @@ namespace ASI.Basecode.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
-
-
         public virtual DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -99,20 +97,7 @@ namespace ASI.Basecode.Data
 
                 entity.Property(e => e.UpdatedTime).HasColumnType("datetime");
 
-               // entity.Property(e => e.UserId)
-                 //   .IsRequired()
-                 //   .HasMaxLength(50)
-                 //   .IsUnicode(false);
-
-                // Define the foreign key relationship with the User entity
-
-                ///entity.HasOne(e => e.Users)
-                // .WithMany(u => u.Books)
-                //.HasForeignKey(e => e.UserId)
-                //.HasConstraintName("FK_Books_Users");
-
-                // Add other configurations as needed
-            });
+              });
 
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
