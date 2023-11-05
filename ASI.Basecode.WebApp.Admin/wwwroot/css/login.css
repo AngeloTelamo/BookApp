@@ -1,29 +1,106 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #ff0000; /* Red */
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ff0000, #000000); /* Red, Black */
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ff0000, #000000); /* Red, Black */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.login-btn {
-    width: 180px;
+.container {
+    height: 900px;
 }
 
-.register-box {
+.welcome-text {
     width: 600px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 70px;
 }
 
-@media (min-width: 768px) {
-    .gradient-form {
-        height: 100vh !important;
-    }
+.form-label {
+    color: #FFFFFF;
+    font-weight: bold;
 }
 
-@media (min-width: 769px) {
-    .gradient-custom-2 {
-        border-top-right-radius: .3rem;
-        border-bottom-right-radius: .3rem;
+#form2Example11 {
+    width: 600px;
+    background-color: #FFFFFF;
+    border: 1px solid #D33131;
+}
+
+#form2Example22 {
+    width: 600px;
+    background-color: #FFFFFF;
+    border: 1px solid #D33131;
+}
+
+.form-check-label {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.form-check-input {
+    color: #FFFFFF;
+    border: 2px solid #4D4D4D;
+}
+
+.forgot-password-container {
+    width: 400px;
+}
+
+.forgot-password {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+    .forgot-password:hover {
+        color: #E35D6A;
+        text-decoration: none;
     }
+
+.btn {
+    background-color: #FCE9DB;
+    width: 600px;
+    border-radius: 20px;
+    border: 1px solid #D33131;
+}
+
+    .btn:hover {
+        background-color: #FCE9DB;
+        color: #FFFFFF;
+    }
+
+.login-text {
+    color: #E35D6A;
+}
+
+.create-account-container {
+    margin-top: 30px;
+}
+
+.no-account {
+    color: #000000;
+    font-weight: bold;
+}
+
+.create-account {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+    .create-account:hover {
+        color: #E35D6A;
+        text-decoration: none;
+    }
+
+.rectangle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+}
+
+.background-page {
+    background-color: #C98276;
 }

@@ -1,0 +1,36 @@
+﻿
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.rectangle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+}
+
+.register-box {
+    margin: 70px;
+}
+
+.btn {
+    background-color: #DBAC98;
+    border: none;
+    outline: none;
+}
+
+    .btn:hover {
+        background-color: #DBAC98;
+        outline: none;
+    }
+
+.background-page {
+    background-color: #C98276;
+}

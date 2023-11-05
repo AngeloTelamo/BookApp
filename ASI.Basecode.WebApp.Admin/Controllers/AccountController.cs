@@ -2,7 +2,6 @@
 using ASI.Basecode.Services.Interfaces;
 using ASI.Basecode.Services.Manager;
 using ASI.Basecode.Services.ServiceModels;
-using ASI.Basecode.Services.Services;
 using ASI.Basecode.WebApp.Authentication;
 using ASI.Basecode.WebApp.Models;
 using ASI.Basecode.WebApp.Mvc;
@@ -28,8 +27,6 @@ namespace ASI.Basecode.WebApp.Controllers
         private readonly TokenProviderOptionsFactory _tokenProviderOptionsFactory;
         private readonly IConfiguration _appConfiguration;
         private readonly IUserService _userService;
-        private readonly IBookService _bookService;
-        private BookViewModel model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
@@ -59,7 +56,6 @@ namespace ASI.Basecode.WebApp.Controllers
             this._tokenValidationParametersFactory = tokenValidationParametersFactory;
             this._appConfiguration = configuration;
             this._userService = userService;
-          //  this._bookService = bookService;
         }
 
         /// <summary>
@@ -95,7 +91,6 @@ namespace ASI.Basecode.WebApp.Controllers
                 // 認証OK
                 await this._signInManager.SignInAsync(user);
                 this._session.SetString("UserName", user.Name);
-                this._session.SetString("Email", user.UserId);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -122,14 +117,21 @@ namespace ASI.Basecode.WebApp.Controllers
                 _userService.AddUser(model);
                 return RedirectToAction("Login", "Account");
             }
-            catch(InvalidDataException ex)
+            catch (InvalidDataException ex)
             {
                 TempData["ErrorMessage"] = ex.Message;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
             }
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPass()
+        {
             return View();
         }
 
@@ -139,54 +141,31 @@ namespace ASI.Basecode.WebApp.Controllers
             return View("Test", dataList);
         }
 
-                
-
-        [HttpGet]
-        [AllowAnonymous]
-
-        public IActionResult Addbooks(BookViewModel model)
-        {
-            try
-            {
-                _bookService.AddBooks(model);
-               return RedirectToAction("Addbooks", "Account");
-            }
-            catch (InvalidDataException ex)
-            {
-                TempData["ErrorMessage"] = ex.Message;
-            }
-            catch (Exception)
-            {
-                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
-            }
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult Search(BookListViewModel model)
+        public IActionResult Search(UserListViewModel model)
         {
-            var dataList = _bookService.GetBookList(model);
+            var dataList = _userService.GetUserList(model);
             return View("Test", dataList);
         }
 
         [HttpGet]
-        public IActionResult Update(string BookId)
+        public IActionResult Update(string userId)
         {
-            var model = _bookService.GetBook(BookId);
+            var model = _userService.GetUser(userId);
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Update(BookEditViewModel model)
+        public IActionResult Update(UserEditViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _bookService.UpdateBooks(model);
+                    _userService.UpdateUser(model);
                     TempData["SuccessMessage"] = "Saved!";
                 }
-                
+
             }
             catch (InvalidDataException ex)
             {
@@ -200,11 +179,11 @@ namespace ASI.Basecode.WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(string BookId)
+        public IActionResult Delete(string userId)
         {
             try
             {
-                _bookService.DeleteBooks(BookId);
+                _userService.DeleteUser(userId);
                 return Test();
             }
             catch (InvalidDataException ex)

@@ -47,5 +47,10 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Addbooks()
+        {
+            return View();
+        }
     }
 }
