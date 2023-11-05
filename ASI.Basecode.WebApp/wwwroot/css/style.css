@@ -11,6 +11,7 @@
     text-decoration: none;
 }
 
+/*Dashboard*/
 /*book details*/
 .book-details {
     z-index: 2;
@@ -41,7 +42,7 @@
 }
 
 .book-details-head h4 {
-    padding: 5px 0 0 20px;
+    padding: 4px 0 0 20px;
 }
 
 .book-details-body {
@@ -624,8 +625,6 @@ img {
 }
 
 .popular-books-container img {
-    /*max-width: 100%;
-    height: auto;*/
     width: 170px;
     border-radius: 10px;
     border-radius: 10px;
@@ -772,6 +771,7 @@ img {
     font-size: 30px;
 }
 /*Popular Books List*/
+/*dashboard*/
 
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
@@ -792,7 +792,89 @@ img {
 }
 /*Custom Scrollbar*/
 
-/*dashboard*/
+/*Review*/
+.review-container {
+    padding: 10px;
+}
+
+#review-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+}
+
+.return i {
+    font-size: 30px;
+    color: #E35D6A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.review-book-img {
+    width: 120px;
+}
+
+.review-title-author {
+    margin: 5px 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.review-title-author h4 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.review-title-author p {
+    font-size: 12px;
+    color: #C98276;
+    text-align: start;
+    margin: 0;  
+    padding: 0;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+}
+
+.review-star-rating {
+    padding-bottom: 18px;
+    margin-right: 3px;
+}
+
+.review-star-rating i {
+    font-size: 12px;
+    color: #DBAC98;
+}
+
+.review-num-rating {
+    display: flex;
+}
+
+.review-num-rating p {
+    font-size: 12px;
+    margin-right: 3px; 
+}
+
+#review-chapter {
+    margin-top: 10px;
+}
+
+.review-chapter h4{
+    font-weight: bold;
+}
+
+.review-chapter p{
+    margin-top:15px
+}
+
+/*Review*/
 :root {
     --background-color1: #fafaff;
     --background-color2: #ffffff;

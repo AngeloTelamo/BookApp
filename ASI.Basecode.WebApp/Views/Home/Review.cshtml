@@ -1,5 +1,72 @@
 ﻿@{
     ViewData["Title"] = "Review";
 }
-<a class="go-back" asp-action="Index" asp-controller="Home"><i class="fas fa-arrow-left"></i></a>
-<h1>Book Review</h1>
+<div class="review-container">
+
+    <div class="review-content row">
+        <div class="col-4" id="review-bar">
+
+            <a class="return" asp-action="Index" asp-controller="Home"><i class="fas fa-arrow-left"></i></a>
+
+            <div class="review-book-img">
+            <img src="~/img/book-test.png" alt="Book Image">
+            </div>
+
+            <div class="review-title-author">
+                <h4 class="orange">A Clockwork Orange</h4>
+                <p>by Anthony Burgess</p>
+            </div>
+
+            <div class="review-rating">
+                <div class="review-star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+
+                <div class="review-num-rating">
+                    <p>8.6</p>
+                    <p>774 Ratings</p>
+                    <p>463 Review</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-8" id="review-chapter">
+
+            <div class="review-chapter">
+                <h3>Chapter 1</h3>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
