@@ -17,7 +17,7 @@ namespace ASI.Basecode.WebApp.Controllers
     public class HomeController : ControllerBase<HomeController>
     {
         private readonly IUserService _userService;
-        private readonly IBookService _bookService;
+        //private readonly IBookService _bookService;
 
         /// <summary>
         /// Constructor
