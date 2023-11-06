@@ -800,8 +800,8 @@ img {
 #review-bar {
     display: flex;
     flex-direction: column;
-    /*align-items: center;
-    text-align: center;*/
+    align-items: center;
+    text-align: center;
     position: relative;
     margin-top: 10px;
 }
@@ -816,7 +816,7 @@ img {
 }
 
 .review-book-img img {
-    margin-left: 115px;
+    /*margin-left: 115px;*/
     width: 120px;
 }
 
@@ -836,14 +836,13 @@ img {
     font-size: 12px;
     color: #C98276;
     text-align: start;
-    margin: 0 0 0 90px;  
-    padding: 0;
+    margin:0;
 }
 
 .review-rating {
     display: flex;
     text-align: center;
-    margin: 0 0 10px 30px;
+    margin-bottom: 25px;
 }
 
 .review-star-rating {
@@ -869,24 +868,13 @@ img {
 
 .review-num-rating p {
     font-size: 12px;
-}
-
-#review-chapter {
-    margin-top: 10px;
-}
-
-.review-chapter h4{
-    font-weight: bold;
-}
-
-.review-chapter p{
-    margin-top:15px
+    margin: 0;
 }
 
 .reviews {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start; 
+    margin-right: 130px;
+    margin-bottom: 10px;
     gap: 5px;
 }
 
@@ -898,14 +886,94 @@ img {
 .reviews h4 {
     font-size: 16px;
     color: #515151;
+    margin: 0;
 }
 
 .review-comments {
     width: 330px;
-    height: 100px;
+    height: auto;
     background-color: #ffffff;
     border: 2px solid #E35D6A;
     border-radius: 15px;
+    padding: 10px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.user img {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.user h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.user p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.user i {
+    font-size: 14px;
+}
+
+.review-date {
+    display: flex;
+    gap: 3px;
+    margin-top: -5px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+.review-date h4 {
+    font-size: 10px;
+    color: #A6A2A2;
+    margin: 0;
+}
+
+.comments {
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    text-align: start;
+}
+
+.comments p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.interaction {
+    display: flex;
+    margin-left: 25px;
+    gap: 5px;
+}
+
+.interaction i{
+    font-size: 14px;
+    margin: 0;
+}
+
+#review-chapter {
+    margin-top: 10px;
+}
+
+.review-chapter h4 {
+    font-weight: bold;
+}
+
+.review-chapter p {
+    margin-top: 15px
 }
 /*Review*/
 :root {
