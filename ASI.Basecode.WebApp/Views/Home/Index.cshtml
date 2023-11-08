@@ -29,7 +29,7 @@
     <h2 class="new-book-title">New Book</h2>
     <a href="#" class="see-more-link">See More</a>
     <div class="book-containers">
-        @for (int i = 1; i <= 5; i++)
+        @for (int i = 1; i <= 5; i++) @* Change to foreach for model *@
         {
             <a class="new-book-link" href="#">
             <div class="book-container" id="book@i">
@@ -79,7 +79,7 @@
 <div class="popular-books-body">
     <h2 class="popular-books-title">Popular Books</h2>
     <div class="popular-books-containers">
-        @for (int i = 1; i <= 5; i++)
+        @for (int i = 1; i <= 5; i++) @* Change to foreach for model *@
         {
             <a class="popular-books-link" href="#">
             <div class="popular-books-container" id="book@i">
