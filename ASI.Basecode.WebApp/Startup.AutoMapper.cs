@@ -33,7 +33,7 @@ namespace ASI.Basecode.WebApp
                     .ForMember(destination => destination.Password, source => source.Ignore());
 
                 CreateMap<BookMasterViewModel, BookMaster>()
-                    .ForMember(destination => destination.BId, source => source.Ignore());
+                    .ForMember(destination => destination.bookId, source => source.Ignore());
             }
         }
     }

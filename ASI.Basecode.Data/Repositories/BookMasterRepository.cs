@@ -15,6 +15,10 @@ namespace ASI.Basecode.Data.Repositories
         public BookMasterRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
+        public IQueryable<BookMaster> GetBooks()
+        {
+            return this.GetDbSet<BookMaster>();
+        }
 
         public void AddBook(BookMaster book)
         {
@@ -22,10 +26,7 @@ namespace ASI.Basecode.Data.Repositories
             UnitOfWork.SaveChanges();
         }
 
-        public IQueryable<BookMaster> GetBooks()
-        {
-            return this.GetDbSet<BookMaster>();
-        }
+        
 
         public bool BookExists(string bId)
         {

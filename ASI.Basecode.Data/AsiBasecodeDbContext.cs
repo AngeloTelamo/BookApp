@@ -15,11 +15,14 @@ namespace ASI.Basecode.Data
         public AsiBasecodeDBContext(DbContextOptions<AsiBasecodeDBContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<BookMaster> BookMasters { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,8 +63,11 @@ namespace ASI.Basecode.Data
 
             modelBuilder.Entity<BookMaster>(entity =>
             {
+                entity.HasIndex(e => e.BId)
+                    .IsUnique();
+               
                 entity.HasKey(e => e.bookId);
-                       
+
 
                 entity.Property(e => e.CreatedBy)
                     .IsRequired()

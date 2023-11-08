@@ -7,6 +7,7 @@ namespace ASI.Basecode.Services.Interfaces
 {
     public interface IBookMasterService
     {
+        BookMasterListViewModel GetBookList(BookMasterListViewModel model);
         void AddBook(BookMasterViewModel model);
     }   
 }

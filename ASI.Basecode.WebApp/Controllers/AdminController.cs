@@ -1,6 +1,7 @@
 ﻿using ASI.Basecode.Data.Interfaces;
 using ASI.Basecode.Services.Interfaces;
 using ASI.Basecode.Services.ServiceModels;
+using ASI.Basecode.Services.Services;
 using ASI.Basecode.WebApp.Mvc;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -68,6 +69,12 @@ namespace ASI.Basecode.WebApp.Controllers
             }
             return View();
 
+        }
+
+        public IActionResult AdminBookList()
+        {
+            var dataList = _bookMasterService.GetBookList(null);
+            return View("AdminBookList", dataList);
         }
     }
 }
