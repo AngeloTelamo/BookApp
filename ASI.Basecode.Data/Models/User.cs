@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ASI.Basecode.Data.Models
 {
@@ -13,7 +14,9 @@ namespace ASI.Basecode.Data.Models
         public DateTime CreatedTime { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedTime { get; set; }
+        public int RoleId { get; set; } // Foreign key to IdentityRoles
+        public ICollection<IdentityRole> IdentityRoles { get; set; }
 
-       // public List<Book> Books { get; set; }
+
     }
 }

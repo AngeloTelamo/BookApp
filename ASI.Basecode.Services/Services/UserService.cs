@@ -46,6 +46,7 @@ namespace ASI.Basecode.Services.Services
                 user.CreatedBy = System.Environment.UserName;
                 user.UpdatedBy = System.Environment.UserName;
 
+                user.RoleId = 1;    //indicates the client    
                 _repository.AddUser(user);
             }
             else

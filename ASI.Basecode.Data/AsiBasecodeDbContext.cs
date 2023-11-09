@@ -22,6 +22,7 @@ namespace ASI.Basecode.Data
 
         public virtual DbSet<BookMaster> BookMasters { get; set; }
 
+        public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,6 +60,14 @@ namespace ASI.Basecode.Data
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.RoleId)
+                     .IsRequired();
+
+                entity.HasOne(e => e.IdentityRoles)
+                        .WithMany()
+                        .HasForeignKey(e => e.RoleId);
+
             });
 
             modelBuilder.Entity<BookMaster>(entity =>
@@ -100,6 +109,17 @@ namespace ASI.Basecode.Data
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<IdentityRole>(entity =>
+            {
+                entity.HasKey(e => e.IdentityRoleId);
+
+                entity.Property(e => e.IdentityRoleName)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
             });
 
         }

@@ -40,9 +40,12 @@ namespace ASI.Basecode.WebApp
 
             // Repositories
             this._services.AddScoped<IUserRepository, UserRepository>();
-           this._services.AddScoped<IBookMasterRepository, BookMasterRepository>();  //injecting Repo
-
+            this._services.AddScoped<IBookMasterRepository, BookMasterRepository>();  //injecting Repo
+           // this._services.AddScoped<IIdentityRoleRepository, IdentityRoleRepository>();
+           
+            
             // Manager Class
+
             this._services.AddScoped<SignInManager>();
 
             this._services.AddHttpClient();

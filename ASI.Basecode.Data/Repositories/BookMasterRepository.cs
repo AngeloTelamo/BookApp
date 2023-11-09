@@ -25,9 +25,7 @@ namespace ASI.Basecode.Data.Repositories
             this.GetDbSet<BookMaster>().Add(book);
             UnitOfWork.SaveChanges();
         }
-
-        
-
+     
         public bool BookExists(string bId)
         {
             return this.GetDbSet<BookMaster>().Any(x => x.BId == bId);
