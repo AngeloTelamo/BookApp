@@ -22,7 +22,7 @@ namespace ASI.Basecode.Data
 
         public virtual DbSet<BookMaster> BookMasters { get; set; }
 
-        public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
+       // public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,12 +61,12 @@ namespace ASI.Basecode.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.RoleId)
-                     .IsRequired();
+                /* entity.Property(e => e.RoleId)
+                       .IsRequired();
 
-                entity.HasOne(e => e.IdentityRoles)
-                        .WithMany()
-                        .HasForeignKey(e => e.RoleId);
+                  entity.HasOne(e => e.IdentityRoles)
+                          .WithMany()
+                          .HasForeignKey(e => e.RoleId);*/
 
             });
 
@@ -111,7 +111,7 @@ namespace ASI.Basecode.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<IdentityRole>(entity =>
+            /*modelBuilder.Entity<IdentityRole>(entity =>
             {
                 entity.HasKey(e => e.IdentityRoleId);
 
@@ -120,7 +120,7 @@ namespace ASI.Basecode.Data
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-            });
+            });*/
 
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

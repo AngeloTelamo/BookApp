@@ -34,6 +34,7 @@ namespace ASI.Basecode.Services.Services
             return user != null ? LoginResult.Success : LoginResult.Failed;
         }
 
+
         public void AddUser(UserViewModel model)
         {
             var user = new User();

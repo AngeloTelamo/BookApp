@@ -21,10 +21,10 @@ namespace ASI.Basecode.Data.Repositories
             return this.GetDbSet<User>();
         }
 
-        public IQueryable<User> GetUsersWithRole()
+      /*  public IQueryable<User> GetUsersWithRole()
         {
             return this.GetDbSet<User>().Include(e => e.IdentityRoles);
-        }
+        }*/
 
         public bool UserExists(string userId)
         {

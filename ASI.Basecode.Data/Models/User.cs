@@ -15,7 +15,7 @@ namespace ASI.Basecode.Data.Models
         public string UpdatedBy { get; set; }
         public DateTime UpdatedTime { get; set; }
         public int RoleId { get; set; } // Foreign key to IdentityRoles
-        public ICollection<IdentityRole> IdentityRoles { get; set; }
+      //  public ICollection<IdentityRole> IdentityRoles { get; set; }
 
 
     }

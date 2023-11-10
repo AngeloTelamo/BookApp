@@ -12,5 +12,7 @@ namespace ASI.Basecode.Data.Interfaces
         IQueryable<BookMaster> GetBooks();
         bool BookExists(string bId);
         void AddBook(BookMaster book);
+
+        void DeleteBook(BookMaster book);
     }
 }

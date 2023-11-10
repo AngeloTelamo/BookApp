@@ -6,8 +6,10 @@ using ASI.Basecode.Services.ServiceModels;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using static ASI.Basecode.Resources.Constants.Enums;
 
 namespace ASI.Basecode.Services.Services
@@ -70,6 +72,44 @@ namespace ASI.Basecode.Services.Services
 
             return listModel;
         }
-        
+
+        public BookMasterEditViewModel GetBook(string bId)
+        {
+            var book = _repository.GetBooks().AsNoTracking()
+                                 .Where(x => x.BId == bId)
+                                 .Select(x => new BookMasterEditViewModel
+                                 {
+                                     BId = x.BId,
+
+                                 })
+                                 .FirstOrDefault();
+            if (book == null)
+            {
+                throw new InvalidDataException(Resources.Messages.Errors.BookNotExists);
+            }
+
+            return book;
+        }
+
+        public void RemoveBook(string bId)
+        {
+            var book = _repository.GetBooks().AsNoTracking()
+                                 .Where(x => x.BId == bId)
+                                 .FirstOrDefault();
+
+            if (book != null)
+            {
+                _repository.DeleteBook(book);
+            }
+            else
+            {
+                throw new InvalidDataException(Resources.Messages.Errors.UserNotExists);
+            }
+        }
+
+        public void UpdateBook(string bId)
+        {
+           //just to add the update books 
+        }
     }
 }

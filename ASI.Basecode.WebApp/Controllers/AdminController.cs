@@ -76,5 +76,24 @@ namespace ASI.Basecode.WebApp.Controllers
             var dataList = _bookMasterService.GetBookList(null);
             return View("AdminBookList", dataList);
         }
+
+        [HttpGet]
+        public IActionResult Delete(string bId)
+        {
+            try
+            {
+                _bookMasterService.RemoveBook(bId);
+                return AdminBookList();
+            }
+            catch (InvalidDataException ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+            }
+            return View();
+        }
     }
 }

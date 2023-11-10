@@ -8,6 +8,10 @@ namespace ASI.Basecode.Services.Interfaces
     public interface IBookMasterService
     {
         BookMasterListViewModel GetBookList(BookMasterListViewModel model);
+        BookMasterEditViewModel GetBook(string bId);
+
         void AddBook(BookMasterViewModel model);
+        void RemoveBook(string bId);
+        void UpdateBook(string bId);
     }   
 }

@@ -75,8 +75,8 @@
                         @Html.DisplayFor(modelItem => item.BookAuthor)
                     </td>
                     <td>
-                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.BId">Edit</a> |
-                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.BId">Delete</a>
+                        <a asp-controller="Admin" asp-action="Update" asp-route-bId="@item.BId">Edit</a> |
+                        <a asp-controller="Admin" asp-action="Delete" asp-route-bId="@item.BId">Delete</a>
                     </td>
                 </tr>
             }

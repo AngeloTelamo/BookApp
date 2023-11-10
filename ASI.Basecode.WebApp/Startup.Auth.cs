@@ -47,7 +47,7 @@ namespace ASI.Basecode.WebApp
                 options.TicketDataFormat = new CustomJwtDataFormat(SecurityAlgorithms.HmacSha256, _tokenValidationParameters, Configuration, tokenProviderOptionsFactory);
             });
 
-            this._services.AddAuthorization(options =>
+            this._services.AddAuthorization(options =>   //policy
             {
                 options.AddPolicy("RequireAuthenticatedUser", policy =>
                 {
