@@ -1001,7 +1001,54 @@ review-bar:hover {
 .review-chapter p {
     margin-top: 15px
 }
+/*Review Modal*/
 
+#h6-review {
+    margin-bottom: 10px;
+}
+
+#review-rating {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+    #review-rating i {
+        font-size: 20px;
+        color: #E35D6A;
+    }
+
+#review-textarea {
+    border: 2px solid #E35D6A;
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+}
+
+#btn-post {
+    font-weight: bold;
+    background-color: #E35D6A;
+    padding: 10px 40px 10px 40px;
+    border: none;
+    outline: none;
+}
+
+    #btn-post:hover {
+        background-color: #ffffff;
+        color: #E35D6A;
+        outline: 1px solid;
+    }
+
+#btn-cancel {
+    font-weight: bold;
+    border-color: #E35D6A;
+    color: #E35D6A;
+    padding: 10px 30px 10px 30px;
+}
+
+    #btn-cancel:hover {
+        background-color: #E35D6A;
+        color: #ffffff;
+    }
 /*Review*/
 :root {
     --background-color1: #fafaff;
