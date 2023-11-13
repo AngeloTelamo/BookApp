@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ASI.Basecode.Services.Annotations;
 
 namespace ASI.Basecode.Services.ServiceModels
 {
-    public class BookMasterViewModel
+    public class BookMasterEditViewModel
     {
         [Required(ErrorMessage = "Book ID is required.")]
         public string BId { get; set; } //bookId
@@ -24,6 +24,5 @@ namespace ASI.Basecode.Services.ServiceModels
 
         [Required(ErrorMessage = "Book Des is required.")]
         public string BookDes { get; set; }
-
     }
 }

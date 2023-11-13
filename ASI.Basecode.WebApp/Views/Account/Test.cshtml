@@ -5,16 +5,15 @@
 @using static ASI.Basecode.Resources.Views.Screen
 
 <div class="text-center">
-    <h1 class="display-4">TEST</h1>
-    <p>Test page 1</p>
+    <h1 class="display-4">Admin List</h1>
     @using(@Html.BeginForm("Search","Account"))
     {
     <div class="row">
         <div class="col-sm-2">
-            @UserId
+            Email
         </div>
         <div class="col-sm-4">
-            @Html.TextBoxFor(model => model.Filters.UserId)
+            @Html.TextBoxFor(model => model.Filters.Email)
         </div>
         <div class="col-sm-2">
             @Html.LabelFor(model => model.Filters.Name)
@@ -35,7 +34,7 @@
         <thead class="thead-dark">
             <tr>
                 <th>
-                    UserID
+                    Email
                 </th>
                 <th>
                     Name
@@ -49,14 +48,14 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.UserId)
+                        @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.UserId">Edit</a> |
-                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.UserId">Delete</a>
+                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.Email">Edit</a> |
+                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.Email">Delete</a>
                     </td>
                 </tr>
             }

@@ -1,13 +1,13 @@
 ﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Remove Book";
 }
 @using static ASI.Basecode.Resources.Views.Screen
 
 <div class="text-center">
     <h1 class="display-4">BookList</h1>
     <p>Test page 1</p>
-    @using (@Html.BeginForm("Search", "Account"))
+    @using (@Html.BeginForm("SearchBook", "Admin"))
     {
         <div class="row">
             <div class="col-sm-2">
@@ -28,8 +28,9 @@
             <div class="col-sm-4">
                 @Html.TextBoxFor(model => model.Filters.BookAuthor)
             </div>
+
             <div class="col-sm-2">
-                @Html.LabelFor(model => model.Filters.BookDes)
+                Book Genre
             </div>
             <div class="col-sm-4">
                 @Html.TextBoxFor(model => model.Filters.BookDes)
@@ -59,14 +60,15 @@
                 </th>
 
                 <th>
-                    Book Description
+                    Book Genre
                 </th>
 
                 <th>
-                </th>
 
+                </th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var item in Model.BookList)
             {
@@ -81,8 +83,11 @@
                         @Html.DisplayFor(modelItem => item.BookAuthor)
                     </td>
                     <td>
-                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.BId">Edit</a> |
-                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.BId">Delete</a>
+                        @Html.DisplayFor(modelItem => item.BookDes)
+                    </td>
+                    <td>
+                        <a asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit</a> |
+                        <a asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete</a>
                     </td>
                 </tr>
             }
@@ -101,8 +106,6 @@
             console.log("CLEARED")
             $('#Filters_BId').val('');
             $('#Filters_BookTitle').val('');
-            $('#Filters_BookAuthor').val('');
-            $('#Filters_BookDes').val('');
         }
     </script>
 }

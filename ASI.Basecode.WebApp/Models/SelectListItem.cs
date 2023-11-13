@@ -38,5 +38,6 @@ namespace ASI.Basecode.WebApp.Models
         public string Value { get; set; }
 
         public string BgColor { get; set; }
+        public string Text { get; internal set; }
     }
 }

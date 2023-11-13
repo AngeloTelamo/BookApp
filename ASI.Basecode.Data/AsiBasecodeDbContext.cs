@@ -19,16 +19,13 @@ namespace ASI.Basecode.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
-
         public virtual DbSet<BookMaster> BookMasters { get; set; }
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.UserId, "UQ__Users__1788CC4D5F4A160F")
+                entity.HasIndex(e => e.Email, "UQ__Users__1788CC4D5F4A160F")
                     .IsUnique();
 
                 entity.Property(e => e.CreatedBy)
@@ -55,7 +52,7 @@ namespace ASI.Basecode.Data
 
                 entity.Property(e => e.UpdatedTime).HasColumnType("datetime");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -63,11 +60,9 @@ namespace ASI.Basecode.Data
 
             modelBuilder.Entity<BookMaster>(entity =>
             {
-                entity.HasIndex(e => e.BId)
-                    .IsUnique();
-               
                 entity.HasKey(e => e.bookId);
 
+                entity.HasIndex(e => e.BId, "UQ__Users__1788CC4D5F4A160F");
 
                 entity.Property(e => e.CreatedBy)
                     .IsRequired()
@@ -95,7 +90,7 @@ namespace ASI.Basecode.Data
                     .IsUnicode(false);
 
                 entity.Property(e => e.BookAdded).HasColumnType("datetime");
-                  
+
                 entity.Property(e => e.BId)
                     .IsRequired()
                     .HasMaxLength(50)

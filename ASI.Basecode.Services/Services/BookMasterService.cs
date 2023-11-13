@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using static ASI.Basecode.Resources.Constants.Enums;
+using System.Data.Entity;
 
 namespace ASI.Basecode.Services.Services
 {
@@ -16,6 +17,8 @@ namespace ASI.Basecode.Services.Services
     {
         private readonly IBookMasterRepository _repository;
         private readonly IMapper _mapper;
+
+
 
         public BookMasterService(IBookMasterRepository repository, IMapper mapper)
         {
@@ -70,6 +73,62 @@ namespace ASI.Basecode.Services.Services
 
             return listModel;
         }
-        
+
+        public void UpdateBook(BookMasterEditViewModel model)
+        {
+            var book = _repository.GetBooks().AsNoTracking()
+                                 .Where(x => x.BId == model.BId)
+                                 .FirstOrDefault();
+
+            if (book != null)
+            {
+                _mapper.Map(model, book);
+
+                book.BookAdded = DateTime.Now;
+                _repository.UpdateBooks(book);
+            }
+            else
+            {
+                throw new InvalidDataException(Resources.Messages.Errors.BookNotExists);
+            }
+        }
+
+        public BookMasterEditViewModel GetBook(string bId)
+        {
+            var book = _repository.GetBooks().AsNoTracking()
+                                 .Where(x => x.BId == bId)
+                                 .Select(x => new BookMasterEditViewModel
+                                 {
+                                     BId = x.BId
+
+                                 })
+                                 .FirstOrDefault();
+
+            if (book == null)
+            {
+                throw new InvalidDataException(Resources.Messages.Errors.UserNotExists);
+            }
+
+            return book;
+        }
+
+        public void DeleteBook(string bId)
+        {
+            var book = _repository.GetBooks().AsNoTracking()
+                                 .Where(x => x.BId == bId)
+                                 .FirstOrDefault();
+
+            if (book != null)
+            {
+                _repository.DeleteBooks(book);
+            }
+            else
+            {
+                throw new InvalidDataException(Resources.Messages.Errors.UserNotExists);
+            }
+        }
+
+
     }
+
 }

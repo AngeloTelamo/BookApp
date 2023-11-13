@@ -2,6 +2,7 @@
 using ASI.Basecode.Data.Models;
 using ASI.Basecode.Services.ServiceModels;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace ASI.Basecode.WebApp
 {
@@ -33,6 +34,9 @@ namespace ASI.Basecode.WebApp
                     .ForMember(destination => destination.Password, source => source.Ignore());
 
                 CreateMap<BookMasterViewModel, BookMaster>()
+                    .ForMember(destination => destination.bookId, source => source.Ignore());
+
+                CreateMap<BookMasterEditViewModel, BookMaster>()
                     .ForMember(destination => destination.bookId, source => source.Ignore());
             }
         }

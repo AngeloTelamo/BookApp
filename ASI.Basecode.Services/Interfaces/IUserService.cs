@@ -7,11 +7,11 @@ namespace ASI.Basecode.Services.Interfaces
 {
     public interface IUserService
     {
-        LoginResult AuthenticateUser(string userid, string password, ref User user);
-        UserEditViewModel GetUser(string userId);
+        LoginResult AuthenticateUser(string email, string password, ref User user);
+        UserEditViewModel GetUser(string email);
         UserListViewModel GetUserList(UserListViewModel model);
         void AddUser(UserViewModel model);
         void UpdateUser(UserEditViewModel model);
-        void DeleteUser(string userId);
+        void DeleteUser(string email);
     }
 }

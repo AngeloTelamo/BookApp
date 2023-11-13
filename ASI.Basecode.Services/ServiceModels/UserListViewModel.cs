@@ -15,7 +15,7 @@ namespace ASI.Basecode.Services.ServiceModels
 
         public class UserListFilterModel
         {
-            public string UserId { get; set; }
+            public string Email { get; set; }
 
             [DisplayName("Name")]
             public string Name { get; set; }

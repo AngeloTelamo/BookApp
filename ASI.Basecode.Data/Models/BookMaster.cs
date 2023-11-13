@@ -11,10 +11,9 @@ namespace ASI.Basecode.Data.Models
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
         public string BookImage { get; set; }
-
         public string BookDes { get; set; }
         public string CreatedBy { get; set; }
         public DateTime BookAdded { get; set; }
-
+        
     }
 }

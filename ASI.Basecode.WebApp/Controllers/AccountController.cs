@@ -87,13 +87,13 @@ namespace ASI.Basecode.WebApp.Controllers
             this._session.SetString("HasSession", "Exist");
 
             User user = null;
-            var loginResult = _userService.AuthenticateUser(model.UserId, model.Password, ref user);
+            var loginResult = _userService.AuthenticateUser(model.Email, model.Password, ref user);
             if (loginResult == LoginResult.Success)
             {
                 // 認証OK
                 await this._signInManager.SignInAsync(user);
                 this._session.SetString("UserName", user.Name);
-                this._session.SetString("Email", user.UserId);
+                this._session.SetString("Email", user.Email);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -178,7 +178,7 @@ namespace ASI.Basecode.WebApp.Controllers
         public IActionResult Delete(string userId)
         {
             try
-            {
+            {   
                 _userService.DeleteUser(userId);
                 return Test();
             }

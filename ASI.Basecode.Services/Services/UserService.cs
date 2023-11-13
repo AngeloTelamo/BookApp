@@ -28,7 +28,7 @@ namespace ASI.Basecode.Services.Services
         {
             user = new User();
             var passwordKey = PasswordManager.EncryptPassword(password);
-            user = _repository.GetUsers().Where(x => x.UserId == userId &&
+            user = _repository.GetUsers().Where(x => x.Email == userId &&
                                                      x.Password == passwordKey).FirstOrDefault();
 
             return user != null ? LoginResult.Success : LoginResult.Failed;
@@ -37,7 +37,7 @@ namespace ASI.Basecode.Services.Services
         public void AddUser(UserViewModel model)
         {
             var user = new User();
-            if (!_repository.UserExists(model.UserId))
+            if (!_repository.UserExists(model.Email))
             {
                 _mapper.Map(model, user);
                 user.Password = PasswordManager.EncryptPassword(model.Password);
@@ -57,7 +57,7 @@ namespace ASI.Basecode.Services.Services
         public void UpdateUser(UserEditViewModel model)
         {
             var user = _repository.GetUsers().AsNoTracking()
-                                 .Where(x => x.UserId == model.UserId)
+                                 .Where(x => x.Email == model.Email)
                                  .FirstOrDefault();
 
             if (user != null)
@@ -84,10 +84,10 @@ namespace ASI.Basecode.Services.Services
             }
         }
 
-        public void DeleteUser(string userId)
+        public void DeleteUser(string email)
         {
             var user = _repository.GetUsers().AsNoTracking()
-                                 .Where(x => x.UserId == userId)
+                                 .Where(x => x.Email == email)
                                  .FirstOrDefault();
 
             if (user != null)
@@ -100,13 +100,13 @@ namespace ASI.Basecode.Services.Services
             }
         }
 
-        public UserEditViewModel GetUser(string userId)
+        public UserEditViewModel GetUser(string email)
         {
             var user = _repository.GetUsers().AsNoTracking()
-                                 .Where(x => x.UserId == userId)
+                                 .Where(x => x.Email == email)
                                  .Select(x => new UserEditViewModel
                                  {
-                                     UserId = x.UserId,
+                                     Email = x.Email,
                                      
                                  })
                                  .FirstOrDefault();
@@ -128,7 +128,7 @@ namespace ASI.Basecode.Services.Services
             if (model != null)
             {
                 queryData = queryData.Where(x =>
-                                    (string.IsNullOrEmpty(model.Filters.UserId) || x.UserId.ToLower().Contains(model.Filters.UserId.ToLower()))
+                                    (string.IsNullOrEmpty(model.Filters.Email) || x.Email.ToLower().Contains(model.Filters.Email.ToLower()))
                                     && (string.IsNullOrEmpty(model.Filters.Name) || x.Name.ToLower().Contains(model.Filters.Name.ToLower())));
 
                 // DB is still not accessed yet
@@ -137,7 +137,7 @@ namespace ASI.Basecode.Services.Services
             listModel.UserList = queryData
                                 .Select(x => new UserViewModel
                                 {
-                                    UserId = x.UserId,
+                                    Email = x.Email,
                                     Name = x.Name
                                 }).ToList(); // Data is now retrieved from DB
 
