@@ -1,0 +1,94 @@
+﻿@using ASI.Basecode.Services.ServiceModels
+@using static ASI.Basecode.Resources.Views.Screen
+@model BookMasterEditViewModel
+@{
+    ViewData["Title"] = "Update Page";
+}
+@section styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+}
+<div class="container py-5 h-100 register-box">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+            <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                    <div class="card-body p-md-5 mx-md-4">
+
+                        <div class="text-center">
+                            <img src="https://www.alliance.com.ph/images/asi-logo-invert.svg"
+                                 style="width: 185px;" alt="logo">
+                        </div>
+
+                        <form method="post" action="/Admin/AdminBookUpdate">
+                            <br />
+                            <div class="text-center">
+                                <h3>Current Data</h3>
+                                <p><strong>Book ID:</strong> @Model.BId</p>
+                                <p><strong>Book Title:</strong> @Model.BookTitle</p>
+                                <p><strong>Book Author:</strong> @Model.BookAuthor</p>
+                                <p><strong>Book Description:</strong> @Model.BookDes</p>
+                                <p><strong>Book Image:</strong> @Model.BookImage</p>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="BooksId">Book Id</label>
+                                <input type="text" id="BooksID" class="form-control"
+                                       asp-for="BId" placeholder="Enter Book ID" />
+                                <span asp-validation-for="BId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="bookTitle">Book Title </label>
+                                <input type="text" id="bookTitle" class="form-control"
+                                       asp-for="BookTitle" placeholder="Enter Book Title" />
+                                <span asp-validation-for="BookTitle" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="bookAuthor">Book Author</label>
+                                <input type="text" id="bookAuthor" class="form-control"
+                                       asp-for="BookAuthor" placeholder="Enter Book Author" />
+                                <span asp-validation-for="BookAuthor" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="bookDes">Book Description</label>
+                                <input type="text-area" id="bookDes" class="form-control"
+                                       asp-for="BookDes" placeholder="Enter Book Description" />
+                                <span asp-validation-for="BookDes" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="bookDes">Book Image</label>
+                                <input type="text-area" id="bookDes" class="form-control"
+                                       asp-for="BookImage" placeholder="Enter Book Description" />
+                                <span asp-validation-for="BookImage" class="text-danger"></span>
+                            </div>
+                           
+                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+                                <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
+                                    Update
+                                </button>
+                                <a asp-controller="Home" asp-action="Index">
+                                    &#8592 Back
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        // Check for error message and display Toastr notification
+        var errorMessage = '@TempData["ErrorMessage"]';
+        var successMessage = '@TempData["SuccessMessage"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        } else if (successMessage) {
+            toastr.success(successMessage);
+        }
+    </script>
+}
