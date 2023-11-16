@@ -89,8 +89,9 @@
                         @Html.DisplayFor(modelItem => item.BookDes)
                     </td>
                     <td>
-                        <img src="@Url.Content("~/books" + item.BookImage)" alt="Book Image" style="max-width: 100px;" />
+                      
                     </td>
+
                     <td>
                         <a asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit</a> |
                         <a asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete</a>

@@ -131,6 +131,8 @@ namespace ASI.Basecode.WebApp.Controllers
             return View();
         }
 
+       
+
         public IActionResult Test()
         {
             var dataList = _userService.GetUserList(null);
@@ -192,6 +194,13 @@ namespace ASI.Basecode.WebApp.Controllers
             }
             return View();
         }
+
+      /*  [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPass()
+        {
+            return View();
+        }*/
 
         /// <summary>
         /// Sign Out current account and return login view.

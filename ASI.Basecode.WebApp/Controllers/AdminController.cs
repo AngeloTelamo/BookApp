@@ -67,9 +67,9 @@ namespace ASI.Basecode.WebApp.Controllers
                     string fileName = Path.GetFileNameWithoutExtension(BookImageFile.FileName);
                     string extension = Path.GetExtension(model.BookImageFile.FileName);
 
-                    model.BookImage = fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                    model.BookImage = fileName + DateTime.Now.ToString("yymmssff") + extension;
 
-                    string path = Path.Combine(wwwRootPath + "/books", fileName); 
+                    string path = Path.Combine(wwwRootPath + "/books/", fileName); 
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
