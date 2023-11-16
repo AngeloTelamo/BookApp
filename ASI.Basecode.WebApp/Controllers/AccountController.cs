@@ -94,7 +94,7 @@ namespace ASI.Basecode.WebApp.Controllers
                 await this._signInManager.SignInAsync(user);
                 this._session.SetString("UserName", user.Name);
                 this._session.SetString("Email", user.Email);
-                return RedirectToAction("AdminBookList", "Admin");
+                return RedirectToAction("Dashboard", "Home");
             }
             else
             {

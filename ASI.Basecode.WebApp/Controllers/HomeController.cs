@@ -37,12 +37,7 @@ namespace ASI.Basecode.WebApp.Controllers
         /// Returns Home View.
         /// </summary>
         /// <returns> Home View </returns>
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Test2()
+        public IActionResult Dashboard()
         {
             return View();
         }
