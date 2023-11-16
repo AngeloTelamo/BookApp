@@ -75,6 +75,8 @@
         <tbody>
             @foreach (var item in Model.BookList)
             {
+                var BookImage = "~/books/" + (item.BookImage ?? "noimage.jpg");
+                    
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.BId)
@@ -89,7 +91,7 @@
                         @Html.DisplayFor(modelItem => item.BookDes)
                     </td>
                     <td>
-                        <img src="@Url.Content("~/books" + item.BookImage)" alt="Book Image" style="max-width: 100px;" />
+                        <img src="@BookImage" alt="Book Image" asp-append-version="true" />
                     </td>
                     <td>
                         <a asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit</a> |
