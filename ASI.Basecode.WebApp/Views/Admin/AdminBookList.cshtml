@@ -75,6 +75,8 @@
         <tbody>
             @foreach (var item in Model.BookList)
             {
+                var BookImage = "~/books/" + (item.BookImage ?? "noimage.jpg");
+                    
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.BId)
@@ -89,7 +91,7 @@
                         @Html.DisplayFor(modelItem => item.BookDes)
                     </td>
                     <td>
-                      
+                        <img src="@BookImage" alt="Book Image" asp-append-version="true" />
                     </td>
 
                     <td>

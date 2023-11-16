@@ -74,6 +74,7 @@ namespace ASI.Basecode.Services.Services
                     BookTitle = x.BookTitle,
                     BookAuthor = x.BookAuthor,
                     BookDes = x.BookDes,
+                    BookImage = x.BookImage
                    
                 }).ToList();
 
