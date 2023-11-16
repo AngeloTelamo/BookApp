@@ -5,19 +5,14 @@
     ViewData["Title"] = "Update Page";
 }
 @section styles {
-    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/Register.css" />
 }
 <div class="container py-5 h-100 register-box">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-10">
             <div class="card rounded-3 text-black">
                 <div class="row g-0">
-                    <div class="card-body p-md-5 mx-md-4">
-
-                        <div class="text-center">
-                            <img src="https://www.alliance.com.ph/images/asi-logo-invert.svg"
-                                 style="width: 185px;" alt="logo">
-                        </div>
+                    <div class="card-body p-md-5 mx-md-4"?
 
                         <form method="post" action="/Admin/AdminBookUpdate">
                             <br />
@@ -31,9 +26,9 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="BooksId">Book Id</label>
+                                <label class="form-label" for="BooksId"></label>
                                 <input type="text" id="BooksID" class="form-control"
-                                       asp-for="BId" placeholder="Enter Book ID" />
+                                       asp-for="BId" placeholder="Enter Book ID" /> 
                                 <span asp-validation-for="BId" class="text-danger"></span>
                             </div>
 
@@ -51,21 +46,22 @@
                                 <span asp-validation-for="BookAuthor" class="text-danger"></span>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookDes">Book Description</label>
-                                <input type="text-area" id="bookDes" class="form-control"
-                                       asp-for="BookDes" placeholder="Enter Book Description" />
+                            <div class="form-group">
+                                <label asp-for="BookDes" class="control-label">Book Genre</label>
+                                <select asp-for="BookDes" class="form-control">
+                                    <option value="">Select an option</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Fiction">Fiction</option>
+                                    <option value="Novel">Novel</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Romance">Romance</option>
+
+                                </select>
                                 <span asp-validation-for="BookDes" class="text-danger"></span>
                             </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookDes">Book Image</label>
-                                <input type="text-area" id="bookDes" class="form-control"
-                                       asp-for="BookImage" placeholder="Enter Book Description" />
-                                <span asp-validation-for="BookImage" class="text-danger"></span>
-                            </div>
-                           
-                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+                            
+                           <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
                                 <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
                                     Update
                                 </button>

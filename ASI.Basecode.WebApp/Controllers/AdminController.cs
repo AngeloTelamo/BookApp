@@ -114,6 +114,7 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             try
             {
+
                 if (ModelState.IsValid)    
                 {
                     _bookMasterService.UpdateBook(model); // refers in BookmasterService

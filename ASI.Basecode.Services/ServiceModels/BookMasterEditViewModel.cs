@@ -24,5 +24,6 @@ namespace ASI.Basecode.Services.ServiceModels
 
         [Required(ErrorMessage = "Book Des is required.")]
         public string BookDes { get; set; }
+
     }
 }

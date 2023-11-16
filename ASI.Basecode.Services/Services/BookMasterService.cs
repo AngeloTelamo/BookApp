@@ -93,7 +93,6 @@ namespace ASI.Basecode.Services.Services
             if (book != null)
             {
                 _mapper.Map(model, book);
-
                 book.BookAdded = DateTime.Now;
                 _repository.UpdateBooks(book);
             }
