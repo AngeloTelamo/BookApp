@@ -1,6 +1,8 @@
-﻿ @{
+﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+@{
     ViewData["Title"] = "DashBoard";
 }
+@using static ASI.Basecode.Resources.Views.Screen
 @*
 <div class="search-header">
     <h2 class="dashboard-title">Dashboard</h2>
@@ -163,17 +165,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Book 1</th>
-                    <td>Percy Jackson</td>
-                    <td>Rick Riordian</td>
-                    <td>Fantasy</td>
-                    <td>Adventure</td>
-                    <td>
-                        <a class="btn btn-primary" href="#" role="button">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
-                        <a class="btn btn-danger" href="#" role="button">Delete <i class="fa-solid fa-trash"></i> </a>
-                    </td>
-                </tr>
+                @foreach (var item in Model.BookList)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.BId)</th>
+                        <td>@Html.DisplayFor(modelItem => item.BookTitle)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BookAuthor)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BookDes)</td>
+                        <td>Adventure</td>
+                        <td>
+                            <a class="btn btn-primary" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                            <a class="btn btn-danger" role="button" asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete <i class="fa-solid fa-trash"></i> </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
 
