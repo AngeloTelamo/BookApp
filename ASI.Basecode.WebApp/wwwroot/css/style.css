@@ -172,7 +172,7 @@ label #cancel {
 
 .form-input {
     height: 55px;
-    width: 400px;
+    width: 500px;
     text-indent: 33px;
     border-radius: 10px;
 }
@@ -617,6 +617,9 @@ img {
 /*dashboard*/
 
 /*dashboard - admin*/
+.dashboard-image{
+    width: 150px;
+}
 
 .table thead {
     border: 2px solid #ddd;
