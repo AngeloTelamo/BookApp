@@ -641,6 +641,17 @@ tbody:before {
 
 /*dashboard - admin*/
 
+/*book list - admin*/
+#number_books {
+    border-style: solid;
+    border-color: #C98276;
+}
+
+#number_reviews {
+    border-style: solid;
+    border-color: #C98276;
+}
+/*book list - admin*/
 :root {
     --background-color1: #fafaff;
     --background-color2: #ffffff;
