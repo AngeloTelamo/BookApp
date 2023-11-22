@@ -18,12 +18,13 @@ using ASI.Basecode.Data.Models;
 using Microsoft.CodeAnalysis.CSharp;
 
 namespace ASI.Basecode.WebApp.Controllers
-{   
-    
+{
+
     public class HomeController : ControllerBase<HomeController>
     {
         private readonly IUserService _userService;
         private readonly IBookMasterService _bookMasterService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         //private readonly IBookService _bookService;
 
         /// <summary>
@@ -40,10 +41,12 @@ namespace ASI.Basecode.WebApp.Controllers
                               IConfiguration configuration,
                               IUserService userService,
                               IBookMasterService bookMasterService,
-                              IMapper mapper = null) : base(httpContextAccessor, loggerFactory, configuration, mapper)
+                              IMapper mapper,
+                              IWebHostEnvironment webHostEnvironment) : base(httpContextAccessor, loggerFactory, configuration, mapper)
         {
             _bookMasterService = bookMasterService;
             _userService = userService;
+            this._webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -57,8 +60,53 @@ namespace ASI.Basecode.WebApp.Controllers
         }
         public IActionResult BookList()
         {
-            var dataList = _bookMasterService.GetBookList(null); 
+            var dataList = _bookMasterService.GetBookList(null);
             return View("BookList", dataList);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult BookAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> BookAdd(BookMasterViewModel model, IFormFile BookImageFile)
+        {
+            try
+            {
+                if (BookImageFile != null && BookImageFile.Length > 0)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;  //embedded function if kailangan mag hosting 
+                    string fileName = Path.GetFileNameWithoutExtension(BookImageFile.FileName);
+                    string extension = Path.GetExtension(model.BookImageFile.FileName);
+
+                    model.BookImage = fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+
+                    string path = Path.Combine(wwwRootPath + "/books", fileName);
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await model.BookImageFile.CopyToAsync(fileStream);
+                    }
+                }
+
+                // Insert book into database
+                _bookMasterService.AddBook(model);
+                return RedirectToAction("AdminBookAdd", "Admin");
+            }
+            catch (InvalidDataException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+            }
+
+            return View(model);
         }
     }
 }
