@@ -95,7 +95,7 @@ namespace ASI.Basecode.WebApp.Controllers
 
                 // Insert book into database
                 _bookMasterService.AddBook(model);
-                return RedirectToAction("AdminBookAdd", "Admin");
+                return RedirectToAction("Dashboard", "Home");
             }
             catch (InvalidDataException ex)
             {
