@@ -1,5 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Discover";
 }
+
+<div class="float-start pl-3 discover-search-container">
+    <div class="form">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-input" placeholder="Search Book">
+    </div>
+</div>
+
+<div class="genre pl-3">
+    <div class="row">
+         @for (int i = 1; i <= 5; i++)
+        {
+        <div class="col">
+            Genre
+        </div>
+        }
+    </div>
+</div>
+
+<h4 class="text-start display-4 pl-3 discover-genre">
+    Genre
+</h4>
+
+<div class="row">
+    <div class="col">
+        <div class="new-book-body">
+            <h2 class="new-book-title">New Releases</h2>           
+            <div class="book-containers">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <a class="new-book-link" href="#">
+                        <div class="book-container" id="book@i">
+                            <img src="~/img/book-test.png" alt="Book @i">
+                            <div class="new-book-info">
+                                <h4>Title of Book @i</h4>
+                                <p>Author @i</p>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+            <a href="#" class="pr-3 see-more-link">View All</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="popular-books-body">
+            <h2 class="popular-books-title">Popular Books</h2>
+            <div class="popular-books-containers">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <a class="popular-books-link" href="#">
+                        <div class="popular-books-container" id="book@i">
+                            <div class="place-badge">
+                                <i class="fas fa-award"></i>
+                                @* <h4>@i</h4> *@
+                            </div>
+                            <img src="~/img/book-test.png" alt="Book @i">
+                            <div class="popular-books-info">
+                                <h4>Title of Book @i</h4>
+                                <p>Author @i</p>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+            <a href="#" class="pr-3 popular-see-more-link">See More</a>
+        </div>
+    </div>
+</div>
+
+
+

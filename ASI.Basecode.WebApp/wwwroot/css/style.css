@@ -238,7 +238,7 @@ img {
 .new-book-body {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .new-book-title {
@@ -394,7 +394,7 @@ img {
 .popular-books-body {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .popular-books-title {
@@ -482,7 +482,7 @@ img {
 .place-badge i {
     font-size: 60px;
     color: #E35D6A;
-    z-index: 1; 
+    /*z-index: 1;*/ 
 }
 
 /*.place-badge h4 {
@@ -679,6 +679,24 @@ tbody:before {
     font-weight: bold;
 }
 /*book add - admin*/
+
+/*Discover - admin*/
+.discover-search-container {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.discover-search-container .form-input {
+    height: 55px;
+    width: 1060px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.discover-genre {
+   
+}
+/*Discover - admin*/
 :root {
     --background-color1: #fafaff;
     --background-color2: #ffffff;
