@@ -59,6 +59,12 @@ namespace ASI.Basecode.WebApp.Controllers
             return View("Dashboard", dataList);
         }
 
+        public IActionResult Users()
+        {
+            var dataList = _userService.GetUserList(null);
+            return View("Users", dataList);
+        }
+
         public IActionResult Discover()
         {            
             return View();
