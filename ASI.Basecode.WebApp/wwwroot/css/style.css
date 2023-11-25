@@ -558,15 +558,15 @@ img {
     margin: 0;
 }
 
-.go-to-book, fa-chevron-right {
+/*.go-to-book, fa-chevron-right {
     color: #000000;
     text-decoration: none;
-}
+}*/
 
-    .go-to-book:hover, fa-chevron-right {
+    /*.go-to-book:hover, fa-chevron-right {
         color: #000000;
         text-decoration: none;
-    }
+    }*/
 
 /*List*/
 .reviews-ratings {
@@ -595,10 +595,10 @@ img {
     margin: 2px 20px;
 }
 
-.fa-chevron-right{
+/*.fa-chevron-right{
     margin-left: 630px;
     font-size: 30px;
-}
+}*/
 /*Popular Books List*/
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
@@ -693,8 +693,50 @@ tbody:before {
     border-radius: 10px;
 }
 
+.btn-genres {
+    background-color: #FCE9DB;
+    color: #E35D6A;
+    border: 1px solid #C98276;
+    border-radius: 15px;
+    /*padding: 0 20px 0 20px;*/
+    width: 160px !important;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .btn-genres:hover {
+        background-color: #E35D6A;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    btn-genres:focus, btn-genres:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.carousel-control i {
+    font-weight: bold;
+    font-size: 34px;
+    color: #E35D6A !important;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.carousel-control-prev {
+    margin-left: -63px !important;
+}
+.carousel-control-next {
+    margin-right: -49px !important;
+}
+
+
 .discover-genre {
-   
 }
 /*Discover - admin*/
 :root {
