@@ -1,0 +1,51 @@
+﻿@model ASI.Basecode.Services.ServiceModels.BookReviewsModel
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    @if (Model != null && Model.BookMaster != null)
+    {
+        <h3>@Model.BookMaster.BookTitle</h3>
+        <p>Author: @Model.BookMaster.BookAuthor</p>
+        <p>Genre: @Model.BookMaster.BookGenre</p>
+        <p>Synopsis: @Model.BookMaster.BookSynopsis</p>
+
+        <!-- Display the image from the wwwroot folder -->
+        var bookImagePath = "~/clients/" + (Model.BookMaster.BookImage ?? "noimage.jpg");
+        <img src="@bookImagePath" alt="Book Image" asp-append-version="true" />
+
+        <!-- Form for submitting reviews -->
+        <form method="post" asp-controller="Home" asp-action="BookReviews" enctype="multipart/form-data">
+            <!-- Add form fields for reviews -->
+
+            <label for="Reviews.ReviewName">Review Name:</label>
+            <input type="text" id="@((Model?.Reviews?.ReviewName) ?? string.Empty)" name="Reviews.ReviewName" required>
+
+            <label for="Reviews.ReviewRatings">Review Ratings:</label>
+            <select id="Review.ReviewRatings" name="Reviews.ReviewRatings" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <label for="Reviews.ReviewComments">Review Comments:</label>
+            <textarea id="@((Model?.Reviews?.ReviewComments) ?? string.Empty)" name="Reviews.ReviewComments" required></textarea>
+
+            <!-- Add a hidden field for the BookId -->
+            <input type="hidden" name="BookId" value="@Model.BookId">
+
+            <button type="submit">Submit Review</button>
+        </form>
+    }
+    else
+    {
+        <p>No book details available.</p>
+    }
+</div>
+
+<a asp-action="Index">Back to List</a>
