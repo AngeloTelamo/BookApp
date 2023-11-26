@@ -66,50 +66,5 @@ namespace ASI.Basecode.WebApp.Controllers
             var dataList = _bookMasterService.GetBookList(null);
             return View("BookList", dataList);
         }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult BookAdd()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> BookAdd(BookMasterViewModel model, IFormFile BookImageFile)
-        {
-            try
-            {
-                if (BookImageFile != null && BookImageFile.Length > 0)
-                {
-                    string wwwRootPath = _webHostEnvironment.WebRootPath;  //embedded function if kailangan mag hosting 
-                    string fileName = Path.GetFileNameWithoutExtension(BookImageFile.FileName);
-                    string extension = Path.GetExtension(model.BookImageFile.FileName);
-
-                    model.BookImage = fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
-
-                    string path = Path.Combine(wwwRootPath + "/books", fileName);
-
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        await model.BookImageFile.CopyToAsync(fileStream);
-                    }
-                }
-
-                // Insert book into database
-                _bookMasterService.AddBook(model);
-                return RedirectToAction("Dashboard", "Home");
-            }
-            catch (InvalidDataException ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
-            }
-
-            return View(model);
-        }
     }
 }

@@ -19,7 +19,7 @@ namespace ASI.Basecode.Services.ServiceModels
         [Required(ErrorMessage = "Book Author is required.")]
         public string BookAuthor { get; set; }
 
-        [Required(ErrorMessage = "Book Image is required.")]
+        //[Required(ErrorMessage = "Book Image is required.")]
         public string BookImage { get; set; }
 
         [Required(ErrorMessage = "Book Des is required.")]

@@ -93,9 +93,6 @@ namespace ASI.Basecode.WebApp.Controllers
             return View(model);
         }
 
-
-
-
         public IActionResult AdminBookList()
         {
             var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
@@ -110,16 +107,44 @@ namespace ASI.Basecode.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdminBookUpdate(BookMasterEditViewModel model)
+        public async Task<IActionResult> AdminBookUpdate(BookMasterEditViewModel model, IFormFile BookImageFile)
         {
             try
             {
-                if (ModelState.IsValid)    
+                if (ModelState.IsValid)
                 {
-                    _bookMasterService.UpdateBook(model); // refers in BookmasterService
-                    TempData["SuccessMessage"] = "Saved!";
-                }
+                    var existingBook = _bookMasterService.GetBook(model.BId);
 
+                    if (existingBook != null)
+                    {
+                        existingBook.BookTitle = model.BookTitle;
+                        existingBook.BookAuthor = model.BookAuthor;
+                        existingBook.BookDes = model.BookDes;
+
+                        if (BookImageFile != null && BookImageFile.Length > 0)
+                        {
+                            string wwwRootPath = _webHostEnvironment.WebRootPath;
+                            string fileName = Path.GetFileNameWithoutExtension(BookImageFile.FileName);
+                            string extension = Path.GetExtension(BookImageFile.FileName);
+
+                            existingBook.BookImage = fileName + DateTime.Now.ToString("yymmssff") + extension;
+
+                            string imagePath = Path.Combine(wwwRootPath + "/books", existingBook.BookImage);
+
+                            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                            {
+                                await BookImageFile.CopyToAsync(fileStream);
+                            }
+                        }
+
+                        _bookMasterService.UpdateBook(existingBook);
+                        TempData["SuccessMessage"] = "Book updated successfully!";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Book not found!";
+                    }
+                }
             }
             catch (InvalidDataException ex)
             {
@@ -127,10 +152,12 @@ namespace ASI.Basecode.WebApp.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+                TempData["ErrorMessage"] = "An error occurred while updating the book.";
             }
-            return RedirectToAction("Dashboard", "Home");
+
+            return RedirectToAction("AdminBookUpdate", new { bId = model.BId });
         }
+
 
         [HttpGet]
         public IActionResult RemoveBook(string bId) //reference object sa BId kung naa ba sa repository 
