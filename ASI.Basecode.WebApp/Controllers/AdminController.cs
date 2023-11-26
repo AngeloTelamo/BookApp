@@ -129,7 +129,7 @@ namespace ASI.Basecode.WebApp.Controllers
             {
                 TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
             }
-            return View();
+            return RedirectToAction("Dashboard", "Home");
         }
 
         [HttpGet]

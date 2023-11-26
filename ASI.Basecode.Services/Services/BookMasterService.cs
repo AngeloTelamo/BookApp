@@ -110,6 +110,10 @@ namespace ASI.Basecode.Services.Services
                                  .Select(x => new BookMasterEditViewModel
                                  {
                                      BId = x.BId,
+                                     BookTitle = x.BookTitle,
+                                     BookAuthor = x.BookAuthor,
+                                     BookDes = x.BookDes,
+                                     BookImage = x.BookImage
                                  })
                                  .FirstOrDefault();
 
