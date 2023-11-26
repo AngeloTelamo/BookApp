@@ -1,9 +1,9 @@
-﻿@using ASI.Basecode.Services.ServiceModels
+﻿@* @using ASI.Basecode.Services.ServiceModels
 @using static ASI.Basecode.Resources.Views.Screen
 @model UserEditViewModel
 @{
     ViewBag.LoginView = true;
-    ViewData["Title"] = "Register Page";
+    ViewData["Title"] = "Update User";
 }
 @section styles {
     <link rel="stylesheet" href="~/css/login.css" />
@@ -75,4 +75,74 @@
             toastr.success(successMessage);
         }
     </script>
+} *@
+
+@using ASI.Basecode.Services.ServiceModels
+@using static ASI.Basecode.Resources.Views.Screen
+@model UserEditViewModel
+@{
+    ViewData["Title"] = "Update User";
 }
+
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
+        </div>
+    </div>
+</div>
+
+<h4 class="text-start display-4">
+    Update User
+</h4>
+
+<div class="container mt-3 userupdate-container">
+
+    <form method="post" action="/Admin/AdminBookUpdate" enctype="multipart/form-data">
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="userId">@UserId</label>
+            <input type="text" id="userId" class="form-control"
+                    asp-for="Email" placeholder="Enter userid" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" class="form-control"
+                    asp-for="Name" placeholder="Enter name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-outline mb-4">
+            @Html.CheckBoxFor(model => model.UpdatePasswordFlg)
+            @Html.LabelFor(model => model.UpdatePasswordFlg)
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" class="form-control"
+                    asp-for="Password" placeholder="Enter password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" class="form-control"
+                    asp-for="ConfirmPassword" placeholder="Confirm Password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+            <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
+                Update
+            </button>
+            <a asp-controller="Account" asp-action="Test">
+                &#8592 Back
+            </a>
+        </div>
+
+    </form>
+</div>
+
+

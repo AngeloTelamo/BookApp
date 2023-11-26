@@ -107,8 +107,7 @@ namespace ASI.Basecode.Services.Services
                                  .Select(x => new UserEditViewModel
                                  {
                                      Email = x.Email,
-                                     Name = x.Name,
-
+                                     Name = x.Name
                                  })
                                  .FirstOrDefault();
 

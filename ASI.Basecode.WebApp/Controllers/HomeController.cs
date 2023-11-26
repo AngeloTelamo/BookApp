@@ -22,7 +22,6 @@ namespace ASI.Basecode.WebApp.Controllers
 
     public class HomeController : ControllerBase<HomeController>
     {
-        private readonly IUserService _userService;
         private readonly IBookMasterService _bookMasterService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         //private readonly IBookService _bookService;
@@ -39,13 +38,11 @@ namespace ASI.Basecode.WebApp.Controllers
         public HomeController(IHttpContextAccessor httpContextAccessor,
                               ILoggerFactory loggerFactory,
                               IConfiguration configuration,
-                              IUserService userService,
                               IBookMasterService bookMasterService,
                               IMapper mapper,
                               IWebHostEnvironment webHostEnvironment) : base(httpContextAccessor, loggerFactory, configuration, mapper)
         {
             _bookMasterService = bookMasterService;
-            _userService = userService;
             this._webHostEnvironment = webHostEnvironment;
         }
 
@@ -57,12 +54,6 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
             return View("Dashboard", dataList);
-        }
-
-        public IActionResult Users()
-        {
-            var dataList = _userService.GetUserList(null);
-            return View("Users", dataList);
         }
 
         public IActionResult Discover()

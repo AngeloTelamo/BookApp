@@ -740,10 +740,6 @@ tbody:before {
 }
 /*Discover - admin*/
 
-/*Users - admin*/
-
-/*Users - admin*/
-
 /*Book Update - admin*/
 .bookupdate-container {
     border: 2px solid #C98276;
@@ -769,6 +765,19 @@ tbody:before {
 .bookupdate-container img {
     width: 150px;
     height: 200px;
+}
+/*Book Update - admin*/
+
+/*Users - admin*/
+
+/*Users - admin*/
+
+/*User Update - admin*/
+.userupdate-container {
+    border: 2px solid #C98276;
+    border-radius: 12px;
+    background-color: #FCE9DB;
+    padding: 50px 20px 0 20px;
 }
 /*Book Update - admin*/
 :root {

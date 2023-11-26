@@ -131,17 +131,17 @@ namespace ASI.Basecode.WebApp.Controllers
             return View();
         }
 
-        public IActionResult Test()
+        public IActionResult Users()
         {
             var dataList = _userService.GetUserList(null);
-            return View("Test", dataList);
+            return View("Users", dataList);
         }
 
         [HttpPost]
         public IActionResult Search(UserListViewModel model)
         {
             var dataList = _userService.GetUserList(model);
-            return View("Test", dataList);
+            return View("Users", dataList);
         }
 
         [HttpGet]
@@ -180,7 +180,7 @@ namespace ASI.Basecode.WebApp.Controllers
             try
             {   
                 _userService.DeleteUser(userId);
-                return Test();
+                return Users();
             }
             catch (InvalidDataException ex)
             {
