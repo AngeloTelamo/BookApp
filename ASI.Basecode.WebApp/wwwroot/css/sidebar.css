@@ -1,0 +1,119 @@
+﻿/*sidebar navigation*/
+.sidebar {
+    z-index: 99;
+    position: fixed;
+    left: -270px;
+    width: 270px;
+    height: 100%;
+    background: #ffffff;
+    transition: all .5s ease;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.sidebar-container {
+    margin: -25px 0 0 0;
+    padding: -25px 0 0 0;
+}
+
+.sidebar header {
+    font-size: 20px;
+    color: #515151;
+    text-align: center;
+    background: #ffffff;
+    user-select: none;
+    margin: 20px 0 20px 0;
+}
+
+.sidebar ul {
+    margin: 0 0 0 30px;
+}
+
+    .sidebar ul a {
+        display: block;
+        height: 80%;
+        width: 80%;
+        border-radius: 10px;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #E35D6A;
+        padding-left: 40px;
+    }
+
+        .sidebar ul a:hover {
+            text-decoration: none;
+            color: #000000;
+            background: #EEC1AD;
+            padding-left: 10px;
+        }
+
+            .sidebar ul a:hover i {
+                color: #E35D6A;
+            }
+
+        .sidebar ul a i {
+            margin-right: 16px;
+        }
+
+#check {
+    display: none;
+}
+
+label #btn, label #cancel {
+    position: fixed;
+    cursor: pointer;
+}
+
+label #btn {
+    left: 40px;
+    top: 10px;
+    font-size: 35px;
+    color: #E35D6A;
+    padding: 4px 9px;
+    margin: 0 0 0 -20px;
+    transition: all .5s ease;
+}
+
+label #cancel {
+    z-index: 1111;
+    left: -270px;
+    top: 10px;
+    font-size: 35px;
+    color: #E35D6A;
+    padding: 4px 9px;
+    margin: 0 0 0 -20px;
+    transition: all .5s ease;
+}
+
+#check:checked ~ .sidebar {
+    left: 0px;
+}
+
+#check:checked ~ label #btn {
+    left: 250px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+    left: 250px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.username {
+    font-size: 30px;
+    font-weight: bold;
+    color: #515151;
+    margin: 0 0 -10px 0;
+}
+
+.email {
+    font-size: 12px;
+    color: #A6A2A2;
+}
+/*sidebar navigation*/
