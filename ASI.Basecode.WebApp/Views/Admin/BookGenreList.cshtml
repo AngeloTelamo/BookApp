@@ -1,0 +1,88 @@
+﻿@model ASI.Basecode.Services.ServiceModels.BookGenreList
+@{
+    ViewData["Title"] = "Genre Lists";
+}
+@using static ASI.Basecode.Resources.Views.Screen
+
+<div class="text-center">
+    <h1 class="display-4"> Genre List</h1>
+    <p>Test page 1</p>
+    @using (@Html.BeginForm("SearchGenre", "Admin"))
+    {
+        <div class="row">
+            <div class="col-sm-2">
+                Genre Id 
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.GenreId)
+            </div>
+            <div class="col-sm-2">
+                Genre Name
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.GenreName)
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
+            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
+                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
+                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
+            </div>
+        </div>
+    }
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Genre Id
+                </th>
+
+                <th>
+                    Type of Genre
+                </th>
+
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.GenreList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <a asp-controller="Admin" asp-action="AdminBookAdd" asp-route-genreId="@item.BookGenreId">Add Books</a> ||
+                        <a asp-controller="Admin" asp-action="ViewBooks" asp-route-genreId="@item.Genre.GenreId" asp-route-genreName="@item.Genre.GenreName">View Books</a> ||
+                        <a asp-controller="Admin" asp-action="RemoveGenre" asp-route-genreId="@item.Genre.GenreId">Delete Genre</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @Html.ActionLink("Return to main", "AdminBookList", "Admin")
+</div>
+@section scripts {
+    <script>
+        var listItems = '@Html.Raw(Json.Serialize(@Model.GenreList))';
+        console.table(JSON.parse(listItems));
+
+    </script>
+}

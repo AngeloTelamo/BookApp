@@ -1,0 +1,77 @@
+﻿@using ASI.Basecode.Services.ServiceModels
+@using static ASI.Basecode.Resources.Views.Screen
+@model UserViewModel
+@{
+    ViewBag.LoginView = true;
+    ViewData["Title"] = "Register Page";
+}
+@section styles {
+    <link rel="stylesheet" href="~/css/register.css" />
+}
+
+<body class="background-page" style="background-color: #C98276;">
+</body>
+
+<div class="container d-flex justify-content-center align-items-center" />
+<div class="rectangle d-flex justify-content-center align-items-center">
+    <img src="~/img/FlipTru_2.png" style="width: 450px;" alt="logo" />
+</div>
+<div class="register-box">
+    <div class="row d-flex justify-content-xl-center align-items-center h-100">
+        <div class="col-xl-20">
+            <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                    <div class="card-body p-md-5 mx-md-4">
+                        <b>Create an Account</b>
+
+                        <form method="post" action="/Account/Register">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="userId">Email</label>
+                                <input type="text" id="userId" class="form-control"
+                                       asp-for="Email" placeholder="Enter email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="name">Name</label>
+                                <input type="text" id="name" class="form-control"
+                                       asp-for="Name" placeholder="Enter Name" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" id="password" class="form-control"
+                                       asp-for="Password" placeholder="Enter password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="confirmpassword">Confirm Password</label>
+                                <input type="password" id="confirmpassword" class="form-control"
+                                       asp-for="ConfirmPassword" placeholder="Confirm Password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+                                <button class="btn btn-primary btn-block mb-3" type="submit">
+                                    <b>Register</b>
+                                </button>
+                                <a asp-controller="Account" asp-action="Login">
+                                    Return to main menu
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        // Check for error message and display Toastr notification
+        var errorMessage = '@TempData["ErrorMessage"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        }
+    </script>
+}
+
+

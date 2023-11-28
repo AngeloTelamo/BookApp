@@ -1,0 +1,122 @@
+﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+@{
+    ViewData["Title"] = "Book Lists";
+}
+@using static ASI.Basecode.Resources.Views.Screen
+
+<div class="text-center">
+    <h1 class="display-4">BookList</h1>
+    <p>Test page 1</p>
+    @using (@Html.BeginForm("SearchBook", "Admin"))
+    {
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Filters.BookId)
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.BookId)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Filters.BookTitle)
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.BookTitle)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Filters.BookAuthor)
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.BookAuthor)
+            </div>
+
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Filters.GenreName)
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.GenreName)
+            </div>
+        </div>
+        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
+            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
+                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
+                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
+            </div>
+        </div>
+    }
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Book ID
+                </th>
+
+                <th>
+                    Book Title
+                </th>
+
+                <th>
+                    Book Author
+                </th>
+
+                <th>
+                    Book Genre
+                </th>
+
+                <th>
+                    Book Image
+                </th>
+                <th>
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.BookList)
+            {
+                var BookImages = "/books/" + (item.BookImage ?? "noimage.jpg");
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookTitle)
+                    </td>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.BookAuthor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookGenreName)
+                    </td>
+                    <td>
+                        <img src="@BookImages" alt="Book Image" asp-append-version="true" />
+                    </td>
+                    <td>
+                    </td>
+
+                    <td>
+                        <a asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bookId="@item.BookId">Edit</a> |
+                        <a asp-controller="Admin" asp-action="RemoveBook" asp-route-bookId="@item.BookId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @Html.ActionLink("Return to main", "AdminBookList", "Admin")
+</div>
+@section scripts {
+    <script>
+        var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
+        console.table(JSON.parse(listItems));
+
+        function clearFilters() {
+            console.log("CLEARED")
+            $('#Filters_BId').val('');
+            $('#Filters_BookTitle').val('');
+        }
+    </script>
+}

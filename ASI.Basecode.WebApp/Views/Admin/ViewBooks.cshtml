@@ -1,0 +1,42 @@
+﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+@using System.Text
+
+@{
+    ViewData["Title"] = "Genre Lists";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> @Model.Filters.GenreName</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book ID</th>
+                <th>Book Title</th>
+                <th>Book Author</th>
+                <th>Book Image</th>
+                <th>Book Synopsis</th>
+                <th>Book Contents</th> <!-- Add this header -->
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.BookList)
+            {
+                <tr>
+                    <td>@book.BookId</td>
+                    <td>@book.BookTitle</td>
+                    <td>@book.BookAuthor</td>
+                    <td><img src="@Url.Content("~/books/" + (book.BookImage ?? "noimage.jpg"))" alt="Book Image" /></td>
+                    <td>@book.BookSynopsis</td>
+                    <td>
+                        <a href="@Url.Action("BookContents", "Admin", new { bookId = book.BookId })">View Text File</a>
+                     </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.ActionLink("Back to Genre List", "BookGenreList", "Admin")
+</div>
