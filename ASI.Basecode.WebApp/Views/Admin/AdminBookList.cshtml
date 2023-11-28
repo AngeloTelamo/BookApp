@@ -1,119 +1,112 @@
-﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
-@{
-    ViewData["Title"] = "Book Lists";
-}
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
 @using static ASI.Basecode.Resources.Views.Screen
+@{
+    ViewData["Title"] = "Book List";
+}
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
+        </div>
+    </div>
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">BookList</h1>
-    <p>Test page 1</p>
-    @using (@Html.BeginForm("SearchBook", "Admin"))
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.Filters.BId)
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.BId)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.Filters.BookTitle)
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.BookTitle)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.Filters.BookAuthor)
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.BookAuthor)
-            </div>
+<div class="row">
+    <div class="col">
 
-            <div class="col-sm-2">
-                Book Genre
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.BookDes)
+        <h4 class="text-start">
+            Book Genre
+        </h4>
+
+        <div class="float-start search-container">
+            <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" placeholder="Search Book">
             </div>
         </div>
-        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
-            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
-                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
-                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
-            </div>
-        </div>
-    }
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    Book ID
-                </th>
-
-                <th>
-                    Book Title
-                </th>
-
-                <th>
-                    Book Author
-                </th>
-
-                <th>
-                    Book Genre
-                </th>
-
-                <th>
-                    Book Image
-                </th>
-                <th>
-
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model.BookList)
-            {
-                var BookImage = "~/books/" + (item.BookImage ?? "noimage.jpg");
-                    
+        <table class="table table-hover" id="table-genre">
+            <thead>
                 <tr>
+                    <th scope="col">Book Genre</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Book Author</th>
+                    <th scope="col">Book Description</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Fantasy</th>
+                    <td>Percy Jackson</td>
+                    <td>Rick Riordian</td>
+                    <td>Adventure Mythology</td>
+                    <td><a class="btn btn-primary" href="#" role="button">View <i class="fa-regular fa-eye"></i> </a></td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookTitle)
-                    </td>
-                   <td>
-                        @Html.DisplayFor(modelItem => item.BookAuthor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookDes)
-                    </td>
-                    <td>
-                        <img src="@BookImage" alt="Book Image" asp-append-version="true" />
-                    </td>
-                    <td>
-                        <a asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit</a> |
-                        <a asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete</a>
+                        <a class="btn btn-primary" href="#" role="button">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                        <a class="btn btn-danger" href="#" role="button">Delete <i class="fa-solid fa-trash"></i> </a>
                     </td>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-
-    @Html.ActionLink("Return to main", "Index", "Home")
+    </div>
 </div>
-@section scripts {
-    <script>
-        var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
-        console.table(JSON.parse(listItems));
 
-        function clearFilters() {
-            console.log("CLEARED")
-            $('#Filters_BId').val('');
-            $('#Filters_BookTitle').val('');
-        }
-    </script>
-}
+<div class="row mb-2">
+    <div class="col text-center" id="number_books">
+
+        <h4 class="mt-3 mb-3">Number of Books</h4>
+        <p class="mb-3">42</p>
+
+    </div>
+    <div class="col text-center" id="number_reviews">
+
+        <h4 class="mt-3 mb-3">Number of Reviews</h4>
+        <p class="mb-3">50</p>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <h4 class="text-start">
+            Review List
+        </h4>
+
+        <table class="table table-hover" id="table-user-reviews">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Review</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">John</th>
+                    <td>Percy Jackson</td>
+                    <td>Good Book</td>  
+                    <td>5 stars</td>
+                    <td><a class="btn btn-primary" href="#" role="button">View <i class="fa-regular fa-eye"></i> </a></td>
+                    <td>
+                        <a class="btn btn-primary" href="#" role="button">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                        <a class="btn btn-danger" href="#" role="button">Delete <i class="fa-solid fa-trash"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,9 +1,9 @@
-﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
+@using static ASI.Basecode.Resources.Views.Screen
 @{
     ViewData["Title"] = "DashBoard";
 }
-@using static ASI.Basecode.Resources.Views.Screen
-
 <div class="position-relative mt-3">
     <div class="row">
         <div class="col-md-10">
@@ -31,35 +31,36 @@
             </div>
         </div>
 
-        <table class="table table-hover" id="table-books">
-            <thead>
-                <tr>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Book Title</th>
-                    <th scope="col">Book Author</th>
-                    <th scope="col">Book Genre</th>
-                    <th scope="col">Book Description</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.BookList)
-                {
+        <div class="tbl-container">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th scope="row">@Html.DisplayFor(modelItem => item.BId)</th>
-                        <td>@Html.DisplayFor(modelItem => item.BookTitle)</td>
-                        <td>@Html.DisplayFor(modelItem => item.BookAuthor)</td>
-                        <td>@Html.DisplayFor(modelItem => item.BookDes)</td>
-                        <td>Adventure</td>
-                        <td>
-                            <a class="btn btn-primary" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
-                            <a class="btn btn-danger" role="button" asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete <i class="fa-solid fa-trash"></i> </a>
-                        </td>
+                        <th scope="col">Book ID</th>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Book Author</th>
+                        <th scope="col">Book Genre</th>
+                        <th scope="col">Book Description</th>
+                        <th scope="col"></th>
                     </tr>
-                }
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BookList)
+                    {
+                        <tr>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.BId)</th>
+                            <td>@Html.DisplayFor(modelItem => item.BookTitle)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BookAuthor)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BookDes)</td>
+                            <td>Adventure</td>
+                            <td>
+                                <a class="btn edit-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                                <a class="btn delete-button btn-sm" role="button" asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BId">Delete <i class="fa-solid fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -77,33 +78,35 @@
             </div>
         </div>
 
-        <table class="table table-hover" id="table-reviews">
-            <thead>
-                <tr>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Book Title</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Book Genre</th>
-                    <th scope="col">Rate</th>
-                    <th scope="col">Review</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Book 1</th>
-                    <td>Percy Jackson</td>
-                    <td>Angelo Telamo</td>
-                    <td>Fantasy</td>
-                    <td>5 stars</td>
-                    <td>Good Book</td>
-                    <td>
-                        <a class="btn btn-primary" href="#" role="button">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
-                        <a class="btn btn-danger" href="#" role="button">Delete <i class="fa-solid fa-trash"></i> </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="tbl-container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Book ID</th>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Book Genre</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Review</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Book 1</th>
+                        <td>Percy Jackson</td>
+                        <td>Angelo Telamo</td>
+                        <td>Fantasy</td>
+                        <td>5 stars</td>
+                        <td>Good Book</td>
+                        <td>
+                            <a class="btn edit-button btn-sm" href="#" role="button">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                            <a class="btn delete-button btn-sm" href="#" role="button">Delete <i class="fa-solid fa-trash"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

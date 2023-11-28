@@ -622,15 +622,22 @@ img {
     width: 150px;
 }
 
-.table thead {
-    border: 2px solid #ddd;
+.tbl-container {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead th{
+    border: 2px solid #FCE9DB;
     background-color: #FCE9DB;
-    border-radius: 12px;
 }
 
 .table tbody tr {
     border: 2px solid #C98276;
-    border-radius: 10px;
+}
+
+.table tbody th, .table tbody td {
+    border: none;
 }
 
 tbody:before {
@@ -640,6 +647,39 @@ tbody:before {
     text-indent: -99999px;
 }
 
+.edit-button {
+    background-color: #FCE9DB;
+    color: #E35D6A;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 80px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .edit-button:hover {
+        color: #FFFFFF;
+    }
+
+
+.delete-button {
+    background-color: #E35D6A;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 0.25rem 0.5rem;
+    width: 80px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .delete-button:hover {
+        color: #000000;
+    }
 /*dashboard - admin*/
 
 /*book list - admin*/

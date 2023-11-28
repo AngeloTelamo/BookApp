@@ -61,10 +61,5 @@ namespace ASI.Basecode.WebApp.Controllers
             return View();
         }
 
-        public IActionResult BookList()
-        {
-            var dataList = _bookMasterService.GetBookList(null);
-            return View("BookList", dataList);
-        }
     }
 }
