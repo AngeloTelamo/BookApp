@@ -52,8 +52,13 @@ namespace ASI.Basecode.WebApp.Controllers
         /// <returns> Home View </returns>
         public IActionResult Dashboard()
         {
-            var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
+            var dataList = _bookMasterService.GetBookList(null); 
             return View("Dashboard", dataList);
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         public IActionResult Discover()

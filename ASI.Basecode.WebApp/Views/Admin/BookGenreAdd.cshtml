@@ -2,58 +2,57 @@
 @using static ASI.Basecode.Resources.Views.Screen
 @model BookGenres
 @{
-    ViewBag.LoginView = true;
     ViewData["Title"] = "Add Book Genre";
 }
 @section styles {
-    <link rel="stylesheet" href="~/css/register.css" />
+	<link href="~/css/addgenre.css" rel="stylesheet" />
+	<link href="~/css/style.css" rel="stylesheet" />
 }
-<div class="container py-5 h-100 register-box">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-            <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                    <div class="card-body p-md-5 mx-md-4">
-
-                        <div class="text-center">
-                            <img src="https://www.alliance.com.ph/images/asi-logo-invert.svg"
-                                 style="width: 185px;" alt="logo">
-                        </div>
-                        <form method="post" action="/Admin/BookGenreAdd" enctype="multipart/form-data">
-                            <div class="form-outline mb-4">
-
-                                <label class="form-label" for="GenreId">Genre Id</label>
-                                <input type="text" id="GenreId" class="form-control"
-                                       asp-for="Genre.GenreId" placeholder="Enter Genre ID" />
-                                <span asp-validation-for="Genre.GenreId" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="GenreName">Genre Name </label>
-                                <input type="text" id="GenreName" class="form-control"
-                                       asp-for="Genre.GenreName" placeholder="Enter Genre Name" />
-                                <span asp-validation-for="Genre.GenreName" class="text-danger"></span>
-                            </div>
-
-                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
-                                <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
-                                    Register
-                                </button>
-                                <a asp-controller="Admin" asp-action="BookGenreList">
-                                    &#8592 Back
-                                </a>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="position-relative mt-3 mb-5">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
         </div>
     </div>
 </div>
+
+<h4 class="text-start display-4">
+    Add Book
+</h4>
+
+<div class="container mt-3 genreadd-container">
+    <form method="post" action="/Admin/BookGenreAdd" enctype="multipart/form-data">
+        <div class="form-outline mb-4">
+
+            <label class="form-label" for="GenreId">Genre Id</label>
+            <input type="text" id="GenreId" class="form-control"
+                   asp-for="Genre.GenreId" placeholder="Enter Genre ID" />
+            <span asp-validation-for="Genre.GenreId" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="GenreName">Genre Name </label>
+            <input type="text" id="GenreName" class="form-control"
+                   asp-for="Genre.GenreName" placeholder="Enter Genre Name" />
+            <span asp-validation-for="Genre.GenreName" class="text-danger"></span>
+        </div>
+
+        <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+            <button class="btn add-btn btn-block login-btn gradient-custom-2 mb-3" type="submit">
+                Add Genre
+            </button>
+        </div>
+    </form>
+</div>
+
+
 @section scripts {
     <script>
-        // Check for error message and display Toastr notification
         var errorMessage = '@TempData["ErrorMessage"]';
         if (errorMessage) {
             toastr.error(errorMessage);

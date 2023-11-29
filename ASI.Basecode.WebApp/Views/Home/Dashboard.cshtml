@@ -1,7 +1,6 @@
 ﻿﻿@using ASI.Basecode.Services.ServiceModels
 @using static ASI.Basecode.Resources.Views.Screen
 @model BookMasterListViewModel
-
 @{
     ViewData["Title"] = "DashBoard";
 }
@@ -48,17 +47,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.BookList)
+                    @foreach (var book in Model.BookList)
                     {
                         <tr>
-                            <th scope="row">@Html.DisplayFor(modelItem => item.BookId)</th>
-                            <td>@Html.DisplayFor(modelItem => item.BookTitle)</td>
-                            <td>@Html.DisplayFor(modelItem => item.BookAuthor)</td>
-                            <td>@Html.DisplayFor(modelItem => item.BookGenreName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.BookSynopsis)</td>
+                            <th scope="row">@book.BookId</th>
+                            <td>@book.BookTitle</td>
+                            <td>@book.BookAuthor</td>
+                            <td>@book.BookGenreName</td>
+                            <td>@book.BookSynopsis</td>
                             <td>
-                                <a class="btn edit-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@item.BookId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
-                                <a class="btn delete-button btn-sm" role="button" asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@item.BookId">Delete <i class="fa-solid fa-trash"></i> </a>
+                                <a class="btn edit-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bId="@book.BookId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                                <a class="btn delete-button btn-sm" role="button" asp-controller="Admin" asp-action="RemoveBook" asp-route-bId="@book.BookId">Delete <i class="fa-solid fa-trash"></i> </a>
                             </td>
                         </tr>
                     }

@@ -137,7 +137,7 @@ namespace ASI.Basecode.WebApp.Controllers
             try
             {
                 _bookGenreMasterService.AddGenre(model);
-                return RedirectToAction("BookGenreAdd", "Admin");
+                return RedirectToAction("Index", "Home");
             }
             catch (InvalidDataException ex)
             {
