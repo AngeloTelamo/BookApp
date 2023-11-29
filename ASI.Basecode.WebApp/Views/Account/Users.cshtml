@@ -1,0 +1,153 @@
+﻿@* @model ASI.Basecode.Services.ServiceModels.UserListViewModel
+@{
+    ViewData["Title"] = "Users";
+}
+@using static ASI.Basecode.Resources.Views.Screen
+
+<div class="text-center">
+    <h1 class="display-4">Admin List</h1>
+    @using (@Html.BeginForm("Search", "Account"))
+    {
+        <div class="row">
+            <div class="col-sm-2">
+                Email
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.Email)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Filters.Name)
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBoxFor(model => model.Filters.Name)
+            </div>
+        </div>
+        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
+            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
+                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
+                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
+            </div>
+        </div>
+    }
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.UserList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-controller="Account" asp-action="Update" asp-route-userId="@item.Email">Edit</a> |
+                        <a asp-controller="Account" asp-action="Delete" asp-route-userId="@item.Email">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @Html.ActionLink("Return to main", "Index", "Home")
+</div>
+@section scripts {
+    <script>
+        var listItems = @Html.Raw(Json.Serialize(@Model.UserList));
+        console.log(listItems);
+
+        function clearFilters() {
+            console.log("CLEARED")
+            $('#Filters_UserId').val('');
+            $('#Filters_Name').val('');
+        }
+    </script>
+} *@
+
+@using ASI.Basecode.Services.ServiceModels
+@using static ASI.Basecode.Resources.Views.Screen
+@model UserListViewModel
+@{
+    ViewData["Title"] = "Users";
+}
+@section styles {
+    <link href="~/css/users.css" rel="stylesheet" />
+}
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
+        </div>
+    </div>
+</div>
+
+<h4 class="text-start display-4">
+    User List
+</h4>
+
+<div class="row">
+    <div class="col-6">
+
+        <div class="float-start search-container">
+            <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" placeholder="Search User">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-6">
+        <a class="btn btn-primary float-right mt-3" role="button" asp-controller="" asp-action="">Add User <i class="fa-solid fa-plus"></i> </a>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <table class="table table-hover" id="table-books">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">Email</th>
+                    <th scope="col" class="text-center">Name</th>
+                    <th scope="col" class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UserList)
+                {
+                    <tr>
+                        <th scope="row" class="text-center">@Html.DisplayFor(modelItem => item.Email)</th>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td class="text-center">
+                            <a class="btn edit-button btn-sm" role="button" asp-controller="Account" asp-action="Update" asp-route-userId="@item.Email">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
+                            <a class="btn delete-button btn-sm" role="button" asp-controller="Account" asp-action="Delete" asp-route-userId="@item.Email">Delete <i class="fa-solid fa-trash"></i> </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
