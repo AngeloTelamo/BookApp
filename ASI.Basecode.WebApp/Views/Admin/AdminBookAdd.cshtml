@@ -2,81 +2,87 @@
 @using static ASI.Basecode.Resources.Views.Screen
 @model BookGenres
 @{
-    ViewBag.LoginView = true;
-    ViewData["Title"] = "Add Book Page";
+    ViewData["Title"] = "Add Book";
 }
 @section styles {
-    <link rel="stylesheet" href="~/css/register.css" />
+	<link href="~/css/addbook.css" rel="stylesheet" />
 }
-<div class="container py-5 h-100 register-box">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-            <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                    <div class="card-body p-md-5 mx-md-4">
-
-                        <div class="text-center">
-                            <img src="https://www.alliance.com.ph/images/asi-logo-invert.svg"
-                                 style="width: 185px;" alt="logo">
-                        </div>
-                        <form method="post" action="/Admin/AdminBookAdd" enctype="multipart/form-data">
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="BooksId">Book Id</label>
-                                <input type="text" id="BooksID" class="form-control"
-                                       asp-for="@Model.Master.BookId" placeholder="Enter Book ID" />
-                                <span asp-validation-for="@Model.Master.BookId" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookTitle">Book Title </label>
-                                <input type="text" id="bookTitle" class="form-control"
-                                       asp-for="@Model.Master.BookTitle" placeholder="Enter Book Title" />
-                                <span asp-validation-for="@Model.Master.BookTitle" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookAuthor">Book Author</label>
-                                <input type="text" id="bookAuthor" class="form-control"
-                                       asp-for="@Model.Master.BookAuthor" placeholder="Enter Book Author" />
-                                <span asp-validation-for="@Model.Master.BookAuthor" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookSynopsis">Summary</label>
-                                <textarea id="bookSynopsis" class="form-control" rows="4"
-                                          asp-for="@Model.Master.BookSynopsis" placeholder="Enter Book Synopsis"></textarea>
-                                <span asp-validation-for="@Model.Master.BookSynopsis" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookImageFile">Book Image</label>
-                                <input type="file" id="bookImageFile" name="bookImageFile" accept="image/*" asp-for="@Model.Master.BookImageFile" />
-                                <span asp-validation-for="@Model.Master.BookImageFile" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="bookFileText">Book Text File</label>
-                                <input type="file" id="bookFileText" name="bookFileText" accept=".txt" asp-for="@Model.Master.BookContext" />
-                                <span asp-validation-for="@Model.Master.BookContext" class="text-danger"></span>
-                            </div>
-
-                            <input type="hidden" id="BookGenreId" name="BookGenreId" value="@Model.BookGenreId" />
-
-                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
-                                <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
-                                    Register
-                                </button>
-                                <a asp-controller="Home" asp-action="Index">
-                                    &#8592 Back
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="position-relative mt-3 mb-5">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
         </div>
     </div>
 </div>
+
+<h4 class="text-start display-4">
+    Add Book
+</h4>
+
+<div class="container mt-3 bookadd-container">
+    <form method="post" action="/Admin/AdminBookAdd" enctype="multipart/form-data">
+        <div class="form-outline mb-4">
+            <label class="form-label" for="BooksId">Book Id</label>
+            <input type="text" id="BooksID" class="form-control"
+                   asp-for="@Model.Master.BookId" placeholder="Enter Book ID" />
+            <span asp-validation-for="@Model.Master.BookId" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bookTitle">Book Title </label>
+            <input type="text" id="bookTitle" class="form-control"
+                   asp-for="@Model.Master.BookTitle" placeholder="Enter Book Title" />
+            <span asp-validation-for="@Model.Master.BookTitle" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bookAuthor">Book Author</label>
+            <input type="text" id="bookAuthor" class="form-control"
+                   asp-for="@Model.Master.BookAuthor" placeholder="Enter Book Author" />
+            <span asp-validation-for="@Model.Master.BookAuthor" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bookSynopsis">Summary</label>
+            <textarea id="bookSynopsis" class="form-control" rows="4"
+                      asp-for="@Model.Master.BookSynopsis" placeholder="Enter Book Synopsis"></textarea>
+            <span asp-validation-for="@Model.Master.BookSynopsis" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label" for="bookImageFile">Book Image</label>
+            <div class="custom-file">
+                <input type="file" id="bookImageFile" name="bookImageFile" accept="image/*" asp-for="@Model.Master.BookImageFile" class=" custom-file-input" />
+                <span asp-validation-for="@Model.Master.BookImageFile" class="text-danger"></span>
+                <label class="custom-file-label" for="bookImageFile">Choose file</label>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bookFileText">Book Text File</label>
+            <div class="custom-file">
+                <input type="file" id="bookFileText" name="bookFileText" accept=".txt" asp-for="@Model.Master.BookContext" class="custom-file-input" />
+                <span asp-validation-for="@Model.Master.BookContext" class="text-danger"></span>
+                <label class="custom-file-label" for="bookFileText">Choose file</label>
+            </div>
+        </div>
+
+        <input type="hidden" id="BookGenreId" name="BookGenreId" value="@Model.BookGenreId" />
+
+        <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+            <button class="btn add-btn btn-block login-btn gradient-custom-2 mb-3" type="submit">
+                Add Book
+            </button>
+        </div>
+    </form>
+</div>
+
+
 @section scripts {
     <script>
         // Check for error message and display Toastr notification
@@ -85,9 +91,20 @@
             toastr.error(errorMessage);
         }
 
+        function updateLabel(inputId) {
+            var input = document.getElementById(inputId);
+            var files = Array.from(input.files).map(file => file.name);
+            $('.custom-file-label[for="' + inputId + '"]').html(files.join(', '));
+        }
+
+        // Attach the change event to the file inputs
         $('#bookImageFile').on('change', function () {
-            var files = Array.from(this.files).map(file => file.name);
-            $('.custom-file-label').html(files.join(', '));
+            updateLabel('bookImageFile');
         });
+
+        $('#bookFileText').on('change', function () {
+            updateLabel('bookFileText');
+        });
+
     </script>
 }

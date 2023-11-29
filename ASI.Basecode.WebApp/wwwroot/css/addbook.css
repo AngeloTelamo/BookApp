@@ -1,0 +1,18 @@
+﻿/*book add - admin*/
+.bookadd-container {
+    border: 2px solid #C98276;
+    border-radius: 12px;
+    background-color: #FCE9DB;
+    padding: 50px 250px 0px 250px;
+}
+
+    .bookadd-container label {
+        font-weight: bold;
+    }
+
+.add-btn {
+    background-color: #FA8A8A;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+/*book add - admin*/
