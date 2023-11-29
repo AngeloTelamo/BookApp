@@ -1,6 +1,7 @@
-﻿/*Users - admin*/
+﻿/*book list - admin*/
 .dashboard-image {
     width: 150px;
+    height: 150px;
 }
 
 .tbl-container {
@@ -11,6 +12,11 @@
 .table thead th {
     border: 2px solid #FCE9DB;
     background-color: #FCE9DB;
+}
+
+.table tbody img {
+    width: 200px;
+    height: 200px;
 }
 
 .table tbody tr {
@@ -78,4 +84,4 @@ tbody:before {
     .delete-button:hover {
         color: #000000;
     }
-/*Users - admin*/
+/*book list - admin*/

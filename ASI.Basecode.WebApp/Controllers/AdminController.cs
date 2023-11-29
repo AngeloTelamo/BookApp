@@ -27,7 +27,7 @@ namespace ASI.Basecode.WebApp.Controllers
         private readonly IBookGenreMasterService _bookGenreMasterService;
         private readonly IReviewService _reviewService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        
+
         //private readonly IBookService _bookService;
         /// <summary>
         /// Constructor
@@ -38,18 +38,18 @@ namespace ASI.Basecode.WebApp.Controllers
         /// <param name="localizer"></param>
         /// <param name="bookMasterService"></param>
         /// <param name="mapper"></param>
-        public AdminController(IHttpContextAccessor httpContextAccessor, 
-                    ILoggerFactory loggerFactory, 
-                    IConfiguration configuration, 
+        public AdminController(IHttpContextAccessor httpContextAccessor,
+                    ILoggerFactory loggerFactory,
+                    IConfiguration configuration,
                     IBookMasterService bookMasterService,
                     IBookGenreMasterService bookGenreMasterService,
                     IReviewService reviewService,
                     IMapper mapper, IWebHostEnvironment webHostEnvironment) : base(httpContextAccessor, loggerFactory, configuration, mapper)
         {
             _bookMasterService = bookMasterService;
-            _bookGenreMasterService = bookGenreMasterService; 
+            _bookGenreMasterService = bookGenreMasterService;
             _reviewService = reviewService;
-          this._webHostEnvironment = webHostEnvironment;
+            this._webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -71,7 +71,7 @@ namespace ASI.Basecode.WebApp.Controllers
             catch (InvalidDataException ex)
             {
                 TempData["ErrorMessage"] = ex.Message;
-                return RedirectToAction("Index", "Home"); 
+                return RedirectToAction("Index", "Home");
             }
         }
         [HttpPost]
@@ -95,7 +95,7 @@ namespace ASI.Basecode.WebApp.Controllers
                         await BookImageFile.CopyToAsync(fileStream);
                     }
                 }
-                
+
                 if (BookFileText != null && BookFileText.Length > 0)
                 {
                     string appDataPath = Path.Combine(_webHostEnvironment.WebRootPath, "appData");
@@ -107,10 +107,10 @@ namespace ASI.Basecode.WebApp.Controllers
                         await BookFileText.CopyToAsync(fileStream);
                     }
                     model.Master.BookFilePath = textFilePath;
-                    model.Master.BookContext = textFilePath;    
+                    model.Master.BookContext = textFilePath;
                 }
 
-                _bookMasterService.AddBook(model); 
+                _bookMasterService.AddBook(model);
                 return RedirectToAction("AdminBookAdd", "Admin");
             }
             catch (InvalidDataException ex)
@@ -137,7 +137,7 @@ namespace ASI.Basecode.WebApp.Controllers
             try
             {
                 _bookGenreMasterService.AddGenre(model);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("BookGenreAdd", "Admin");
             }
             catch (InvalidDataException ex)
             {
@@ -185,14 +185,14 @@ namespace ASI.Basecode.WebApp.Controllers
 
         public IActionResult AdminBookList()
         {
-            var dataList = _bookMasterService.GetBookList(null); 
+            var dataList = _bookMasterService.GetBookList(null);
             return View("AdminBookList", dataList);
         }
 
         [HttpGet]
         public IActionResult AdminBookUpdate(int bookId)
         {
-            var model = _bookMasterService.GetBooks(bookId); 
+            var model = _bookMasterService.GetBooks(bookId);
             return View(model);
         }
 
@@ -243,11 +243,11 @@ namespace ASI.Basecode.WebApp.Controllers
             }
         }
         [HttpGet]
-        public IActionResult RemoveBook(int bookId)  
+        public IActionResult RemoveBook(int bookId)
         {
             try
             {
-                _bookMasterService.DeleteBook(bookId); 
+                _bookMasterService.DeleteBook(bookId);
                 return RedirectToAction("AdminBookList");
             }
             catch (InvalidDataException ex)
@@ -264,13 +264,13 @@ namespace ASI.Basecode.WebApp.Controllers
         [HttpPost]
         public IActionResult SearchBook(BookMasterListViewModel model)
         {
-            var dataList = _bookMasterService.GetBookList(model);   
+            var dataList = _bookMasterService.GetBookList(model);
             return View("AdminBookList", dataList);
         }
-        
+
         public IActionResult BookGenreList()
         {
-            var dataList = _bookGenreMasterService.GetGenreList(null); 
+            var dataList = _bookGenreMasterService.GetGenreList(null);
             return View("BookGenreList", dataList);
         }
 
@@ -284,7 +284,7 @@ namespace ASI.Basecode.WebApp.Controllers
         [HttpPost]
         public IActionResult SearchReview(ReviewList model)
         {
-            var dataList = _reviewService.GetReviewList(model);  
+            var dataList = _reviewService.GetReviewList(model);
             return View("BookReviewList", dataList);
         }
 
@@ -309,7 +309,7 @@ namespace ASI.Basecode.WebApp.Controllers
         }
         public IActionResult BookReviewList()
         {
-            var dataList = _reviewService.GetReviewList(null); 
+            var dataList = _reviewService.GetReviewList(null);
             return View("BookReviewList", dataList);
         }
     }

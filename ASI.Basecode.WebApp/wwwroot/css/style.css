@@ -621,27 +621,6 @@ img {
 /*Custom Scrollbar*/
 /*dashboard*/
 
-/*book list - admin*/
-#number_books,
-#number_reviews {
-    border: 2px solid;
-    border-radius: 12px;
-    border-color: #C98276;
-    padding: 10px;
-}
-
-#number_books {
-    margin-right: 20px;
-    margin-left: 15px;
-}
-
-#number_reviews {
-    margin-right: 15px;
-    margin-left: 20px;
-}
-
-/*book list - admin*/
-
 /*Discover - admin*/
 .discover-search-container {
     margin-top: 20px;

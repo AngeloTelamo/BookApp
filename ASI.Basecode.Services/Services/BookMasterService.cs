@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using Microsoft.AspNetCore.Http;                
+using Microsoft.AspNetCore.Http;
 
 namespace ASI.Basecode.Services.Services
 {
@@ -22,7 +22,7 @@ namespace ASI.Basecode.Services.Services
         private readonly IBookMasterRepository _repository;
         private readonly IBookGenreMasterRepository _repositoryGenre;
         private readonly IMapper _mapper;
-    
+
         public BookMasterService(IBookMasterRepository repository, IMapper mapper, IBookGenreMasterRepository repositoryGenre)
         {
             _mapper = mapper;
@@ -44,7 +44,7 @@ namespace ASI.Basecode.Services.Services
                 book.BookSynopsis = model.Master.BookSynopsis;
                 book.BookAdded = DateTime.Now;
                 book.CreatedBy = System.Environment.UserName;
-                
+
                 if (!string.IsNullOrEmpty(model.Master.BookImage)) //validation if it is empty
                 {
                     book.BookImage = model.Master.BookImage; // Store the file path in the BookImage property in BookMasterViewModel
@@ -62,7 +62,7 @@ namespace ASI.Basecode.Services.Services
             var book = _repository.GetBookById(bookId);
 
             if (book != null && !string.IsNullOrEmpty(book.BookFile))
-            { 
+            {
                 string fileContent = File.ReadAllText(book.BookFile);
                 return fileContent;
             }
@@ -99,30 +99,30 @@ namespace ASI.Basecode.Services.Services
                             && (string.IsNullOrEmpty(model.Filters.GenreName) || x.genreMaster.GenreName.ToLower().Contains(model.Filters.GenreName.ToLower()))
                         );
                 }
-                     queryData = queryData
-                            .Include(x => x.Reviews) 
-                             .Where(x => x.Reviews.Any());
+                queryData = queryData
+                       .Include(x => x.Reviews)
+                        .Where(x => x.Reviews.Any());
             }
 
-                    listModel.BookList = queryData
-                  .Select(x => new BookMasterViewModel
-                  {
-                      BookId = x.BookId,
-                      BookTitle = x.BookTitle,
-                      BookAuthor = x.BookAuthor,
-                      BookImage = x.BookImage,
-                      BookGenreName = x.genreMaster.GenreName,
-                      AverageRating = x.Reviews.Average(r => r.ReviewRatings),
-                      ReviewCount = x.Reviews.Count(),
-                      IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5 
-                  })
-                  .OrderByDescending(x => x.IsTopBook)
-                  .ThenByDescending(x => x.AverageRating)
-                  .ThenByDescending(x => x.ReviewCount)
-                  .ToList();
+            listModel.BookList = queryData
+          .Select(x => new BookMasterViewModel
+          {
+              BookId = x.BookId,
+              BookTitle = x.BookTitle,
+              BookAuthor = x.BookAuthor,
+              BookImage = x.BookImage,
+              BookGenreName = x.genreMaster.GenreName,
+              //AverageRating = x.Reviews.Average(r => r.ReviewRatings),
+              //ReviewCount = x.Reviews.Count(),
+              //IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5
+          })
+          //.OrderByDescending(x => x.IsTopBook)
+          //.ThenByDescending(x => x.AverageRating)
+          //.ThenByDescending(x => x.ReviewCount)
+          .ToList();
 
             listModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();
-
+                
             return listModel;
         }
 
@@ -148,7 +148,7 @@ namespace ASI.Basecode.Services.Services
             }
         }
 
-         public BookMasterEditViewModel GetBooks(int bookId)
+        public BookMasterEditViewModel GetBooks(int bookId)
         {
             var book = _repository.GetBooks().AsNoTracking()
                                  .Where(x => x.BookId == bookId)
@@ -168,7 +168,7 @@ namespace ASI.Basecode.Services.Services
             }
 
             return book;
-        } 
+        }
 
         public BookMasterViewModel GetBookById(int bookId)
         {
@@ -206,10 +206,10 @@ namespace ASI.Basecode.Services.Services
                 throw new InvalidDataException(Resources.Messages.Errors.BookNotExists);
             }
         }
-        public IEnumerable <BookMasterViewModel> GetBooksForGenre(int genreId)
+        public IEnumerable<BookMasterViewModel> GetBooksForGenre(int genreId)
         {
             var books = _repository.GetBooks()
-                .Include(x => x.genreMaster) 
+                .Include(x => x.genreMaster)
                 .Where(x => x.BookGenreId == genreId)
                 .Select(x => new BookMasterViewModel
                 {
@@ -218,7 +218,7 @@ namespace ASI.Basecode.Services.Services
                     BookAuthor = x.BookAuthor,
                     BookImage = x.BookImage,
                     BookSynopsis = x.BookSynopsis,
-                    BookGenreName = x.genreMaster.GenreName 
+                    BookGenreName = x.genreMaster.GenreName
                 })
                 .ToList();
             return books;
@@ -226,5 +226,3 @@ namespace ASI.Basecode.Services.Services
     }
 
 }
-
-

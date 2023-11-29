@@ -85,7 +85,6 @@
 
 @section scripts {
     <script>
-        // Check for error message and display Toastr notification
         var errorMessage = '@TempData["ErrorMessage"]';
         if (errorMessage) {
             toastr.error(errorMessage);
@@ -97,7 +96,6 @@
             $('.custom-file-label[for="' + inputId + '"]').html(files.join(', '));
         }
 
-        // Attach the change event to the file inputs
         $('#bookImageFile').on('change', function () {
             updateLabel('bookImageFile');
         });
