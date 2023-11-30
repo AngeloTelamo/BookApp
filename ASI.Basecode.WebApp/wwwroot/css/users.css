@@ -45,6 +45,23 @@ tbody:before {
         color: #E35D6A;
     }
 
+.search-button {
+    background-color: #FCE9DB;
+    color: #000000;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 100px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .search-button:hover {
+        color: #E35D6A;
+    }
+
 .edit-button {
     background-color: #FCE9DB;
     color: #E35D6A;
@@ -77,5 +94,30 @@ tbody:before {
 
     .delete-button:hover {
         color: #000000;
+    }
+
+.form {
+    position: relative;
+    margin-left: auto;
+}
+
+    .form .input-group .fa-search {
+        z-index: 99;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        color: #E35D6A;
+    }
+
+.form-input {
+    z-index: 1;
+    width: 550px;
+    text-indent: 24px;
+}
+
+    .form-input:focus .form-input:active {
+        z-index: 1;
+        border-color: #E35D6A;
+        border: none;
     }
 /*Users - admin*/
