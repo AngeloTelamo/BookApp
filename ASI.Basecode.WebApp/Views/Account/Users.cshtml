@@ -51,19 +51,19 @@
         <div class="tbl-container">
             <table class="table table-hover" id="table-books">
                 <thead>
-                    <tr>
-                        <th scope="col" class="text-center">Email</th>
-                        <th scope="col" class="text-center">Name</th>
-                        <th scope="col" class="text-center"></th>
+                    <tr class="text-center">
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.UserList)
                     {
-                        <tr>
+                        <tr class="text-center">
                             <th scope="row" class="text-center">@Html.DisplayFor(modelItem => item.Email)</th>
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td class="text-center">
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>
                                 <a class="btn edit-button btn-sm" role="button" asp-controller="Account" asp-action="Update" asp-route-userId="@item.Email">Edit <i class="fa-regular fa-pen-to-square"></i> </a>
                                 <a class="btn delete-button btn-sm" role="button" asp-controller="Account" asp-action="Delete" asp-route-userId="@item.Email">Delete <i class="fa-solid fa-trash"></i> </a>
                             </td>

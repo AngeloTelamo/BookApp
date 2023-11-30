@@ -34,9 +34,9 @@ tbody:before {
     text-indent: -99999px;
 }
 
-.add-user-button {
+.search-button {
     background-color: #FCE9DB;
-    color: #FFFFFF;
+    color: #000000;
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
@@ -47,7 +47,7 @@ tbody:before {
     border-radius: 0.2rem;
 }
 
-    .add-user-button:hover {
+    .search-button:hover {
         color: #E35D6A;
     }
 
@@ -84,4 +84,29 @@ tbody:before {
     .delete-button:hover {
         color: #000000;
     }
+
+.form {
+    position: relative;
+    margin-left: auto;
+}
+
+    .form .input-group .fa-search {
+        z-index: 4;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        color: #E35D6A;
+    }
+
+.form-input {
+    z-index: 1;
+    text-indent: 24px;
+}
+
+    .form-input:focus {
+        z-index: 1;
+        box-shadow: none;
+        border-color: #d1d5db;
+    }
+
 /*book list - admin*/
