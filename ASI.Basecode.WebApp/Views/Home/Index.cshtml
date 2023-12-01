@@ -1,15 +1,28 @@
 ﻿@{
     ViewData["Title"] = "DashBoard";
 }
-<div class="search-header">
-    <h2 class="dashboard-title">Dashboard</h2>
-    <div class="search-container">
-        <div class="form">
-            <i class="fa fa-search"></i>
-            <input type="text" class="form-control form-input" placeholder="Search Book">
+@section styles {
+	<link href="~/css/dashboard.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-6">
+        <h4 class="text-start display-4">
+            Dashboard
+        </h4>
+    </div>
+    <div class="col-6">
+        <div class="float-right search-container">
+            <div class="form">
+                <div class="input-group mt-3">
+                    <i class="fa fa-search"></i>
+                    <input class="form-control form-input input-sm rounded" id="Filters_BookId" name="Filters.BookId" type="text" placeholder="Search Title" />
+                    <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div class="dashboard-body">
     <div class="dashboard-content">

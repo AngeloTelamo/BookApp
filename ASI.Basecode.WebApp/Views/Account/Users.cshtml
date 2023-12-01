@@ -27,8 +27,7 @@
 @using (@Html.BeginForm("Search", "Account"))
 {
 <div class="row">
-    <div class="col-6">
-        
+    <div class="col-6">      
         <div class="float-start search-container">
             <div class="form">
                 <div class="input-group mb-2 mt-2">
@@ -75,3 +74,10 @@
     </div>
 </div>
 
+@section scripts {
+    <script>
+        var listItems = '@Html.Raw(Json.Serialize(@Model.UserList))';
+        console.table(JSON.parse(listItems));
+
+    </script>
+}
