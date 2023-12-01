@@ -2,12 +2,13 @@
 @using static ASI.Basecode.Resources.Views.Screen
 @model BookGenres
 @{
+    ViewBag.LoginView = true;
     ViewData["Title"] = "Add Book";
 }
 @section styles {
 	<link href="~/css/addbook.css" rel="stylesheet" />
 }
-<div class="position-relative mt-3 mb-5">
+<div class="position-relative mt-4">
     <div class="row">
         <div class="col-md-10">
             <h1 class="text-start">
@@ -23,6 +24,8 @@
 <h4 class="text-start display-4">
     Add Book
 </h4>
+
+<a class="btn back-button btn-sm" role="button" asp-controller="Admin" asp-action="BookGenreList"><i class="fa-solid fa-arrow-left"></i>  Back</a>
 
 <div class="container mt-3 bookadd-container">
     <form method="post" action="/Admin/AdminBookAdd" enctype="multipart/form-data">
@@ -74,7 +77,7 @@
 
         <input type="hidden" id="BookGenreId" name="BookGenreId" value="@Model.BookGenreId" />
 
-        <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
+        <div class="text-center pt-1 mb-3 pb-1 d-flex flex-column align-items-center">
             <button class="btn add-btn btn-block login-btn gradient-custom-2 mb-3" type="submit">
                 Add Book
             </button>
