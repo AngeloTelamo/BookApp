@@ -1,9 +1,12 @@
-﻿@model ASI.Basecode.Services.ServiceModels.ReviewList
+﻿@using ASI.Basecode.Services.ServiceModels
+@model ReviewList
+@using static ASI.Basecode.Resources.Views.Screen
 @{
     ViewData["Title"] = "Review Lists";
 }
-@using static ASI.Basecode.Resources.Views.Screen
-
+@section styles {
+	<link href="~/css/reviewlist.css" rel="stylesheet" />
+}
 <div class="text-center">
     <h1 class="display-4">Review List</h1>
     <p>Test page 1</p>

@@ -51,6 +51,23 @@ tbody:before {
         color: #E35D6A;
     }
 
+.add-genre-button {
+    background-color: #FCE9DB;
+    color: #FFFFFF;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 80px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .add-genre-button:hover {
+        color: #E35D6A;
+    }
+
 
 .search-button {
     background-color: #FCE9DB;

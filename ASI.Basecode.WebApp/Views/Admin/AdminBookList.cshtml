@@ -33,7 +33,7 @@
             <div class="form">
                 <div class="input-group mb-2 mt-2">
                     <i class="fa fa-search"></i>
-                        <input class="form-control form-input input-sm rounded" id="Filters_BookId" name="Filters.BookId" type="text" placeholder="Search Title" />
+                        <input class="form-control form-input input-sm rounded" id="Filters_BookTitle" name="Filters.BookTitle" type="text" placeholder="Search Title" />
                     <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
                 </div>
             </div>
@@ -64,7 +64,7 @@
                             <th scope="row">@book.BookId</th>
                             <td>@book.BookTitle</td>
                             <td>@book.BookAuthor</td>
-                            <td>@book.BookGenreName</td>
+                            <td>@book.BookGenreName</td>                         
                             <td><img src="@BookImages" alt="Book Image" asp-append-version="true" /></td>
                             <td>
                                 <a class="btn edit-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookUpdate" asp-route-bookId="@book.BookId">Edit <i class="fa-regular fa-pen-to-square"></i> </a>

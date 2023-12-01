@@ -32,7 +32,7 @@
                 <div class="form">
                     <div class="input-group mb-2 mt-2">
                         <i class="fa fa-search"></i>
-                        <input class="form-control form-input input-sm rounded" id="Filters_GenreId" name="Filters.GenreId" type="text" placeholder="Search User" />
+                        <input class="form-control form-input input-sm rounded" id="Filters_GenreName" name="Filters.GenreName" type="text" placeholder="Search User" />
                         <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
                     </div>
                 </div>
@@ -40,7 +40,8 @@
         </div>
 
         <div class="col-6">
-            <a class="btn add-books-button btn-sm float-right mt-3" role="button" >Book <i class="fa-solid fa-plus"></i> </a>
+            <a class="btn add-books-button btn-sm float-right mt-3" role="button" asp-controller="Admin" asp-action="AdminBookAdd">Book <i class="fa-solid fa-plus"></i> </a> @* Need genreID *@
+            <a class="btn add-genre-button btn-sm float-right mt-3 mr-2" asp-action="BookGenreAdd" asp-controller="Admin">Genre <i class="fa-solid fa-plus"></i></a>
         </div>
 
     </div>
@@ -64,7 +65,7 @@
                             <th scope="row">@item.Genre.GenreId</th>
                             <td>@item.Genre.GenreName</td>
                             <td>
-                                <a class="btn add-books-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookAdd" asp-route-genreId="@item.BookGenreId">Add <i class="fa-solid fa-plus"></i> </a>
+                                <a class="btn add-books-button btn-sm" role="button" asp-controller="Admin" asp-action="AdminBookAdd" asp-route-genreId="@item.BookGenreId">Add <i class="fa-solid fa-plus"></i> </a> @* Temp book add *@
                                 <a class="btn edit-button btn-sm" role="button" asp-controller="Admin" asp-action="ViewBooks" asp-route-genreId="@item.Genre.GenreId" asp-route-genreName="@item.Genre.GenreName">View <i class="fa-solid fa-eye"></i> </a>
                                 <a class="btn delete-button btn-sm" role="button" asp-controller="Admin" asp-action="RemoveGenre" asp-route-genreId="@item.BookGenreId">Delete <i class="fa-solid fa-trash"></i> </a>
                             </td>
