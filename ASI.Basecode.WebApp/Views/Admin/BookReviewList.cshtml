@@ -5,111 +5,86 @@
     ViewData["Title"] = "Review Lists";
 }
 @section styles {
-	<link href="~/css/reviewlist.css" rel="stylesheet" />
+    <link href="~/css/reviewlist.css" rel="stylesheet" />
 }
-<div class="text-center">
-    <h1 class="display-4">Review List</h1>
-    <p>Test page 1</p>
-    @using (Html.BeginForm("SearchReview", "Admin"))
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                Review Name
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.ReviewName)
-            </div>
-            <div class="col-sm-2">
-                Book ID
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.BookIds)
-            </div>
+
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
         </div>
- 
-        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
-            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
-                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
-                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
-            </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
         </div>
-    }
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    Review ID
-                </th>
-                <th>
-                    Book ID
-                </th>
-                <th>
-                    Reviewer Name
-                </th>
-                <th>
-                    Comments
-                </th>
-                <th>
-                    Review Date
-                </th>
-                <th>
-                    Book Title
-                </th>
-                <th>
-                    Book Genre
-                </th>
-                <th>
-                    Ratings
-                </th>
-                <th>
-
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            @foreach (var item in Model.ReviewLists)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reviews.reviewId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookMaster.BookId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reviews.ReviewName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reviews.ReviewComments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reviews.ReviewDate)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookMaster.BookTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookMaster.BookGenreName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reviews.ReviewRatings)
-                    </td>
-                    <td>
-                        <a asp-controller="Admin" asp-action="RemoveReview" asp-route-reviewId="@item.Reviews.reviewId">Delete Reviews</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <p>Total Reviews: @Model.TotalReviews</p>
-
-    @Html.ActionLink("Return to main", "AdminBookList", "Admin")
+    </div>
 </div>
+
+<h4 class="text-start display-4">
+    Review List
+</h4>
+
+<div class="row">
+    <div class="col-6">
+
+        @using (Html.BeginForm("SearchReview", "Admin"))
+        {
+            <div class="float-start search-container">
+                <div class="form">
+                    <div class="input-group mb-2 mt-2">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control form-input input-sm rounded" id="Filters_ReviewName" name="Filters.ReviewName" type="text" placeholder="Search Reviewer" />
+                        <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="tbl-container">
+            <table class="table table-hover" id="table-genre">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Review ID</th>
+                        <th scope="col">Book ID</th>
+                        <th scope="col">Reviewer</th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ReviewLists)
+                    {
+                        <tr class="text-center">
+                            <th scope="row">@item.Reviews.reviewId</th>
+                            <td>@item.BookMaster.BookId</td>
+                            <td>@item.Reviews.ReviewName</td>
+                            <td>@item.Reviews.ReviewComments</td>
+                            <td>@item.Reviews.ReviewDate</td>
+                            <td>@item.BookMaster.BookTitle</td>
+                            <td>@item.BookMaster.BookGenreName</td>
+                            <td>@item.Reviews.ReviewRatings</td>
+                            <td>
+                                <a class="btn delete-button btn-sm" role="button" asp-controller="Admin" asp-action="RemoveReview" asp-route-reviewId="@item.Reviews.reviewId">Delete <i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h4 class="text-center">Total Reviews: @Model.TotalReviews</h4>
+
 @section scripts {
     <script>
         var listItems = '@Html.Raw(Json.Serialize(@Model.ReviewLists))';
