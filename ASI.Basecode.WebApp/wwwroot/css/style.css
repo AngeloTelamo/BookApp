@@ -606,108 +606,23 @@ img {
 /*Popular Books List*/
 /*Custom Scrollbar*/
 ::-webkit-scrollbar {
-    width: 1em;
+    width: 10px;
+    background-color: #F5F5F5;
+    margin-right: 50px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #ffffff;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #E35D6A;
     border-radius: 10px;
+    background-color: #E35D6A;
 }
 /*Custom Scrollbar*/
 /*dashboard*/
-
-/*Discover - admin*/
-.discover-search-container {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-    .discover-search-container .form-input {
-        height: 55px;
-        width: 1060px;
-        text-indent: 33px;
-        border-radius: 10px;
-    }
-
-.btn-genres {
-    background-color: #FCE9DB;
-    color: #E35D6A;
-    border: 1px solid #C98276;
-    border-radius: 15px;
-    /*padding: 0 20px 0 20px;*/
-    width: 160px !important;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-    .btn-genres:hover {
-        background-color: #E35D6A;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-
-btn-genres:focus, btn-genres:active {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.carousel-control i {
-    font-weight: bold;
-    font-size: 34px;
-    color: #E35D6A !important;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.carousel-control-prev {
-    margin-left: -63px !important;
-}
-
-.carousel-control-next {
-    margin-right: -49px !important;
-}
-
-
-.discover-genre {
-}
-/*Discover - admin*/
-
-/*Book Update - admin*/
-.bookupdate-container {
-    border: 2px solid #C98276;
-    border-radius: 12px;
-    background-color: #FCE9DB;
-    padding: 50px 20px 0 20px;
-}
-
-    .bookupdate-container label {
-        font-weight: bold;
-    }
-
-.update-btn {
-    background-color: #FA8A8A;
-    color: #FFFFFF;
-    font-weight: bold;
-}
-
-.bookupdate-container li {
-    font-weight: bold;
-}
-
-.bookupdate-container img {
-    width: 150px;
-    height: 200px;
-}
-/*Book Update - admin*/
 
 :root {
     --background-color1: #fafaff;
