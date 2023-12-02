@@ -34,15 +34,33 @@
     font-family: "Poppins", sans-serif;
 }
 
-.container {
-    height: 900px;
+body {
+    background-color: #C98276;
+}
+
+.rectangle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+}
+
+.login-container {
+    margin-left: 100px;
+}
+
+.fliptru-img {
+    width: 450px;
 }
 
 .welcome-text {
-    width: 600px;
+    margin-top: 120px;
+    width: 500px;
     color: #FFFFFF;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 50px;
 }
 
 .form-label {
@@ -50,16 +68,25 @@
     font-weight: bold;
 }
 
-#form2Example11 {
-    width: 600px;
+#email {
+    width: 500px;
     background-color: #FFFFFF;
     border: 1px solid #D33131;
 }
 
-#form2Example22 {
-    width: 600px;
+#password {
+    width: 500px;
     background-color: #FFFFFF;
     border: 1px solid #D33131;
+}
+
+#togglePassword {
+    z-index:3;
+    margin-left: -40px;
+    cursor: pointer;
+    width: 40px;
+    border: none;
+    background:none;
 }
 
 .form-check-label {
@@ -72,10 +99,6 @@
     border: 2px solid #4D4D4D;
 }
 
-.forgot-password-container {
-    width: 400px;
-}
-
 .forgot-password {
     color: #FFFFFF;
     font-weight: bold;
@@ -86,14 +109,14 @@
         text-decoration: none;
     }
 
-.btn {
+.login-btn {
     background-color: #FCE9DB;
-    width: 600px;
+    width: 500px;
     border-radius: 20px;
     border: 1px solid #D33131;
 }
 
-    .btn:hover {
+    .login-btn:hover {
         background-color: #FCE9DB;
         color: #FFFFFF;
     }
@@ -121,15 +144,4 @@
         text-decoration: none;
     }
 
-.rectangle {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 400px;
-    height: 100%;
-    background-color: white;
-}
 
-.background-page {
-    background-color: #C98276;
-}
