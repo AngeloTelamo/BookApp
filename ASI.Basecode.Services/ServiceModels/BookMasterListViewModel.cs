@@ -9,6 +9,9 @@ namespace ASI.Basecode.Services.ServiceModels
 {
     public class BookMasterListViewModel
     {
+        public List<ReviewViewModel> Reviews { get; set; }
+        public List<BookMasterViewModel> TopList { get; set; }
+        public List<BookMasterViewModel> AddedList { get; set; }
         public List<BookMasterViewModel> BookList { get; set; }
         public BookListFilterModel Filters { get; set; }
 
@@ -24,6 +27,7 @@ namespace ASI.Basecode.Services.ServiceModels
             public string SearchTerm { get; set; }
             public string GenreName { get; set; }
             public int GenreId { get; set; }
+
         }
     }
 }

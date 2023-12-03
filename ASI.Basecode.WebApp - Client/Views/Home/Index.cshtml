@@ -31,6 +31,15 @@
         </div>
     }
 
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col">
+            @Html.ActionLink("Top Books", "TopBooks", "Home", new { }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col">
+            @Html.ActionLink("New Books", "NewBooks", "Home", new { }, new { @class = "btn btn-success" })
+        </div>
+    </div>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>

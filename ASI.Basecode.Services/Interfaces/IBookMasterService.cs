@@ -9,7 +9,8 @@ namespace ASI.Basecode.Services.Interfaces
     public interface IBookMasterService
     {
         BookMasterListViewModel GetBookList(BookMasterListViewModel model);
-       // BookMasterListViewModel GetTopBooks(BookMasterListViewModel model);
+        BookMasterListViewModel GetTopBooks(BookMasterListViewModel model);
+        BookMasterListViewModel GetNewBooks(BookMasterListViewModel model);
         BookMasterEditViewModel GetBooks(int bookId);
         BookMasterViewModel GetBookById(int bookId);
         IEnumerable<BookMasterViewModel> GetBooksForGenre(int genreId);

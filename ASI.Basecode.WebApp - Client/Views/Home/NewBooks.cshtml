@@ -1,12 +1,12 @@
 ﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
 @{
-    ViewData["Title"] = "Top Books";
+    ViewData["Title"] = "Recently Added Books";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Top Books</title>
+    <title>Recently Added Books</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,28 +47,11 @@
                 margin-right: 10px;
             }
     </style>
-    @using (Html.BeginForm("Search", "Home"))
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                @Html.Label("Search")
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.SearchTerm, new { @class = "form-control", placeholder = "Discover" })
-            </div>
-        </div>
-        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
-            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
-                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
-                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
-            </div>
-        </div>
-    }
 </head>
 <body>
-    <h1>Top Books</h1>
+    <h1>Recently Added Books</h1>
 
-    @foreach (var book in Model.TopList)
+    @foreach (var book in Model.AddedList)
     {
         var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
 
@@ -80,17 +63,12 @@
             <div class="book-details">
                 <span>Average Rating: @book.AverageRating</span>
                 <span>Review Count: @book.ReviewCount</span>
+                <span>Added Date: @book.AddedBooks.ToShortDateString()</span>
+
+                <a asp-controller="Home" asp-action="BookReviews" asp-route-bookId="@book.BookId">View</a>
             </div>
 
-            <div>
-               <!-- <h3>Reviews:</h3>
-                <ul>
-                    @foreach (var review in book.Reviews)
-                    {
-                        <li>@review.ReviewName: @review.ReviewComments</li>
-                    }
-                 </ul>-->
-            </div>
+           
         </div>
     }
 </body>

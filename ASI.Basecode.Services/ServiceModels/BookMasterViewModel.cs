@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ASI.Basecode.Data.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,9 +25,7 @@ namespace ASI.Basecode.Services.ServiceModels
 
         [Required(ErrorMessage = "Book Summary is required.")]
         public string BookSynopsis { get; set; }
-
         public string BookImage { get; set; }
-
         [NotMapped]
         [DisplayName("Upload File")]
         public IFormFile BookImageFile { get; set; } //method
@@ -38,7 +37,9 @@ namespace ASI.Basecode.Services.ServiceModels
         public string BookGenreName { get; set; }
         public double AverageRating { get; set; }
         public int ReviewCount { get; set; }
+        public DateTime AddedBooks { get; set; }
         public bool IsTopBook { get; set; }
-       // public string reviewName { get; set; }
+       
+
     }
 }
