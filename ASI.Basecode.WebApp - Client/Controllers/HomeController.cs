@@ -118,11 +118,17 @@ namespace ASI.Basecode.WebApp.Controllers
             return View("Index", dataList);
         }
 
-      /*  public IActionResult TopBooks()
-        {
+       public IActionResult TopBooks()
+       {
             var topBooksModel = _bookMasterService.GetTopBooks(null);
             return View("TopBooks", topBooksModel);  
-        }*/
+       }
+
+        public IActionResult NewBooks()
+        {
+            var newBooksModel = _bookMasterService.GetNewBooks(null);
+            return View("NewBooks", newBooksModel);
+        }
 
     }
 }

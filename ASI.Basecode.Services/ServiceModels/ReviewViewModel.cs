@@ -15,7 +15,6 @@ namespace ASI.Basecode.Services.ServiceModels
 
         [Required(ErrorMessage = "Review Comments are required.")]
         public string ReviewComments { get; set; }
-
         public DateTime ReviewDate { get; set; }
       
     }

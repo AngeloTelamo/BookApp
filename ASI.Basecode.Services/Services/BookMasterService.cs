@@ -142,7 +142,7 @@ namespace ASI.Basecode.Services.Services
                 .ThenByDescending(x => x.Reviews.Count())
                 .Take(5);
 
-            toplistModel.BookList = topBooksQuery
+            toplistModel.TopList = topBooksQuery
                 .Select(x => new BookMasterViewModel
                 {
                     BookId = x.BookId,
@@ -161,6 +161,44 @@ namespace ASI.Basecode.Services.Services
 
             return toplistModel;
         }
+
+        public BookMasterListViewModel GetNewBooks(BookMasterListViewModel model)
+        {
+
+            BookMasterListViewModel newBooklistModel = new BookMasterListViewModel();
+
+            var queryData = _repository.GetBooks();
+
+            var newBooksQuery = queryData
+                 .Include(x => x.genreMaster)
+                 .Include(x => x.Reviews)
+                 .Where(x => x.Reviews.Any())
+                 .OrderByDescending(x => x.BookAdded >= DateTime.UtcNow.AddDays(-30)) // Adjust the date range as needed
+                 .ThenByDescending(x => x.Reviews.Average(r => r.ReviewRatings))
+                 .ThenByDescending(x => x.Reviews.Count())
+                 .Take(5);
+
+            newBooklistModel.AddedList = newBooksQuery
+                .Select(x => new BookMasterViewModel
+                {
+                    BookId = x.BookId,
+                    BookTitle = x.BookTitle,
+                    BookAuthor = x.BookAuthor,
+                    BookImage = x.BookImage,
+                    BookGenreName = x.genreMaster.GenreName,
+                    AverageRating = x.Reviews.Average(r => r.ReviewRatings),
+                    ReviewCount = x.Reviews.Count(),
+                    IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5,
+                    AddedBooks = x.BookAdded
+                })
+                .ToList();
+
+
+            newBooklistModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();
+
+            return newBooklistModel;
+        }
+
 
         public void UpdateBook(BookMasterEditViewModel model)
         {
