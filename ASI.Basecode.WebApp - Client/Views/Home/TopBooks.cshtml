@@ -1,0 +1,72 @@
+﻿@model ASI.Basecode.Services.ServiceModels.TopBooks
+@{
+    ViewData["Title"] = "Top Books";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .book-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .book-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .book-details {
+            margin-top: 10px;
+        }
+
+            .book-details span {
+                margin-right: 10px;
+            }
+    </style>
+</head>
+<body>
+    <h1>Top Books</h1>
+
+    @foreach (var book in Model.TopList)
+    {
+        var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
+
+        <div class="book-container">
+            <img src="@bookImagePath" alt="Book Image" class="book-image" />
+            <h2>@book.BookTitle</h2>
+            <p>Author: @book.BookAuthor</p>
+
+            <div class="book-details">
+                <span>Average Rating: @book.AverageRating</span>
+                <span>Review Count: @book.ReviewCount</span>
+                <!-- Add more details as needed -->
+            </div>
+        </div>
+    }
+
+</body>
+</html>

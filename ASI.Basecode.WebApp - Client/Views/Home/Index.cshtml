@@ -59,7 +59,7 @@
             @foreach (var item in Model.BookList)
             {
                 var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
-                <tr class="@((item.IsTopBook) ? "top-book" : "")">
+               <tr class="@((item.IsTopBook) ? "top-book" : "")">
                     <td>
                         @Html.DisplayFor(modelItem => item.BookTitle)
                     </td>

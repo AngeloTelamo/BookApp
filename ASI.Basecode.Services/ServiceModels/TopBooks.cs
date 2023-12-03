@@ -7,23 +7,26 @@ using System.Threading.Tasks;
 
 namespace ASI.Basecode.Services.ServiceModels
 {
-    public class BookMasterListViewModel
+    public class TopBooks
     {
-        public List<BookMasterViewModel> BookList { get; set; }
-        public BookListFilterModel Filters { get; set; }
+        public List<BookMasterViewModel> TopList { get; set; }
+        public TopListFilterModel BookFilter { get; set; }
 
-        public class BookListFilterModel
+        public class TopListFilterModel
         {
             public int BookId { get; set; }
 
             [DisplayName("Book Title")]
             public string BookTitle { get; set; }
-
             [DisplayName("Book Author")]
             public string BookAuthor { get; set; }
             public string SearchTerm { get; set; }
             public string GenreName { get; set; }
             public int GenreId { get; set; }
+            public int ReviewId { get; set; }
+            public int ReviewCount { get; set; }
+            public string Reviewname { get; set; }
+            public string ReviewsComments { get; set; }
         }
     }
 }

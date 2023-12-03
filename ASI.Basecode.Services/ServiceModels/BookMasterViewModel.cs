@@ -39,5 +39,6 @@ namespace ASI.Basecode.Services.ServiceModels
         public double AverageRating { get; set; }
         public int ReviewCount { get; set; }
         public bool IsTopBook { get; set; }
+       // public string reviewName { get; set; }
     }
 }

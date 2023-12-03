@@ -40,8 +40,6 @@ namespace ASI.Basecode.WebApp
             this._services.AddScoped<IBookGenreMasterService, BookGenreMasterService>();
             this._services.AddScoped<IReviewService, ReviewService>();
 
-
-
             // Repositories
             this._services.AddScoped<IUserRepository, UserRepository>();
             this._services.AddScoped<IBookGenreMasterRepository, BookGenreMasterRepository>();

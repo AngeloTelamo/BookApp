@@ -9,6 +9,7 @@ namespace ASI.Basecode.Services.Interfaces
     public interface IBookMasterService
     {
         BookMasterListViewModel GetBookList(BookMasterListViewModel model);
+       // BookMasterListViewModel GetTopBooks(BookMasterListViewModel model);
         BookMasterEditViewModel GetBooks(int bookId);
         BookMasterViewModel GetBookById(int bookId);
         IEnumerable<BookMasterViewModel> GetBooksForGenre(int genreId);
@@ -16,5 +17,6 @@ namespace ASI.Basecode.Services.Interfaces
         void UpdateBook(BookMasterEditViewModel model);
         void DeleteBook(int bookId);
         string GetBookFileContent(int bookId);
+      
     }
 }
