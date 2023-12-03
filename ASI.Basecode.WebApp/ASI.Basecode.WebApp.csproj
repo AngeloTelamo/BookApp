@@ -11,6 +11,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="wwwroot\css\viewbook.css" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Include="..\ASI.Basecode.Resources\Constants\Const.cs" Link="Const.cs" />
 	</ItemGroup>
 

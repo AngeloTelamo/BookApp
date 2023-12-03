@@ -152,13 +152,15 @@ namespace ASI.Basecode.WebApp
 
             app.UseStaticFiles(new StaticFileOptions //for client to access in admin root book
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\telam\OneDrive\Documents\GitHub\Admi\ASI.Basecode.WebApp\wwwroot", "books")), //actual file sa root sa admin for image file siya
+                /*FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\telam\OneDrive\Documents\GitHub\Admi\ASI.Basecode.WebApp\wwwroot", "books")),*/ //actual file sa root sa admin for image file siya
+                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\KE\source\repos\BookApp\ASI.Basecode.WebApp\wwwroot", "books")), //actual file sa root sa admin for image file siya
                 RequestPath = "/clients"
             });
 
             app.UseStaticFiles(new StaticFileOptions //for client to access in admin root book content
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\telam\OneDrive\Documents\GitHub\Admi\ASI.Basecode.WebApp\wwwroot", "appData")),  //actual file sa root sa admin for text file siya
+                /*FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\telam\OneDrive\Documents\GitHub\Admi\ASI.Basecode.WebApp\wwwroot", "appData")),*/  //actual file sa root sa admin for text file siya
+                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\Users\KE\source\repos\BookApp\ASI.Basecode.WebApp\wwwroot", "appData")),  //actual file sa root sa admin for text file siya
                 RequestPath = "/content"
             });
 
