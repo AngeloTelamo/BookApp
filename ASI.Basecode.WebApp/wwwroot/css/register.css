@@ -27,10 +27,23 @@
         border-bottom-right-radius: .3rem;
     }
 }*/
+.background-page {
+    background-color: #C98276;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.register-container {
+    border: 2px solid #C98276;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    margin-top: 75px;
+    margin-left: 100px;
+    padding: 20px 100px 20px 100px;
 }
 
 .rectangle {
@@ -42,24 +55,64 @@
     background-color: white;
 }
 
-.register-box {
-    margin: 70px;
+.background-page {
+    overflow: hidden;
 }
 
-.btn {
+.form-control {
+    width: 300px;  
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.register-btn {
     background-color: #DBAC98;
     border: none;
     outline: none;
+    width: 300px;
 }
 
-.btn:hover {
-    background-color: #DBAC98;
+    .register-btn:hover {
+        background-color: #DBAC98;
+        outline: none;
+    }
+
+.back-button {
+    background-color: #E35D6A;
+    color: #FFFFFF;
+    border: none;
     outline: none;
+    width: 300px;
+    font-weight: bold;
 }
 
-.background-page {
-    background-color: #C98276;
+    .back-button:hover {
+        background-color: #E35D6A;
+        outline: none;
+    }
+
+#togglePassword {
+    z-index: 3;
+    margin-left: -40px;
+    cursor: pointer;
+    width: 40px;
+    border: none;
+    background: none;
 }
+
+#toggleConfirmPassword {
+    z-index: 3;
+    margin-left: -40px;
+    cursor: pointer;
+    width: 40px;
+    border: none;
+    background: none;
+}
+
+
+
 
 
 
