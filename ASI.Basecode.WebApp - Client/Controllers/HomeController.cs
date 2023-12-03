@@ -101,7 +101,7 @@ namespace ASI.Basecode.WebApp.Controllers
                     ModelState.AddModelError(string.Empty, "An error occurred while adding the review. Please try again.");
                 }
             }
-            return View();  // This might be the case where ModelState is not valid, and it returns the view without executing the review submission.
+            return View();  
         }
 
 
@@ -117,6 +117,12 @@ namespace ASI.Basecode.WebApp.Controllers
             var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
             return View("Index", dataList);
         }
+
+      /*  public IActionResult TopBooks()
+        {
+            var topBooksModel = _bookMasterService.GetTopBooks(null);
+            return View("TopBooks", topBooksModel);  
+        }*/
 
     }
 }

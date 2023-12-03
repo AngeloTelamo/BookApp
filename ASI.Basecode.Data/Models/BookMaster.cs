@@ -18,6 +18,8 @@ namespace ASI.Basecode.Data.Models
         public int BookGenreId { get; set; } //foreign key for BookGenreMaster
         public BookGenreMaster genreMaster { get; set; }
 
+
+
         // Navigation property to represent the relationship
         public ICollection<Review> Reviews { get; set; } //
     }

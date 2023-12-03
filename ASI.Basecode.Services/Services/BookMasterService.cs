@@ -104,7 +104,7 @@ namespace ASI.Basecode.Services.Services
                              .Where(x => x.Reviews.Any());
             }
 
-                    listModel.BookList = queryData
+               listModel.BookList = queryData
                   .Select(x => new BookMasterViewModel
                   {
                       BookId = x.BookId,
@@ -126,7 +126,41 @@ namespace ASI.Basecode.Services.Services
             return listModel;
         }
 
+        public BookMasterListViewModel GetTopBooks(BookMasterListViewModel model)
+        {
 
+            BookMasterListViewModel toplistModel = new BookMasterListViewModel();
+
+            var queryData = _repository.GetBooks();
+
+            var topBooksQuery = queryData
+                .Include(x => x.genreMaster)
+                .Include(x => x.Reviews)
+                .Where(x => x.Reviews.Any())
+                .OrderByDescending(x => x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5)
+                .ThenByDescending(x => x.Reviews.Average(r => r.ReviewRatings))
+                .ThenByDescending(x => x.Reviews.Count())
+                .Take(5);
+
+            toplistModel.BookList = topBooksQuery
+                .Select(x => new BookMasterViewModel
+                {
+                    BookId = x.BookId,
+                    BookTitle = x.BookTitle,
+                    BookAuthor = x.BookAuthor,
+                    BookImage = x.BookImage,
+                    BookGenreName = x.genreMaster.GenreName,
+                    AverageRating = x.Reviews.Average(r => r.ReviewRatings),
+                    ReviewCount = x.Reviews.Count(),
+                    IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5
+                })
+                .ToList();
+
+
+            toplistModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();
+
+            return toplistModel;
+        }
 
         public void UpdateBook(BookMasterEditViewModel model)
         {
@@ -223,6 +257,9 @@ namespace ASI.Basecode.Services.Services
                 .ToList();
             return books;
         }
+
+       
+
     }
 
 }
