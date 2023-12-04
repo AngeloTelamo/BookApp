@@ -1,34 +1,34 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
+@using static ASI.Basecode.Resources.Views.Screen
 
 <div class="sidebar-container">
     <div class="@((ViewBag.LoginView == true) ? "hide-navbar" : "")">
-    <input type="checkbox" id="check"> 
-    <label for="check">
-        <i class="fas fa-bars" id="btn"></i>
-        <i class="fas fa-times" id="cancel"></i>    
-    </label>
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
         <div class="sidebar">
             <header>
                 <div class="logosec">
                     <div class="dp">
-                        <img src="~/img/profile-logo.png"
+						<img src="~/img/profile-logo.png"
                              class="dpicn hover-pointer"
-                             alt="dp"> @*IMAGE IMAGE IMAGE IMAGE*@
+                             alt="dp">
                     </div>
-                        <div class="user-info">
-                            <div class="username">
-                                @HttpContextAccessor.HttpContext.Session.GetString("UserName")
-                            </div>
-                            <div class="email">
-                                @HttpContextAccessor.HttpContext.Session.GetString("Email")
-                            </div>
+                    <div class="user-info">
+                        <div class="username">
+                            User
                         </div>
+                        <div class="email">
+                            User@gmail.com
+                        </div>
+                    </div>
                 </div>
             </header>
             <ul>
-                <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
-                
+                <li><a asp-action="Dashboard" asp-controller="Home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
             </ul>
         </div>
     </div>

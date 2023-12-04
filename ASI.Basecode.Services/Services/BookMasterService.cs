@@ -112,13 +112,14 @@ namespace ASI.Basecode.Services.Services
                       BookAuthor = x.BookAuthor,
                       BookImage = x.BookImage,
                       BookGenreName = x.genreMaster.GenreName,
-                      AverageRating = x.Reviews.Average(r => r.ReviewRatings),
-                      ReviewCount = x.Reviews.Count(),
-                      IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > 4.5 
+                      IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > (4.5)
+                      //AverageRating = x.Reviews.Average(r => r.ReviewRatings),
+                      //ReviewCount = x.Reviews.Count()
+                      
                   })
                   .OrderByDescending(x => x.IsTopBook)
-                  .ThenByDescending(x => x.AverageRating)
-                  .ThenByDescending(x => x.ReviewCount)
+                  //.ThenByDescending(x => x.AverageRating)
+                  //.ThenByDescending(x => x.ReviewCount)
                   .ToList();
 
             listModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();

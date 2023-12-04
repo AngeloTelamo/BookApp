@@ -1,0 +1,148 @@
+﻿/*book list - admin*/
+.dashboard-image {
+    width: 150px;
+    height: 150px;
+}
+
+.tbl-container {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead th {
+    border: 2px solid #FCE9DB;
+    background-color: #FCE9DB;
+}
+
+.table tbody img {
+    width: 200px;
+    height: 200px;
+}
+
+.table tbody tr {
+    border: 2px solid #C98276;
+}
+
+.table tbody th, .table tbody td {
+    border: none;
+}
+
+tbody:before {
+    content: "@";
+    display: block;
+    line-height: 10px;
+    text-indent: -99999px;
+}
+
+.search-button {
+    background-color: #FCE9DB;
+    color: #000000;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 100px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .search-button:hover {
+        color: #E35D6A;
+    }
+
+.review-button {
+    background-color: #FCE9DB;
+    color: #E35D6A;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 90px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .review-button:hover {
+        color: #FFFFFF;
+    }
+
+
+.read-button {
+    background-color: #E35D6A;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 0.25rem 0.5rem;
+    width: 90px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .read-button:hover {
+        color: #000000;
+    }
+
+.new-button {
+    background-color: #DBAC98;
+    color: #FFFFFF;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 80px;
+    height: 33px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .new-button:hover {
+        color: #E35D6A;
+    }
+
+.top-button {
+    background-color: #DBAC98;
+    color: #FFFFFF;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 80px;
+    height: 33px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .top-button:hover {
+        color: #E35D6A;
+    }
+
+.form {
+    position: relative;
+    margin-left: auto;
+}
+
+    .form .input-group .fa-search {
+        z-index: 4;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        color: #E35D6A;
+    }
+
+.form-input {
+    z-index: 1;
+    text-indent: 24px;
+}
+
+    .form-input:focus {
+        z-index: 1;
+        box-shadow: none;
+        border-color: #d1d5db;
+    }
+
+/*book list - admin*/

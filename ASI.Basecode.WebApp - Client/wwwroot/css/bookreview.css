@@ -1,0 +1,136 @@
+﻿/*Review*/
+body {
+    overflow: hidden;
+}
+
+.review-container {
+    height: 100%;
+}
+
+#review-bar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    box-shadow: 5px 0 3px -3px rgba(0,0,0,0.25);
+}
+
+.return i {
+    font-size: 30px;
+    color: #E35D6A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.review-book-img img {
+    margin-top: 30px;
+    width: 200px;
+    height: 250px;
+}
+
+.review-title-author {
+    margin: 5px 0 0 0;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+    .review-title-author h4 {
+        font-size: 32px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .review-title-author p {
+        font-size: 16px;
+        color: #C98276;
+        margin: 0;
+    }
+
+
+#star-ratings i {
+    font-size: 16px;
+    color: #E35D6A;
+}
+
+#review-bar .write-review {
+    font-weight: bold;
+    background-color: #E35D6A;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 105px 10px 105px;
+    margin-top: 150px;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+review-bar:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#review-chapter {
+    padding: 50px 0 0 40px;
+}
+
+.review-chapter h4 {
+    font-weight: bold;
+}
+
+.review-chapter p {
+    margin-top: 15px
+}
+/*Review Modal*/
+
+#h6-review {
+    margin-bottom: 10px;
+}
+
+#review-rating {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+    #review-rating i {
+        font-size: 20px;
+        color: #E35D6A;
+    }
+
+#review-textarea {
+    border: 2px solid #E35D6A;
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+}
+
+#btn-post {
+    font-weight: bold;
+    background-color: #E35D6A;
+    padding: 10px 40px 10px 40px;
+    border: none;
+    outline: none;
+}
+
+    #btn-post:hover {
+        background-color: #ffffff;
+        color: #E35D6A;
+        outline: 1px solid;
+    }
+
+#btn-cancel {
+    font-weight: bold;
+    border-color: #E35D6A;
+    color: #E35D6A;
+    padding: 10px 30px 10px 30px;
+}
+
+    #btn-cancel:hover {
+        background-color: #E35D6A;
+        color: #ffffff;
+    }
+/*Review*/

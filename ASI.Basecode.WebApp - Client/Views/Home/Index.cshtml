@@ -1,103 +1,97 @@
-﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
+@using static ASI.Basecode.Resources.Views.Screen
 @{
-    ViewData["Title"] = "Books";
+    ViewData["Title"] = "Book List";
 }
-<style>
-    .top-book {
-        background-color: #ffeeba; /* Highlight color for top books */
-        font-weight: bold;
-    }
-
-</style>
-
-<div class="text-center">
-    <h1 class="display-4">Flip Thru</h1>
-    <p>Test page 1</p>
-    @using (Html.BeginForm("Search", "Home"))
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                @Html.Label("Search")
-            </div>
-            <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.Filters.SearchTerm, new { @class = "form-control", placeholder = "Discover" })
-            </div>
+@section styles {
+	<link href="~/css/index.css" rel="stylesheet" />
+}
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
         </div>
-        <div class="row" style="margin-top: 35px; margin-bottom: 35px">
-            <div class="col" style="padding: 0px 40px 0px 40px; display:flex; justify-content:flex-end">
-                <input class="btn btn-dark" type="submit" name="action" value="search" style="margin-right: 15px" />
-                <input class="btn btn-light" type="button" name="action" value="clear" onclick="clearFilters()" />
-            </div>
-        </div>
-    }
-
-    <div class="row" style="margin-bottom: 10px;">
-        <div class="col">
-            @Html.ActionLink("Top Books", "TopBooks", "Home", new { }, new { @class = "btn btn-primary" })
-        </div>
-        <div class="col">
-            @Html.ActionLink("New Books", "NewBooks", "Home", new { }, new { @class = "btn btn-success" })
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
         </div>
     </div>
+</div>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    Book Title
-                </th>
-                <th>
-                    Book Author
-                </th>
-                <th>
-                    Average Rating
-                </th>
-                <th>
-                    Review Count
-                </th>
-                <th>
-                    Book Image
-                </th>
-                <th>
+<h4 class="text-start display-4">
+    Book List
+</h4>
 
-                </th>
-            </tr>
-        </thead>
 
-        <tbody>
-            @foreach (var item in Model.BookList)
-            {
-                var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
-               <tr class="@((item.IsTopBook) ? "top-book" : "")">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BookAuthor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AverageRating)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReviewCount)
-                    </td>
-                    <td>
-                        <img src="@BookImage" alt="Book Image" asp-append-version="true" />
-                    </td>
+@using (Html.BeginForm("Search", "Home"))
+{
+    <div class="row">
+        <div class="col-6">
+            <div class="float-start search-container">
+                <div class="form">
+                    <div class="input-group mb-2 mt-2">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Discover" />
+                        <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    <td>
-                        <a asp-controller="Home" asp-action="BookReviews" asp-route-bookId="@item.BookId">Leave a Review</a> ||
-                        <a asp-controller="Home" asp-action="ReadBooks" asp-route-bookId="@item.BookId">Start Reading</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        <div class="col-6">
+            <a class="btn new-button btn-sm float-right mt-3" role="button" asp-controller="Home" asp-action="NewBooks">New <i class="fa-solid fa-certificate"></i></a>
+            <a class="btn top-button btn-sm float-right mt-3 mr-2" role="button" asp-controller="Home" asp-action="TopBooks">Top <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
 
-    @Html.ActionLink("Return to main", "Index", "Home")
+    </div>
+}
+
+
+<div class="row">
+    <div class="col">
+        <div class="tbl-container">
+            <table class="table table-hover" id="table-genre">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Book Author</th>
+                        <th scope="col">Average Rating</th>
+                        <th scope="col">Review Count</th>
+                        <th scope="col">Book Cover</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BookList)
+                    {
+                        var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
+                        <tr class="text-center">
+                            <th scope="row">@item.BookTitle</th>
+                            <td>@item.BookTitle</td>
+                            <td>@item.BookAuthor</td>
+                            <td>@item.BookGenreName</td>
+                            <td><img src="@BookImage" alt="Book Image" asp-append-version="true" /></td>
+                            <td>
+                                <a class="btn review-button btn-sm" role="button" asp-controller="Home" asp-action="BookReviews" asp-route-bookId="@item.BookId">Review <i class="fa-regular fa-star"></i> </a>
+                                <a class="btn read-button btn-sm" role="button" asp-controller="Home" asp-action="ReadBooks" asp-route-bookId="@item.BookId">Read <i class="fa-solid fa-book"></i> </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 @section scripts {
+    <script>
+        var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
+        console.table(JSON.parse(listItems));
+
+    </script>
+
     <script>
         var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
         console.table(JSON.parse(listItems));

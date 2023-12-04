@@ -14,7 +14,7 @@ namespace ASI.Basecode.Services.ServiceModels
         public List<BookMasterViewModel> AddedList { get; set; }
         public List<BookMasterViewModel> BookList { get; set; }
         public BookListFilterModel Filters { get; set; }
-
+        
         public class BookListFilterModel
         {
             public int BookId { get; set; }
