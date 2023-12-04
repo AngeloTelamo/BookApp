@@ -1,75 +1,52 @@
-﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
 @{
-    ViewData["Title"] = "Recently Added Books";
+    ViewData["Title"] = "New Books";
+}
+@section styles {
+	<link href="~/css/newbooks.css" rel="stylesheet" />
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Recently Added Books</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .book-container {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            color: #007bff;
-        }
-
-        p {
-            color: #555;
-        }
-
-        .book-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .book-details {
-            margin-top: 10px;
-        }
-
-            .book-details span {
-                margin-right: 10px;
-            }
-    </style>
-</head>
-<body>
-    <h1>Recently Added Books</h1>
-
-    @foreach (var book in Model.AddedList)
-    {
-        var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
-
-        <div class="book-container">
-            <img src="@bookImagePath" alt="Book Image" class="book-image" />
-            <h2>@book.BookTitle</h2>
-            <p>Author: @book.BookAuthor</p>
-
-            <div class="book-details">
-                <span>Average Rating: @book.AverageRating</span>
-                <span>Review Count: @book.ReviewCount</span>
-                <span>Added Date: @book.AddedBooks.ToShortDateString()</span>
-
-                <a asp-controller="Home" asp-action="BookReviews" asp-route-bookId="@book.BookId">View</a>
+@* <div class="row">
+    <div class="col-6">
+        @using (@Html.BeginForm("Search", "Home"))
+        {
+            <div class="float-start search-container">
+                <div class="form">
+                    <div class="input-group ml-4 mt-2">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Search Title" />
+                        <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                    </div>
+                </div>
             </div>
+        }
+    </div>
+</div> *@
 
-           
+<div class="book-list-body">
+    <h2 class="book-list-title mb-4">Recently Added Books</h2>
+    <div class="book-list-container">
+        <div class="book-list">
+            @foreach (var book in Model.AddedList)
+            {
+                var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
+
+                <div class="book-item">
+                    <img src="@bookImagePath" alt="Book Cover">
+                    <div class="book-details">
+                        <div class="book-info">
+                            <h4>@book.BookTitle</h4>
+                            <p>Author @book.BookAuthor</p>
+                            <div class="reviews-ratings">  @* can add review count and rating count (static for now) *@
+                                <span class="reviews">Reviews: @book.ReviewCount <i class="fas fa-comment"></i></span>
+                                <span class="ratings">Ratings: @book.AverageRating <i class="fa-solid fa-star"></i></span>
+                                <span class="date">Date: @book.AddedBooks.ToShortDateString() <i class="fa-solid fa-calendar-days"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-    }
-</body>
-</html>
+    </div>
+</div>

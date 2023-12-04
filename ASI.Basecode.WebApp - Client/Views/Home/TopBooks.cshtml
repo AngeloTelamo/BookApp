@@ -1,6 +1,10 @@
-﻿@model ASI.Basecode.Services.ServiceModels.BookMasterListViewModel
+﻿@* @using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
 @{
     ViewData["Title"] = "Top Books";
+}
+@section styles {
+    <link href="~/css/newbooks.css" rel="stylesheet" />
 }
 
 <!DOCTYPE html>
@@ -85,13 +89,73 @@
             <div>
                <!-- <h3>Reviews:</h3>
                 <ul>
-                    @* @foreach (var review in book.Reviews)
+                    @foreach (var review in book.Reviews)
                     {
                         <li>@review.ReviewName: @review.ReviewComments</li>
-                    } *@
+                    }
                  </ul>-->
             </div>
         </div>
     }
 </body>
 </html>
+ *@
+
+@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
+@{
+    ViewData["Title"] = "Top Books";
+}
+@section styles {
+	<link href="~/css/topbooks.css" rel="stylesheet" />
+}
+
+@* <div class="row">
+    <div class="col-6">
+        @using (@Html.BeginForm("Search", "Home"))
+        {
+            <div class="float-start search-container">
+                <div class="form">
+                    <div class="input-group ml-5 mt-4">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Search Title" />
+                        <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> *@
+
+
+
+<div class="popular-books-list-body mt-3">
+    <h2 class="popular-books-list-title ml-5 mb-4">Top Books</h2>
+    <div class="popular-books-list-container">
+        <div class="popular-books-list">
+            @for (int i = 0; i < Model.TopList.Count; i++)
+            {
+                var book = Model.TopList[i];
+                var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
+
+                <div class="popular-books-list-item">
+                    <div class="popular-books-list-number">@(i + 1)</div>
+                    <img src="@bookImagePath" alt="Book Cover">
+                    <div class="popular-books-list-details">
+                        <div class="popular-books-list-info">
+                            <h4>@book.BookTitle</h4>
+                            <p>by @book.BookAuthor</p>
+                            <p>@book.BookGenreName</p>
+                            <div class="popular-reviews-ratings">
+                                <span class="reviews">Reviews: @book.ReviewCount <i class="fas fa-comment"></i></span>
+                                <span class="ratings">Ratings: @book.AverageRating <i class="fa-solid fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="go-to-book"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

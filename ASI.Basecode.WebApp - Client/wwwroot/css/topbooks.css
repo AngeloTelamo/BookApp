@@ -1,0 +1,142 @@
+﻿/*Popular Books List*/
+.popular-books-list-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.popular-books-list-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 0 40px 0 40px;
+}
+
+.popular-books-list-title {
+    align-self: flex-start;
+    margin: 0;
+}
+
+.popular-books-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.popular-books-list-item {
+    display: flex;
+    border-radius: 15px;
+    margin: 10px;
+    align-items: center;
+    border-bottom: 3px solid #EEC1AD
+}
+
+.popular-books-list-number {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.popular-books-list-item img {
+    max-width: 80px;
+    height: auto;
+    margin: 0 20px 10px 0;
+}
+
+
+.popular-books-list-details {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 10px 0;
+}
+
+.popular-books-list-info p {
+    font-size: 12px;
+}
+
+.popular-books-list-info h4,
+.popular-books-list-info p {
+    margin: 0;
+}
+
+.go-to-book, fa-chevron-right {
+    color: #000000;
+    text-decoration: none;
+}
+
+    .go-to-book:hover, fa-chevron-right {
+        color: #000000;
+        text-decoration: none;
+    }
+
+/*List*/
+.reviews-ratings {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.popular-reviews-ratings {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.reviews, .ratings {
+    font-size: 12px;
+    margin: 2px 0;
+}
+
+.fa-comment {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.ratings {
+    margin: 2px 20px;
+}
+
+.fa-chevron-right {
+    margin-left: 630px;
+    font-size: 30px;
+}
+/*Popular Books List*/
+
+.form {
+    position: relative;
+    margin-left: auto;
+}
+
+    .form .input-group .fa-search {
+        z-index: 4;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        color: #E35D6A;
+    }
+
+.form-input {
+    z-index: 1;
+    text-indent: 24px;
+}
+
+    .form-input:focus {
+        z-index: 1;
+        box-shadow: none;
+        border-color: #d1d5db;
+    }
+
+.search-button {
+    background-color: #FCE9DB;
+    color: #000000;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 100px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .search-button:hover {
+        color: #E35D6A;
+    }
+
