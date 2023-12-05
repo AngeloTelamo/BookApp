@@ -14,12 +14,14 @@ using Serilog.Core;
 using System;
 using System.Linq;
 using static System.Reflection.Metadata.BlobBuilder;
+using ASI.Basecode.Services.Services;
 
 namespace ASI.Basecode.WebApp.Controllers
 {
     public class HomeController : ControllerBase<HomeController>
     {
         private readonly IReviewService _reviewService;
+        private readonly IBookGenreMasterService _bookGenreMasterService;
         private readonly IBookMasterService _bookMasterService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
@@ -36,10 +38,12 @@ namespace ASI.Basecode.WebApp.Controllers
                               IConfiguration configuration,
                               IReviewService reviewService,
                               IBookMasterService bookMasterService,
+                              IBookGenreMasterService bookGenreMasterService,
                               IWebHostEnvironment webHostEnvironment,
                               IMapper mapper = null) : base(httpContextAccessor, loggerFactory, configuration, mapper)
         {
             _reviewService = reviewService;
+            _bookGenreMasterService = bookGenreMasterService;
             _bookMasterService = bookMasterService;
             _webHostEnvironment = webHostEnvironment;
         }
@@ -96,6 +100,7 @@ namespace ASI.Basecode.WebApp.Controllers
                     _reviewService.AddReviews(reviewModel);
                     return RedirectToAction("BookReviews");
                 }
+
                 catch (Exception ex)
                 {
                     ModelState.AddModelError(string.Empty, "An error occurred while adding the review. Please try again.");
@@ -116,6 +121,19 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
             return View("Index", dataList);
+        }
+
+        public IActionResult Discover()
+        {
+            var dataList = _bookGenreMasterService.GetGenreList(null); // press genre then display its books should add if genreID or genreName
+            return View("Discover", dataList);
+        }
+
+        [HttpPost]
+        public IActionResult Discover(BookGenreList model)
+        {
+            var dataList = _bookGenreMasterService.GetGenreList(model); // search any books no genreid/name included
+            return View("Discover", dataList);
         }
 
         public IActionResult Dashboard()

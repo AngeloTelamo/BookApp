@@ -1,0 +1,78 @@
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookGenreList
+@using static ASI.Basecode.Resources.Views.Screen
+@using System.Text
+@{
+    ViewData["Title"] = "Discover";
+}
+@section styles {
+	<link href="~/css/discover.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-6 float-start pl-3 mb-4">
+        @using (@Html.BeginForm("Discover", "Home"))
+        {
+            <div class="float-start search-container">
+                <div class="form">
+                    <div class="input-group ml-4 mt-2">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Search Book" />
+                        <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div id="genreCarousel" class="carousel slide mb-2" data-interval="false">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row">
+
+                <div class="col d-flex justify-content-center">
+                    @for (int i = 0; i < Model.GenreList.Count; i++)
+                    {
+                        var genre = Model.GenreList[i];
+                        <button type="button" class="btn btn-genres btn-sm mr-3">@genre.Genre.GenreName</button>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    @for (int i = 7; i <= 12; i++)
+                    {
+                        <button type="button" class="btn btn-genres btn-sm mr-3">Genre @i</button>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <div class="carousel-control float-right">
+            <a class="carousel-control-prev" href="#genreCarousel" role="button" data-slide="prev" aria-label="Previous">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#genreCarousel" role="button" data-slide="next" aria-label="Next">
+                <i class="fa-solid fa-chevron-right"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+@* <h4 class="text-start display-4 pl-3 discover-genre">
+    Genre 1
+</h4> *@
+
+
+
+
+

@@ -169,14 +169,14 @@ img {
     margin: 0 0 10px 0;
 }
 
-.star-rating {
+.new-book-info .star-rating {
     display: flex;
     justify-content: center;
 }
 
-.fa-star {
+.new-book-info .fa-star {
     color: #E35D6A;
-    font-size: 12px;
+    font-size: 16px;
     margin: 0px 2px;
 }
 /*New Book*/
@@ -358,7 +358,19 @@ img {
     font-size: 60px;
     color: #87CEEB;
 }
+
+.star-rating .star-rating {
+    display: flex;
+    justify-content: center;
+}
+
+.star-rating .fa-star {
+    color: #E35D6A;
+    font-size: 16px;
+    margin: 0px 2px;
+}
 /*Popular Books*/
+
 /*Popular Books List*/
 .popular-books-list-body {
     display: flex;

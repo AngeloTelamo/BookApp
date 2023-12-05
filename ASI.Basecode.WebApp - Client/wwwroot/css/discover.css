@@ -1,0 +1,89 @@
+﻿
+/*Discover - admin*/
+.search-button {
+    background-color: #FCE9DB;
+    color: #000000;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0.25rem 0.50rem;
+    width: 80px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+    .search-button:hover {
+        color: #E35D6A;
+    }
+
+.form {
+    position: relative;
+    margin-left: auto;
+    width: 1040px;
+}
+
+    .form .input-group .fa-search {
+        z-index: 4;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        color: #E35D6A;
+    }
+
+.form-input {
+    z-index: 1;
+    text-indent: 24px;
+}
+
+    .form-input:focus {
+        z-index: 1;
+        box-shadow: none;
+        border-color: #d1d5db;
+    }
+
+.btn-genres {
+    background-color: #FCE9DB;
+    color: #E35D6A;
+    border: 1px solid #C98276;
+    border-radius: 15px;
+    /*padding: 0 20px 0 20px;*/
+    width: 160px !important;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .btn-genres:hover {
+        background-color: #E35D6A;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+btn-genres:focus, btn-genres:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.carousel-control i {
+    font-weight: bold;
+    font-size: 34px;
+    color: #E35D6A !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.carousel-control-prev {
+    margin-left: -63px !important;
+}
+
+.carousel-control-next {
+    margin-right: -49px !important;
+}
+
+/*Discover - admin*/
+

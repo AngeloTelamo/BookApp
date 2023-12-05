@@ -15,22 +15,7 @@
             FlipThru
         </h4>
     </div>
-    <div class="col-6">
-        @using (@Html.BeginForm("Search", "Home"))
-        {
-        <div class="float-right search-container">
-            <div class="form">
-                <div class="input-group mt-3">
-                    <i class="fa fa-search"></i>
-                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Search Title" />
-                    <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
-                </div>
-            </div>
-        </div>
-        }
-    </div>
 </div>
-
 
 <div class="dashboard-body">
     <div class="dashboard-content">
@@ -47,8 +32,10 @@
     <h2 class="new-book-title">New Book</h2>
     <a class="see-more-link" asp-controller="Home" asp-action="NewBooks">See More</a>
     <div class="book-containers">
-        @foreach (var book in Model.AddedList)
+        @for (int i = 0; i < Math.Min(5, Model.AddedList.Count); i++)
         {
+            var book = Model.AddedList[i];
+
             var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
 
             <a class="new-book-link" href="#">
@@ -70,18 +57,20 @@
     <a class="view-all-link" asp-controller="Home" asp-action="Index">View All</a>
     <div class="book-list-container">
         <div class="book-list">
-            @foreach (var item in Model.AddedList)
+            @for (int i = 0; i < Math.Min(3, Model.AddedList.Count); i++)
             {
-                var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
+                var book = Model.AddedList[i];
+
+                var BookImage = "~/clients/" + (book.BookImage ?? "noimage.jpg");
                 <div class="book-item">
                     <img src="@BookImage" alt="Book cover" asp-append-version="true">
                     <div class="book-details">
                         <div class="book-info">
-                            <h4>@item.BookTitle</h4>
-                            <p>@item.BookAuthor</p>
+                            <h4>@book.BookTitle</h4>
+                            <p>@book.BookAuthor</p>
                             <div class="reviews-ratings">
-                                <span class="reviews">Reviews: @item.ReviewCount <i class="fas fa-comment"></i></span>
-                                <span class="ratings">Ratings: @item.AverageRating <i class="fa-solid fa-star"></i></span>
+                                <span class="reviews">Reviews: @book.ReviewCount <i class="fas fa-comment"></i></span>
+                                <span class="ratings">Ratings: @book.AverageRating <i class="fa-solid fa-star"></i></span>
                             </div>
                         </div>
                     </div>
@@ -94,8 +83,10 @@
 <div class="popular-books-body">
     <h2 class="popular-books-title">Popular Books</h2>
     <div class="popular-books-containers">
-        @foreach (var book in Model.AddedList)
+        @for (int i = 0; i < Math.Min(5, Model.AddedList.Count); i++)
         {
+            var book = Model.AddedList[i];
+
             var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
 
             <a class="popular-books-link" href="#">
@@ -109,11 +100,7 @@
                         <h4>@book.BookTitle</h4>
                         <p>@book.BookAuthor</p>
                         <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            @Html.Raw(GetStarRatingHtml(book.AverageRating))
                         </div>
                     </div>
                 </div>
@@ -127,7 +114,7 @@
     <h2 class="popular-books-list-title">Top Books</h2>
     <div class="popular-books-list-container">
         <div class="popular-books-list">
-            @for (int i = 0; i < Model.AddedList.Count; i++)
+            @for (int i = 0; i < Math.Min(3, Model.AddedList.Count); i++)
             {
                 var book = Model.AddedList[i];
                 var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));

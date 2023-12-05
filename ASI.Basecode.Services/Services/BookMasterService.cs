@@ -112,10 +112,10 @@ namespace ASI.Basecode.Services.Services
                       BookAuthor = x.BookAuthor,
                       BookImage = x.BookImage,
                       BookGenreName = x.genreMaster.GenreName,
-                      IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > (4.5)
+                      IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > (4.5),
                       //AverageRating = x.Reviews.Average(r => r.ReviewRatings),
                       //ReviewCount = x.Reviews.Count()
-                      
+
                   })
                   .OrderByDescending(x => x.IsTopBook)
                   //.ThenByDescending(x => x.AverageRating)
