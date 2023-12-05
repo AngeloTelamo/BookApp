@@ -16,15 +16,18 @@
         </h4>
     </div>
     <div class="col-6">
+        @using (@Html.BeginForm("Search", "Home"))
+        {
         <div class="float-right search-container">
             <div class="form">
                 <div class="input-group mt-3">
                     <i class="fa fa-search"></i>
-                    <input class="form-control form-input input-sm rounded" id="Filters_BookId" name="Filters.BookId" type="text" placeholder="Search Title" />
+                        <input class="form-control form-input input-sm rounded" id="Filters_SearchTerm" name="Filters.SearchTerm" type="text" placeholder="Search Title" />
                     <input class="btn search-button btn-sm ml-1" type="submit" name="action" value="Search" />
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>
 
@@ -32,10 +35,7 @@
 <div class="dashboard-body">
     <div class="dashboard-content">
         <div class="dashboard-text">
-            <h3>Upload Your Books, Create <br> Your Library</h3>
-            <button class="add-button">
-                Add New Book <i class="fa fa-plus"></i>
-            </button>
+            <h3>Review Your Books, Flipthru <br> Your Library</h3>
         </div>
         <div class="dashboard-image">
             <img src="~/img/dashboard-girl.png" alt="Dashboard Girl">
@@ -67,20 +67,21 @@
 
 <div class="book-list-body">
     <h2 class="book-list-title">Book List</h2>
-    <a class="view-all-link" asp-controller="Home" asp-action="NewBooks">View All</a>
+    <a class="view-all-link" asp-controller="Home" asp-action="Index">View All</a>
     <div class="book-list-container">
         <div class="book-list">
-            @for (int i = 1; i <= 3; i++)
+            @foreach (var item in Model.AddedList)
             {
+                var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
                 <div class="book-item">
-                    <img src="~/img/book-test.png" alt="Book @i">
+                    <img src="@BookImage" alt="Book cover" asp-append-version="true">
                     <div class="book-details">
                         <div class="book-info">
-                            <h4>Title of Book @i</h4>
-                            <p>Author @i</p>
+                            <h4>@item.BookTitle</h4>
+                            <p>@item.BookAuthor</p>
                             <div class="reviews-ratings">
-                                <span class="reviews">Reviews: 15 <i class="fas fa-comment"></i></span>
-                                <span class="ratings">Ratings: 499</span>
+                                <span class="reviews">Reviews: @item.ReviewCount <i class="fas fa-comment"></i></span>
+                                <span class="ratings">Ratings: @item.AverageRating <i class="fa-solid fa-star"></i></span>
                             </div>
                         </div>
                     </div>
@@ -123,21 +124,25 @@
 </div>
 
 <div class="popular-books-list-body">
+    <h2 class="popular-books-list-title">Top Books</h2>
     <div class="popular-books-list-container">
         <div class="popular-books-list">
-            @for (int i = 6; i <= 8; i++)
+            @for (int i = 0; i < Model.AddedList.Count; i++)
             {
+                var book = Model.AddedList[i];
+                var bookImagePath = Url.Content("~/clients/" + (book.BookImage ?? "noimage.jpg"));
+
                 <div class="popular-books-list-item">
-                    <div class="popular-books-list-number">@i</div>
-                    <img src="~/img/book-test.png" alt="Book @i">
+                    <div class="popular-books-list-number">@(i + 1)</div>
+                    <img src="@bookImagePath" alt="Book Cover">
                     <div class="popular-books-list-details">
                         <div class="popular-books-list-info">
-                            <h4>Title of Book @i</h4>
-                            <p>by Author @i</p>
-                            <p>Genre @i</p>
+                            <h4>@book.BookTitle</h4>
+                            <p>by @book.BookAuthor</p>
+                            <p>@book.BookGenreName</p>
                             <div class="popular-reviews-ratings">
-                                <span class="reviews">Reviews: 15 <i class="fas fa-comment"></i></span>
-                                <span class="ratings">Ratings: 499</span>
+                                <span class="reviews">Reviews: @book.ReviewCount <i class="fas fa-comment"></i></span>
+                                <span class="ratings">Ratings: @book.AverageRating <i class="fa-solid fa-star"></i></span>
                             </div>
                         </div>
                     </div>
