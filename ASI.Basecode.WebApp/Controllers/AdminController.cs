@@ -111,7 +111,7 @@ namespace ASI.Basecode.WebApp.Controllers
                 }
 
                 _bookMasterService.AddBook(model);
-                return RedirectToAction("AdminBookAdd", "Admin");
+                return RedirectToAction("BookGenreList", "Admin");
             }
             catch (InvalidDataException ex)
             {
@@ -137,7 +137,7 @@ namespace ASI.Basecode.WebApp.Controllers
             try
             {
                 _bookGenreMasterService.AddGenre(model);
-                return RedirectToAction("BookGenreAdd", "Admin");
+                return RedirectToAction("BookGenreList", "Admin");
             }
             catch (InvalidDataException ex)
             {
