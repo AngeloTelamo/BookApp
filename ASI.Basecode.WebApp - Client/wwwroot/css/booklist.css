@@ -1,4 +1,4 @@
-﻿/*book list - admin*/
+﻿/*book list - client*/
 .dashboard-image {
     width: 150px;
     height: 150px;
@@ -145,7 +145,7 @@ tbody:before {
         border-color: #d1d5db;
     }
 
-/*book list - admin*/
+/*book list - client*/
 
 .page-link {
     font-weight: bold;

@@ -94,7 +94,7 @@ namespace ASI.Basecode.WebApp.Controllers
                 await this._signInManager.SignInAsync(user);
                 this._session.SetString("UserName", user.Name);
                 this._session.SetString("Email", user.Email);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Dashboard", "Home");
             }
             else
             {
@@ -135,6 +135,33 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             var dataList = _userService.GetUserList(null);
             return View("Users", dataList);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AddUsers()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult AddUsers(UserViewModel model)
+        {
+            try
+            {
+                _userService.AddUser(model);
+                return RedirectToAction("Users", "Account");
+            }
+            catch (InvalidDataException ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+            }
+            return View();
         }
 
         [HttpPost]

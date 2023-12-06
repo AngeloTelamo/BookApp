@@ -114,13 +114,13 @@ namespace ASI.Basecode.WebApp.Controllers
         public IActionResult Search(BookMasterListViewModel model)
         {
             var dataList = _bookMasterService.GetBookList(model);   // makasearch siya sa base sa fields sa views/admin/adminBookList
-            return View("Index", dataList);
+            return View("BookList", dataList);
         }
 
-        public IActionResult Index(int pageNumber = 1)
+        public IActionResult BookList(int pageNumber = 1)
         {
             var dataList = _bookMasterService.GetBookList(new BookMasterListViewModel { PageNumber = pageNumber });
-            return View("Index", dataList);
+            return View("BookList", dataList);
         }
 
         public IActionResult Discover()

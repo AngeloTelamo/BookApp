@@ -54,7 +54,7 @@
 
 <div class="book-list-body">
     <h2 class="book-list-title">Book List</h2>
-    <a class="view-all-link" asp-controller="Home" asp-action="Index">View All</a>
+    <a class="view-all-link" asp-controller="Home" asp-action="BookList">View All</a>
     <div class="book-list-container">
         <div class="book-list">
             @for (int i = 0; i < Math.Min(3, Model.AddedList.Count); i++)

@@ -14,7 +14,7 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    @Html.Partial("_Sidebar")
+    <partial class="layout-sidebar" name="_Sidebar" />
     <div class="container">
         <main role="main">
             @RenderBody()

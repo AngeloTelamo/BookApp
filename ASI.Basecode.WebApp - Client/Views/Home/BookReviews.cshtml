@@ -1,91 +1,4 @@
-﻿@* @using ASI.Basecode.Services.ServiceModels
-@model BookReviewsModel
-@using System.Text
-@{
-    ViewData["Title"] = "Book Details";
-}
-
-<h2>@ViewData["Title"]</h2>
-
-<div>
-    @if (Model != null && Model.BookMaster != null)
-    {
-        <h3>@Model.BookMaster.BookTitle</h3>
-        <p>Author: @Model.BookMaster.BookAuthor</p>
-        <p>Synopsis: @Model.BookMaster.BookSynopsis</p>
-        <p>Genre :  @Model.BookMaster.BookGenreName</p>
-
-        <!-- Display the image from the wwwroot folder -->
-        var bookImagePath = "~/clients/" + (Model.BookMaster.BookImage ?? "noimage.jpg");
-        <img src="@bookImagePath" alt="Book Image" asp-append-version="true" />    
-
-        <!-- Form for submitting reviews -->
-        <form method="post" asp-controller="Home" asp-action="BookReviews" enctype="multipart/form-data">
-            <!-- Add form fields for reviews -->
-
-            <label for="Reviews.ReviewName">Review Name:</label>
-            <input type="text" id="@((Model?.Reviews?.ReviewName) ?? string.Empty)" name="Reviews.ReviewName" required>
-
-            <div id="star-ratings">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    var selectedClass = i <= (Model?.Reviews?.ReviewRatings ?? 0) ? "fas" : "fa-regular";
-
-                    <i class="@selectedClass fa-star" data-rating="@i"></i>
-                }
-            </div>
-
-            <input type="hidden" id="review-ratings" name="Reviews.ReviewRatings" value="@(Model?.Reviews?.ReviewRatings ?? 0)" required>
-
-            <label for="Reviews.ReviewComments">Review Comments:</label>
-            <textarea id="@((Model?.Reviews?.ReviewComments) ?? string.Empty)" name="Reviews.ReviewComments" required></textarea>
-
-            <!-- Add a hidden field for the BookId -->
-            <input type="hidden" name="BookId" value="@Model.BookId">
-
-            <button type="submit">Submit Review</button>
-        </form>
-    }
-    else
-    {
-        <p>No book details available.</p>
-    }
-</div>
-
-<a asp-action="Index">Back to List</a>
-
-@section scripts {
-    <script>
-        // Function to handle star clicks
-        function handleStarClick(rating) {
-            // Update the hidden field value
-            document.getElementById('review-ratings').value = rating;
-
-            // Update the star icons based on the selected rating
-            for (let i = 1; i <= 5; i++) {
-                const star = document.querySelector(`#star-ratings i[data-rating='${i}']`);
-                star.classList.toggle('fa-solid', i <= rating);
-                star.classList.toggle('fa-regular', i > rating);
-            }
-        }
-
-        // Attach click event to each star
-        document.querySelectorAll('#star-ratings i').forEach(star => {
-            star.addEventListener('click', function () {
-                const rating = parseInt(this.getAttribute('data-rating'));
-                handleStarClick(rating);
-            });
-        });
-
-        // Initialize star ratings on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            const initialRating = parseInt(document.getElementById('review-ratings').value);
-            handleStarClick(initialRating);
-        });
-    </script>
-}
- *@
-@using ASI.Basecode.Services.ServiceModels
+﻿@using ASI.Basecode.Services.ServiceModels
 @model BookReviewsModel
 @using System.Text
 ﻿@{
@@ -104,7 +17,7 @@
         <div class="review-content row">
             <div class="col-4 container" id="review-bar">
 
-                <a class="return" asp-action="Index" asp-controller="Home"><i class="fas fa-arrow-left"></i></a>
+                <a class="return" asp-action="BookList" asp-controller="Home"><i class="fas fa-arrow-left"></i></a>
 
                 <div class="review-book-img">
                
@@ -209,12 +122,9 @@
     </script>
 
     <script>
-        // Function to handle star clicks
         function handleStarClick(rating) {
-            // Update the hidden field value
             document.getElementById('review-ratings').value = rating;
 
-            // Update the star icons based on the selected rating
             for (let i = 1; i <= 5; i++) {
                 const star = document.querySelector(`#star-ratings i[data-rating='${i}']`);
                 star.classList.toggle('fa-solid', i <= rating);
@@ -222,7 +132,6 @@
             }
         }
 
-        // Attach click event to each star
         document.querySelectorAll('#star-ratings i').forEach(star => {
             star.addEventListener('click', function () {
                 const rating = parseInt(this.getAttribute('data-rating'));
@@ -230,7 +139,6 @@
             });
         });
 
-        // Initialize star ratings on page load
         document.addEventListener('DOMContentLoaded', function () {
             const initialRating = parseInt(document.getElementById('review-ratings').value);
             handleStarClick(initialRating);

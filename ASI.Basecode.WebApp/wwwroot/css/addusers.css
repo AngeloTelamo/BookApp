@@ -1,10 +1,10 @@
-/*.gradient-custom-2 {*/
-    /* fallback for old browsers */
-    /*background: #ff0000;*/ /* Red */
-    /* Chrome 10-25, Safari 5.1-6 */
-    /*background: -webkit-linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /*background: linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
+﻿/*.gradient-custom-2 {*/
+/* fallback for old browsers */
+/*background: #ff0000;*/ /* Red */
+/* Chrome 10-25, Safari 5.1-6 */
+/*background: -webkit-linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*background: linear-gradient(to right, #ff0000, #000000);*/ /* Red, Black */
 /*}
 
 .login-btn {
@@ -28,7 +28,8 @@
     }
 }*/
 body {
-    background-color: #C98276;
+    overflow:hidden;
+    background-color: #DBAC98;
 }
 
 .container {
@@ -40,9 +41,8 @@ body {
 .register-container {
     border: 2px solid #C98276;
     border-radius: 12px;
-    background-color: #FFFFFF;
-    margin-top: 75px;
-    margin-left: 100px;
+    background-color: #C98276;
+    margin-top: 60px;
     padding: 20px 100px 20px 100px;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 .form-control {
-    width: 300px;  
+    width: 300px;
 }
 
 .form-label {
@@ -110,9 +110,3 @@ body {
     border: none;
     background: none;
 }
-
-
-
-
-
-

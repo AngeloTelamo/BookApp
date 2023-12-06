@@ -1,0 +1,89 @@
+﻿@using ASI.Basecode.Services.ServiceModels
+@using static ASI.Basecode.Resources.Views.Screen
+@model UserViewModel
+@{
+    ViewBag.LoginView = true;
+    ViewData["Title"] = "Add User";
+}
+@section styles {
+	<link href="~/css/addusers.css" rel="stylesheet" />
+}
+
+<div class="container register-container">
+
+    <form method="post" action="/Account/AddUsers">
+
+        <h4 class="display-4">Add User</h4>
+
+        <div class="form-outline mb-2">
+            <label class="form-label" for="userId">Email</label>
+            <input type="text" id="userId" class="form-control"
+                    asp-for="Email" placeholder="Enter email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-outline mb-2">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" class="form-control"
+                    asp-for="Name" placeholder="Enter Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-2">
+            <label class="form-label" for="password">Password</label>
+            <div class="input-group">
+                <input type="password" id="password" class="form-control" asp-for="Password" placeholder="Enter password" />
+                <span class="input-group-text" id="togglePassword">
+                    <i class="fa-regular fa-eye"></i>
+                </span>
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-outline mb-2">
+            <label class="form-label" for="confirmpassword">Confirm Password</label>
+            <div class="input-group">
+                <input type="password" id="confirmpassword" class="form-control" asp-for="ConfirmPassword" placeholder="Confirm Password" />
+                <span class="input-group-text" id="toggleConfirmPassword">
+                    <i class="fa-regular fa-eye"></i>
+                </span>
+            </div>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-center mb-2">
+            <button class="btn btn-primary btn-block register-btn" type="submit">
+                <b>Register</b>
+            </button>                    
+        </div>
+        <a class="btn back-button mb-2" asp-controller="Account" asp-action="Users">
+            <i class="fa-solid fa-arrow-left"></i> Back 
+        </a>
+    </form>             
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#togglePassword, #toggleConfirmPassword").on("click", function () {
+                var inputField = $(this).siblings("input");
+                var type = inputField.attr("type");
+
+                if (type === "password") {
+                    inputField.attr("type", "text");
+                    $(this).find("i").removeClass("fa-eye").addClass("fa-eye-slash");
+                } else {
+                    inputField.attr("type", "password");
+                    $(this).find("i").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+            });
+        });
+
+        // Check for error message and display Toastr notification
+        var errorMessage = '@TempData["ErrorMessage"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        }
+    </script>
+}
+

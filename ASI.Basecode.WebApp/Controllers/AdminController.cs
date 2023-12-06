@@ -183,9 +183,15 @@ namespace ASI.Basecode.WebApp.Controllers
             }
         }
 
-        public IActionResult AdminBookList()
+        //public IActionResult AdminBookList()
+        //{
+        //    var dataList = _bookMasterService.GetBookList(null);
+        //    return View("AdminBookList", dataList);
+        //}
+
+        public IActionResult AdminBookList(int pageNumber = 1)
         {
-            var dataList = _bookMasterService.GetBookList(null);
+            var dataList = _bookMasterService.GetBookList(new BookMasterListViewModel { PageNumber = pageNumber });
             return View("AdminBookList", dataList);
         }
 

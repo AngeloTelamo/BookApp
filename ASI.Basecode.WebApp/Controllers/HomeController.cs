@@ -52,13 +52,8 @@ namespace ASI.Basecode.WebApp.Controllers
         /// <returns> Home View </returns>
         public IActionResult Dashboard()
         {
-            var dataList = _bookMasterService.GetBookList(null); 
-            return View("Dashboard", dataList);
-        }
-
-        public IActionResult Index()
-        {
-            return View();
+            var newBooksModel = _bookMasterService.GetNewBooks(null); // need GetNewBooks and GetTopBooks and GetBookList
+            return View("Dashboard", newBooksModel);
         }
 
         public IActionResult Discover()

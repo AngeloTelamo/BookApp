@@ -74,6 +74,16 @@
                     }
                 </tbody>
             </table>
+            <nav aria-label="Book List Navigation">
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= Math.Ceiling((double)Model.TotalItemCount / Model.ItemsPerPage); i++)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("AdminBookList", new { PageNumber = i })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
