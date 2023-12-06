@@ -103,8 +103,10 @@ namespace ASI.Basecode.Services.Services
                        .Include(x => x.Reviews)
                         .Where(x => x.Reviews.Any());
             }
-
+                
                listModel.BookList = queryData
+                  .Skip((model.PageNumber - 1) * model.ItemsPerPage)
+                  .Take(model.ItemsPerPage)
                   .Select(x => new BookMasterViewModel
                   {
                       BookId = x.BookId,
@@ -115,7 +117,6 @@ namespace ASI.Basecode.Services.Services
                       IsTopBook = x.Reviews.Count() > 5 && x.Reviews.Average(r => r.ReviewRatings) > (4.5),
                       //AverageRating = x.Reviews.Average(r => r.ReviewRatings),
                       //ReviewCount = x.Reviews.Count()
-
                   })
                   .OrderByDescending(x => x.IsTopBook)
                   //.ThenByDescending(x => x.AverageRating)
@@ -123,7 +124,9 @@ namespace ASI.Basecode.Services.Services
                   .ToList();
 
             listModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();
-                
+
+            listModel.TotalItemCount = queryData.Count();
+
             return listModel;
         }
 

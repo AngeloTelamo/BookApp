@@ -117,9 +117,9 @@ namespace ASI.Basecode.WebApp.Controllers
             return View("Index", dataList);
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1)
         {
-            var dataList = _bookMasterService.GetBookList(null); // naa sa BookmasterService ang logic sa list 
+            var dataList = _bookMasterService.GetBookList(new BookMasterListViewModel { PageNumber = pageNumber });
             return View("Index", dataList);
         }
 

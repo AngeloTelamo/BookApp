@@ -44,7 +44,6 @@
             <a class="btn new-button btn-sm float-right mt-3" role="button" asp-controller="Home" asp-action="NewBooks">New <i class="fa-solid fa-certificate"></i></a>
             <a class="btn top-button btn-sm float-right mt-3 mr-2" role="button" asp-controller="Home" asp-action="TopBooks">Top <i class="fa-solid fa-arrow-up"></i></a>
         </div>
-
     </div>
 }
 
@@ -69,9 +68,9 @@
                         var BookImage = "~/clients/" + (item.BookImage ?? "noimage.jpg");
                         <tr class="text-center">
                             <th scope="row">@item.BookTitle</th>
-                            <td>@item.BookTitle</td>
                             <td>@item.BookAuthor</td>
-                            <td>@item.BookGenreName</td>
+                            <td>@item.AverageRating</td>
+                            <td>@item.ReviewCount</td>
                             <td><img src="@BookImage" alt="Book Image" asp-append-version="true" /></td>
                             <td>
                                 <a class="btn review-button btn-sm" role="button" asp-controller="Home" asp-action="BookReviews" asp-route-bookId="@item.BookId">Review <i class="fa-regular fa-star"></i> </a>
@@ -79,8 +78,19 @@
                             </td>
                         </tr>
                     }
+                    
                 </tbody>
             </table>
+            <nav aria-label="Book List Navigation">
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= Math.Ceiling((double)Model.TotalItemCount / Model.ItemsPerPage); i++)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { PageNumber = i })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -90,16 +100,5 @@
         var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
         console.table(JSON.parse(listItems));
 
-    </script>
-
-    <script>
-        var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
-        console.table(JSON.parse(listItems));
-
-        function clearFilters() {
-            console.log("CLEARED")
-            $('#Filters_BId').val('');
-            $('#Filters_BookTitle').val('');
-        }
     </script>
 }

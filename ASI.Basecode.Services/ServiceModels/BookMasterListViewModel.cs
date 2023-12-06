@@ -9,6 +9,9 @@ namespace ASI.Basecode.Services.ServiceModels
 {
     public class BookMasterListViewModel
     {
+        public int PageNumber { get; set; } = 1;
+        public int ItemsPerPage { get; set; } = 10;
+        public int TotalItemCount { get; set; }
         public List<ReviewViewModel> Reviews { get; set; }
         public List<BookMasterViewModel> TopList { get; set; }
         public List<BookMasterViewModel> AddedList { get; set; }

@@ -146,3 +146,15 @@ tbody:before {
     }
 
 /*book list - admin*/
+
+.page-link {
+    font-weight: bold;
+    color: #E35D6A;
+    background-color: #FCE9DB;
+}
+
+.page-link:hover {
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #E35D6A;
+}
