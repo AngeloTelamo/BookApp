@@ -1,5 +1,5 @@
 ﻿
-/*Discover - admin*/
+/*Discover - client*/
 .search-button {
     background-color: #FCE9DB;
     color: #000000;
@@ -85,5 +85,10 @@ btn-genres:focus, btn-genres:active {
     margin-right: -49px !important;
 }
 
-/*Discover - admin*/
+/*Discover - client*/
+
+.background i {
+    color: #E35D6A;
+    font-size: 400px;
+}
 
