@@ -230,7 +230,7 @@ img {
         margin-right: 20px;
     }
 
-.book-details {
+.book-list-details {
     display: flex;
     flex-direction: column;
     padding: 10px 0 0 0;

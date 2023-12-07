@@ -15,6 +15,9 @@
 </head>
 <body>
     <partial class="layout-sidebar" name="_Sidebar" />
+    <div class="book-details">
+        <partial class="layout-book-details" name="_BookDetails" />
+    </div>
     <div class="container">
         <main role="main">  
             @RenderBody()
@@ -37,6 +40,24 @@
             closeButton: true,
             progressBar: true
         };
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.new-book-link, .popular-books-link').on('click', function (e) {
+                e.preventDefault();
+
+                // populate book details
+
+                $('.book-details').addClass('active');
+            });
+
+            $('.close-book-details').on('click', function (e) {
+                e.preventDefault();
+
+                $('.book-details').removeClass('active');
+            });
+        });
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

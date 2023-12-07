@@ -10,7 +10,152 @@
     list-style: none;
     text-decoration: none;
 }
+/*book details*/
+.book-details {
+    z-index: 2;
+    position: fixed;
+    right: -270px;
+    width: 270px;
+    height: 100%;
+    background: #C98276;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+    transition: right 0.3s ease;
+    padding: 0 !important;
+}
 
+    .book-details.active {
+        right: 0;
+    }
+
+.book-details-head {
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+    padding: 0 20px 0 20px;
+}
+
+    .book-details-head i {
+        font-size: 34px;
+        color: #ffffff;
+    }
+
+    .book-details-head h4 {
+        padding: 4px 0 0 20px;
+    }
+
+.book-details-body {
+    display: flex;
+    padding: 0 40px 0 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-details-img {
+    width: 150px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    .book-details-img img {
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+
+.book-details-title-author {
+    flex-direction: column;
+    align-items: center;
+}
+
+    .book-details-title-author h4 {
+        font-size: 18px;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .book-details-title-author p {
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
+    }
+
+.book-details-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 23px;
+}
+
+.book-details-star-rating {
+    display: flex;
+    justify-content: center;
+}
+
+    .book-details-star-rating .fa-star {
+        color: #ffffff;
+        font-size: 12px;
+        margin: 0px 2px;
+    }
+
+.num-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .num-rating h4 {
+        font-size: 18px;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .num-rating p {
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+.book-details-rating .fa-pen-to-square {
+    font-size: 14px;
+    color: #ffffff
+}
+
+.book-details-description {
+    margin-top: 10px;
+}
+
+    .book-details-description p {
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+a.start-button {
+    font-weight: bold;
+    background-color: #FCE9DB;
+    color: #E35D6A;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 30px 10px 30px;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    a.start-button:hover {
+        color: #E35D6A;
+        text-decoration: none;
+    }
+/*book details*/
 /*sidebar navigation*/
 .sidebar {
     z-index: 99;
