@@ -119,8 +119,8 @@ namespace ASI.Basecode.Services.Services
                       //ReviewCount = x.Reviews.Count()
                   })
                   .OrderByDescending(x => x.IsTopBook)
-                  //.ThenByDescending(x => x.AverageRating)
-                  //.ThenByDescending(x => x.ReviewCount)
+                  ////.ThenByDescending(x => x.AverageRating)
+                  ////.ThenByDescending(x => x.ReviewCount)
                   .ToList();
 
             listModel.Filters = model?.Filters ?? new BookMasterListViewModel.BookListFilterModel();

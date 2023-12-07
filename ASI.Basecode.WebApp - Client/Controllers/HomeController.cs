@@ -67,12 +67,12 @@ namespace ASI.Basecode.WebApp.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("BookList");
                 }
             }
             catch (InvalidDataException ex)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("BookList");
             }
         }
 
@@ -167,10 +167,10 @@ namespace ASI.Basecode.WebApp.Controllers
         }
 
         public IActionResult TopBooks()
-       {
+        {
             var topBooksModel = _bookMasterService.GetTopBooks(null);
             return View("TopBooks", topBooksModel);  
-       }
+        }
 
         public IActionResult NewBooks()
         {

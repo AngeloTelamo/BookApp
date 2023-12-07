@@ -30,7 +30,6 @@
 
 <div class="new-book-body">
     <h2 class="new-book-title">New Book</h2>
-    <a class="see-more-link" asp-controller="Home" asp-action="NewBooks">See More</a>
     <div class="book-containers">
         @for (int i = 0; i < Math.Min(5, Model.AddedList.Count); i++)
         {
@@ -79,7 +78,6 @@
             </a>
         }
     </div>
-    <a class="popular-see-more-link" asp-controller="Home" asp-action="TopBooks">See More</a>
 </div>
 
 

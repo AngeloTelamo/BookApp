@@ -36,7 +36,7 @@ tbody:before {
 
 .add-books-button {
     background-color: #FCE9DB;
-    color: #FFFFFF;
+    color: #C98276;
     border-radius: 16px;
     font-size: 16px;
     cursor: pointer;
@@ -53,7 +53,7 @@ tbody:before {
 
 .add-genre-button {
     background-color: #FCE9DB;
-    color: #FFFFFF;
+    color: #C98276;
     border-radius: 16px;
     font-size: 16px;
     cursor: pointer;
