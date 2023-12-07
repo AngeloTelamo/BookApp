@@ -1,0 +1,61 @@
+﻿body {
+    font-family: 'Arial', sans-serif;
+    background-color: #DBAC98;
+    margin: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin-top: 120px;
+    background-color: #FCE9DB;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+.book-pages {
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    overflow: hidden;
+}
+
+.page {
+    display: none;
+    text-align: center;
+}
+
+    .page.active {
+        display: block;
+    }
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .pagination button {
+        background-color: #E35D6A;
+        color: white;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.return i {
+    font-size: 30px;
+    color: #E35D6A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}

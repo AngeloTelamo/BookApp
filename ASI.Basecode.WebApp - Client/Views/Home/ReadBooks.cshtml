@@ -1,80 +1,31 @@
 ﻿@model string
+@using static ASI.Basecode.Resources.Views.Screen
+@{
+    ViewBag.LoginView = true;
+    ViewData["Title"] = "Book Content";
+}
+@section styles {
+    <link href="~/css/readbooks.css" rel="stylesheet" />
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-        }
+<a class="return" asp-controller="Home" asp-action="Discover"><i class="fas fa-arrow-left"></i></a>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+<div class="book-pages">
 
-        h2 {
-            color: #333;
-            text-align: center;
-        }
-
-        .book-pages {
-            white-space: pre-wrap; /* Preserve whitespace, wrap lines */
-            font-size: 14px;
-            line-height: 1.4;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .page {
-            display: none;
-            text-align: center; /* Center the text */
-        }
-
-            .page.active {
-                display: block;
-            }
-
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-            .pagination button {
-                background-color: #4caf50;
-                color: white;
-                padding: 8px 12px;
-                margin: 0 5px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-    </style>
-
-</head>
-<body>
-    <div class="container">
-        <div class="book-pages">
-            <div class="page active">
-                @Html.Raw(Model)
-            </div>
-            <!-- Add more pages as needed -->
-        </div>
-        <div class="pagination">
-            <button onclick="showPage(1)">1</button>
-            <!-- Add more buttons for additional pages -->
-        </div>
+    <div class="page active">
+        @Html.Raw(Model)
     </div>
 
+</div>
+
+<div class="pagination text-center align-content-center justify-content-center">
+
+    <button onclick="showPage(1)">1</button>
+
+</div>
+
+
+@section scripts {
     <script>
         function showPage(pageNumber) {
             // Hide all pages
@@ -90,5 +41,4 @@
             }
         }
     </script>
-</body>
-</html>
+}
