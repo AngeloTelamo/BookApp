@@ -1,0 +1,72 @@
+﻿@using ASI.Basecode.Services.ServiceModels
+@model BookMasterListViewModel
+@using static ASI.Basecode.Resources.Views.Screen
+@using System.Text
+@{
+    ViewData["Title"] = @Model.Filters.GenreName;
+}
+@section styles {
+    <link href="~/css/viewbooks.css" rel="stylesheet" />
+}
+
+<div class="position-relative mt-3">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-start">
+                Flip Thru
+            </h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/img/dashboard-girl.png" alt="Dashboard Girl" class="dashboard-image position-absolute">
+        </div>
+    </div>
+</div>
+
+<h4 class="text-start display-4">
+    @Model.Filters.GenreName
+</h4>
+
+<a class="btn back-button btn-sm" role="button" asp-controller="Home" asp-action="Discover"><i class="fa-solid fa-arrow-left"></i>  Back</a>
+
+<div class="row">
+    <div class="col">
+        <div class="tbl-container">
+            <table class="table table-hover mt-3" id="table-genre">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Book Author</th>
+                        <th scope="col" class="book-synopsis">Book Synopsis</th>
+                        <th scope="col">Book Cover</th>
+                        <th scope="col">Book Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model.BookList)
+                    {
+                        var BookImages = "/clients/" + (book.BookImage ?? "noimage.jpg");
+                        <tr class="text-center">
+                            <td>@book.BookTitle</td>
+                            <td>@book.BookAuthor</td>
+                            <td>@book.BookSynopsis</td>
+                            <td>
+                                <img src="@BookImages" alt="Book Image" asp-append-version="true" />
+                            </td>
+                            <td>
+                                <a class="btn view-button btn-sm" role="button" href="@Url.Action("ReadBooks", "Home", new { bookId = book.BookId })">View <i class="fa-solid fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var listItems = '@Html.Raw(Json.Serialize(@Model.BookList))';
+        console.table(JSON.parse(listItems));
+
+    </script>
+}

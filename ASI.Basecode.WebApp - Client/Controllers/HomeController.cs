@@ -125,15 +125,39 @@ namespace ASI.Basecode.WebApp.Controllers
 
         public IActionResult Discover()
         {
-            var dataList = _bookGenreMasterService.GetGenreList(null); // press genre then display its books should add if genreID or genreName
+            var dataList = _bookGenreMasterService.GetGenreList(null);
             return View("Discover", dataList);
         }
 
         [HttpPost]
         public IActionResult Discover(BookGenreList model)
         {
-            var dataList = _bookGenreMasterService.GetGenreList(model); // search any books no genreid/name included
+            var dataList = _bookGenreMasterService.GetGenreList(model);
             return View("Discover", dataList);
+        }
+
+        [HttpGet]
+        public IActionResult ViewBooks(int genreId, string genreName)
+        {
+            try
+            {
+                var booksForGenre = _bookMasterService.GetBooksForGenre(genreId);
+                var model = new BookMasterListViewModel
+                {
+                    BookList = booksForGenre.ToList(),
+                    Filters = new BookMasterListViewModel.BookListFilterModel
+                    {
+                        GenreId = genreId,
+                        GenreName = genreName
+                    }
+                };
+                return View("ViewBooks", model);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+                return RedirectToAction("Discover", "Home");
+            }
         }
 
         public IActionResult Dashboard()

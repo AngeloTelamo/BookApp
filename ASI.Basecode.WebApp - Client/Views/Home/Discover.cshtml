@@ -35,7 +35,7 @@
                     @for (int i = 0; i < Model.GenreList.Count; i++)
                     {
                         var genre = Model.GenreList[i];
-                        <button type="button" class="btn btn-genres btn-sm mr-3">@genre.Genre.GenreName</button>
+                        <a type="button" class="btn btn-genres btn-sm mr-3" asp-controller="Home" asp-action="ViewBooks" asp-route-genreId="@genre.Genre.GenreId" asp-route-genreName="@genre.Genre.GenreName">@genre.Genre.GenreName</a>
                     }
                 </div>
             </div>
@@ -68,9 +68,7 @@
     </div>
 </div>
 
-@* <h4 class="text-start display-4 pl-3 discover-genre">
-    Genre 1
-</h4> *@
+
 
 
 
