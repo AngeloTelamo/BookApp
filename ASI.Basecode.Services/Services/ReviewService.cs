@@ -65,7 +65,9 @@ public class ReviewService : IReviewService
             if (!string.IsNullOrEmpty(model.Filters.SearchTerm))
             {
                 queryData = queryData
-                    .Where(x => x.ReviewName.ToLower().Contains(model.Filters.SearchTerm.ToLower()));
+                    .Where(x => x.BookId.ToString().Contains(model.Filters.SearchTerm) || 
+                    x.ReviewName.ToLower().Contains(model.Filters.SearchTerm.ToLower())
+                    );
             }
             else if (!string.IsNullOrEmpty(model.Filters.ReviewName))
             {
